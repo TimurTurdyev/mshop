@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "barryvdh/laravel-elfinder": "^0.5.1",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^2.14.1",
@@ -15,6 +16,7 @@
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",
+        "barryvdh/laravel-ide-helper": "^2.12",
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
@@ -37,7 +39,9 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
+            "@php artisan package:discover --ansi",
+            "@php artisan ide-helper:generate",
+            "@php artisan ide-helper:meta"
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
@@ -51,7 +55,9 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": []
+            "dont-discover": [
+                "barryvdh/laravel-ide-helper"
+            ]
         }
     },
     "config": {

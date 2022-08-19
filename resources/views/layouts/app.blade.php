@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     @livewireStyles
     @stack('styles')
+    <link href="{{ asset('/dist/css/colorbox.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -45,6 +46,13 @@
                         <i class="align-middle" data-feather="tag"></i> <span class="align-middle">Список групп товаров</span>
                     </a>
                 </li>
+
+                <li class="sidebar-item {{ (request()->is('admin/option*')) ? 'active' : '' }}">
+                    <a class="sidebar-link" href="{{ route('admin.option') }}">
+                        <i class="align-middle" data-feather="shuffle"></i> <span class="align-middle">Опции товара</span>
+                    </a>
+                </li>
+
                 <li class="sidebar-item {{ (request()->is('admin/product*')) ? 'active' : '' }}">
                     <a class="sidebar-link" href="{{ route('admin.product') }}">
                         <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Список товаров</span>
@@ -280,6 +288,8 @@
 <script src="{{ asset('dist/js/app.js') }}"></script>
 @livewireScripts
 <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="{{ asset('/dist/js/jquery.colorbox-min.js') }}"></script>
+<script src="{{ asset('/packages/barryvdh/elfinder/js/standalonepopup.js') }}"></script>
 @stack('scripts')
 </body>
 

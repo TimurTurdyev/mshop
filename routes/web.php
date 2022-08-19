@@ -27,6 +27,10 @@ Route::get('/admin/brand/{brand}', \App\Http\Livewire\Brand\BrandCreateOrUpdate:
 
 Route::get('/admin/group', \App\Http\Livewire\Group\GroupList::class)->name('admin.group');
 
+Route::get('/admin/option', \App\Http\Livewire\Option\OptionList::class)->name('admin.option');
+Route::get('/admin/option/create', \App\Http\Livewire\Option\OptionCreateOrUpdate::class)->name('admin.option.create');
+Route::get('/admin/option/{option}', \App\Http\Livewire\Option\OptionCreateOrUpdate::class)->name('admin.option.edit');
+
 Route::get('/admin/product', \App\Http\Livewire\Product\ProductList::class)->name('admin.product');
 Route::get('/admin/product/create', \App\Http\Livewire\Product\ProductCreateOrUpdate::class)->name('admin.product.create');
 Route::get('/admin/product/{product}', \App\Http\Livewire\Product\ProductCreateOrUpdate::class)->name('admin.product.edit');
