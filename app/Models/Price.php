@@ -36,4 +36,42 @@ use Illuminate\Database\Eloquent\Model;
 class Price extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
+
+    protected $fillable = [
+        'product_id',
+        'images',
+        'sku',
+        'price',
+        'special',
+        'quantity',
+        'sort_order',
+        'status',
+    ];
+
+    protected $casts = [
+        'images' => 'array',
+        'sku' => 'string',
+        'price' => 'integer',
+        'special' => 'integer',
+        'quantity' => 'integer',
+        'sort_order' => 'integer',
+        'status' => 'boolean',
+    ];
+
+    protected function getImagesAttribute($value)
+    {
+        return json_decode($value ?: '[]', 1);
+    }
+
+    public function product(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+    public function properties(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Property::class);
+    }
 }

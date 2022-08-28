@@ -9,7 +9,8 @@ use Illuminate\Database\Eloquent\Model;
  * App\Models\Option
  *
  * @property int $id
- * @property string $group
+ * @property string $group_admin
+ * @property string $group_site
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\OptionValue[] $optionValues
  * @property-read int|null $option_values_count
  * @method static \Illuminate\Database\Eloquent\Builder|Option newModelQuery()
@@ -26,11 +27,13 @@ class Option extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'group',
+        'group_admin',
+        'group_site',
     ];
 
     protected $casts = [
-        'group' => 'string'
+        'group_admin' => 'string',
+        'group_site' => 'string',
     ];
 
     public function optionValues(): \Illuminate\Database\Eloquent\Relations\HasMany

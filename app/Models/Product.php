@@ -23,6 +23,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Page $page
+ * @property-read \App\Models\Option $option
+ * @property-read \App\Models\Price $prices
  * @method static \Illuminate\Database\Eloquent\Builder|Product newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Product newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Product query()
@@ -75,5 +77,10 @@ class Product extends Model
     public function page(): \Illuminate\Database\Eloquent\Relations\MorphOne
     {
         return $this->morphOne(Page::class, 'pageable')->withDefault();
+    }
+
+    public function prices(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Price::class);
     }
 }

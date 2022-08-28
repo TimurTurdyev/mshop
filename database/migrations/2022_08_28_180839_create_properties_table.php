@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('options', function (Blueprint $table) {
+        Schema::create('properties', function (Blueprint $table) {
             $table->id();
-            $table->string('group_admin');
-            $table->string('group_site');
+            $table->foreignId('price_id')->constrained('prices')->onDelete('CASCADE');
+            $table->foreignId('option_id')->nullable()->constrained('options')->onDelete('SET NULL');
+            $table->foreignId('option_value_id')->nullable()->constrained('option_values')->onDelete('SET NULL');
         });
     }
 
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('options');
+        Schema::dropIfExists('properties');
     }
 };

@@ -55,6 +55,9 @@
             </div>
         </div>
     </form>
+    @if( $product->exists )
+        <livewire:product.price-list  :product="$product"></livewire:product.price-list>
+    @endif
 </div>
 
 @push('styles')

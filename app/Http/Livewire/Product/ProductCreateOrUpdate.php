@@ -6,6 +6,7 @@ use App\Http\Livewire\PageLivewireTrait;
 use App\Models\Brand;
 use App\Models\Catalog;
 use App\Models\Group;
+use App\Models\Option;
 use App\Models\Product;
 use Livewire\Component;
 

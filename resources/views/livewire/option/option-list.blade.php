@@ -35,7 +35,8 @@
                                 <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Группа</th>
+                                    <th scope="col">Группа/Админ</th>
+                                    <th scope="col">Группа/Сайт</th>
                                     <th scope="col">Значение опций</th>
                                     <th scope="col">Действие</th>
                                 </tr>
@@ -44,7 +45,8 @@
                                 @foreach( $options as $item )
                                     <tr>
                                         <th scope="row">{{ $item->id }}</th>
-                                        <td>{{ $item->group }}</td>
+                                        <td>{{ $item->group_admin }}</td>
+                                        <td>{{ $item->group_site }}</td>
                                         <td>{{ $item->optionValues->map(fn($v) => $v->value)->join(', ') }}</td>
                                         <td class="table-action">
                                             <a href="{{ route('admin.option.edit', $item->id) }}">

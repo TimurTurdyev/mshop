@@ -3,6 +3,7 @@
     'name' => '',
     'label' => '',
     'items' => [],
+    'key' => 'name'
 ])
 
 @if( $label )
@@ -12,12 +13,12 @@
 <select class="form-control @error( $name ) is-invalid @enderror"
         @if( $id )
         id="{{ $id }}"
-        @endif
-        wire:model="{{ $name }}"
+    @endif
+    {{ $attributes }}
 >
     <option>-- Не выбран --</option>
     @foreach( $items as $item )
-        <option value="{{ $item['id'] }}">{{ $item['name'] }}</option>
+        <option value="{{ $item['id'] }}">{{ $item[$key] }}</option>
     @endforeach
 </select>
 
