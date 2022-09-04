@@ -25,7 +25,7 @@ class ProductList extends Component
     {
         return view('livewire.product.product-list', [
             'title' => $this->title,
-            'products' => Product::with('page')->paginate()
+            'products' => Product::with(['group', 'brand'])->orderByDesc('id')->paginate()
         ])->layoutData([
             'title' => $this->title
         ]);

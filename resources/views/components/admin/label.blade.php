@@ -1,8 +1,1 @@
-@props([
-    'name' => '',
-    'for' => '',
-])
-
-@if( $name )
-    <label class="form-label" {{ $for ? "for={$for}" : '' }}>{{ $name }}</label>
-@endif
+<label class="{{ $attributes->merge(['class' => 'form-label']) }}" {{ $attributes }}>{{ $slot }}</label>

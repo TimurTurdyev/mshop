@@ -7,10 +7,8 @@ use Illuminate\Validation\Rule;
 trait PageLivewireTrait
 {
     public $page = [
-        'slug' => '',
         'meta_title' => '',
         'meta_description' => '',
-        'meta_keyword' => '',
         'text_html' => '',
     ];
 
@@ -23,15 +21,8 @@ trait PageLivewireTrait
     public function getPageRules()
     {
         return [
-            'page.slug' => [
-                'required',
-                'string',
-                'max:255',
-                Rule::unique('pages', 'slug')->ignore($this->page['id'] ?? 0),
-            ],
             'page.meta_title' => 'required|string|max:255',
             'page.meta_description' => 'required|string|max:255',
-            'page.meta_keyword' => 'required|string|max:255',
             'page.text_html' => 'string|min:0',
         ];
     }
@@ -46,7 +37,7 @@ trait PageLivewireTrait
 
     public function saveModelAndPage($model, $prepareForValidation = [])
     {
-        $this->validate([...$this->rules, ...$this->getPageRules()]);
+        $this->validate([...$this->rules(), ...$this->getPageRules()]);
 
         foreach ($prepareForValidation as $fill => $value) {
             if (!$model->{$fill}) {
@@ -54,9 +45,9 @@ trait PageLivewireTrait
             }
         }
 
-        $model->save();
+        $model->slug = str($model->slug)->slug();
 
-        $this->page['slug'] = str($this->page['slug'])->slug();
+        $model->save();
 
         $model
             ->page

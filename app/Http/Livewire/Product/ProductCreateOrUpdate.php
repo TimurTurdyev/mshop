@@ -8,6 +8,7 @@ use App\Models\Catalog;
 use App\Models\Group;
 use App\Models\Option;
 use App\Models\Product;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 
 class ProductCreateOrUpdate extends Component
@@ -20,23 +21,32 @@ class ProductCreateOrUpdate extends Component
     public array $brands;
     public array $groups;
 
-    protected array $rules = [
-        'product.brand_id' => 'nullable|integer',
-        'product.group_id' => 'nullable|integer',
-        'product.name' => 'required|string|min:6',
-        'product.sku' => 'nullable|string',
-        'product.images' => 'nullable|array',
-        'product.height' => 'nullable|integer',
-        'product.depth' => 'nullable|integer',
-        'product.width' => 'nullable|integer',
-        'product.weight' => 'nullable|integer',
-        'product.viewed' => 'nullable|integer',
-        'product.status' => 'nullable|boolean',
-    ];
+    protected function rules()
+    {
+        return [
+            'product.brand_id' => 'nullable|integer',
+            'product.group_id' => 'nullable|integer',
+            'product.slug' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('products', 'slug')->ignore($this->product->id),
+            ],
+            'product.name' => 'required|string|min:6',
+            'product.sku' => 'nullable|string',
+            'product.images' => 'nullable|array',
+            'product.height' => 'nullable|integer',
+            'product.depth' => 'nullable|integer',
+            'product.width' => 'nullable|integer',
+            'product.weight' => 'nullable|integer',
+            'product.viewed' => 'nullable|integer',
+            'product.status' => 'nullable|boolean',
+        ];
+    }
 
     public function mount(Product $product)
     {
-        $this->product = $product;
+        $this->product = $this->product->load(['prices.properties']);
         $this->exists = $this->product->exists;
         $this->catalogs = Catalog::get(['id', 'name'])->toArray();
         $this->brands = Brand::get(['id', 'name'])->toArray();

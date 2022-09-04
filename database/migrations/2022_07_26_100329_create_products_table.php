@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('brand_id')->nullable()->constrained('brands')->onDelete('SET NULL');
             $table->foreignId('group_id')->nullable()->constrained('groups')->onDelete('SET NULL');
+            $table->string('slug')->unique();
             $table->string('name');
             $table->string('sku')->default('');
             $table->json('images')->nullable();

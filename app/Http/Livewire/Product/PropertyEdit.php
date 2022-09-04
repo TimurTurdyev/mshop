@@ -15,19 +15,17 @@ class PropertyEdit extends Component
     public array $optionValues = [];
     public Property $property;
 
-    protected $listeners = [
-        'propertyUpdate' => '$refresh',
-    ];
-
     public function mount()
     {
-        $this->options = Option::get(['id', 'group_admin'])->toArray();
-
         if ($this->property->option_id) {
-            $this->optionValues = OptionValue::where('option_id', $this->property->option_id)
-                ->get(['id', 'value'])
-                ->toArray();
+            $this->setOptionValues($this->property->option_id);
         }
+
+        static $options = [];
+        if (!$options) {
+            $options = Option::get(['id', 'group_admin'])->toArray();
+        }
+        $this->options = $options;
     }
 
     protected function rules()
@@ -59,9 +57,8 @@ class PropertyEdit extends Component
     public function updatedPropertyOptionId($newValue)
     {
         $this->property->fill(['option_id' => $newValue])->save();
-        $this->optionValues = OptionValue::where('option_id', $newValue)
-            ->get(['id', 'value'])
-            ->toArray();
+        $this->setOptionValues($newValue);
+
     }
 
     public function updatedPropertyOptionValueId($newValue)
@@ -78,5 +75,12 @@ class PropertyEdit extends Component
     public function render()
     {
         return view('livewire.product.property-edit');
+    }
+
+    private function setOptionValues($option_id)
+    {
+        $this->optionValues = OptionValue::where('option_id', $option_id)
+            ->get(['id', 'value'])
+            ->toArray();
     }
 }

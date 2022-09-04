@@ -11,7 +11,7 @@
            @if( $id )
            id="{{ $id }}"
            @endif
-           wire:model="{{ $name }}"
+        {{ $attributes }}
     >
     @if( $label )
         <x-admin.label :for="$id" :name="$label"></x-admin.label>

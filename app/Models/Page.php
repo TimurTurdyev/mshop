@@ -37,11 +37,8 @@ class Page extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'slug',
-        'image',
         'meta_title',
         'meta_description',
-        'meta_keyword',
         'text_html',
     ];
 

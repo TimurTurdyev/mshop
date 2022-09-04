@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Brand;
 
 use App\Http\Livewire\PageLivewireTrait;
 use App\Models\Brand;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 
 class BrandCreateOrUpdate extends Component
@@ -13,10 +14,19 @@ class BrandCreateOrUpdate extends Component
     public Brand $brand;
     public bool $exists = false;
 
-    protected array $rules = [
-        'brand.name' => 'required|string|min:6',
-        'brand.status' => 'nullable|boolean',
-    ];
+    protected function rules()
+    {
+        return [
+            'brand.slug' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('brands', 'slug')->ignore($this->brand->id),
+            ],
+            'brand.name' => 'required|string|min:6',
+            'brand.status' => 'nullable|boolean',
+        ];
+    }
 
     public function mount(Brand $brand)
     {

@@ -37,9 +37,10 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Название</th>
                                     <th scope="col">Сео урл</th>
+                                    <th scope="col">Производитель</th>
+                                    <th scope="col">Группа</th>
                                     <th scope="col">Статус</th>
-                                    <th scope="col">Дата создания</th>
-                                    <th scope="col">Дата обновления</th>
+                                    <th scope="col">Обновлен</th>
                                     <th scope="col">Действие</th>
                                 </tr>
                                 </thead>
@@ -48,9 +49,10 @@
                                     <tr>
                                         <th scope="row">{{ $item->id }}</th>
                                         <td>{{ $item->name }}</td>
-                                        <td>{{ $item->page->slug }}</td>
+                                        <td>{{ $item->slug }}</td>
+                                        <td>{{ $item->brand?->name }}</td>
+                                        <td>{{ $item->group?->name }}</td>
                                         <td>{{ $item->status ? 'Вкл' : 'Выкл' }}</td>
-                                        <td>{{ $item->created_at }}</td>
                                         <td>{{ $item->updated_at }}</td>
                                         <td class="table-action">
                                             <a href="{{ route('admin.product.edit', $item->id) }}">

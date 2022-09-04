@@ -44,7 +44,7 @@ class PriceCreateOrUpdate extends Component
             'option_value_id' => null,
         ]);
 
-        $this->emitUp('propertyUpdate');
+        $this->emitSelf('propertyUpdate');
     }
 
     public function save()

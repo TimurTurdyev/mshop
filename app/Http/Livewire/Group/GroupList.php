@@ -27,7 +27,7 @@ class GroupList extends Component
     public function render()
     {
         return view('livewire.group.group-list', [
-            'groups' => Group::orderByDesc('id')->paginate()
+            'groups' => Group::orderByDesc('id')->orderByDesc('id')->paginate(50)
         ])->layoutData([
             'title' => 'Список групп товаров'
         ]);

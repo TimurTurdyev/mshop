@@ -80,6 +80,11 @@
                                 </tbody>
                             </table>
                         </div>
+                        @if( $brands->hasPages() )
+                            <div class="mt-4">
+                                {{ $brands->links() }}
+                            </div>
+                        @endif
                     @endif
                 </div>
             </div>

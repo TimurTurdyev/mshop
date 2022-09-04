@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('catalogs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('parent_id')->nullable()->constrained('catalogs')->onDelete('SET NULL');
             $table->string('name');
+            $table->string('slug')->unique();
             $table->boolean('status')->default(false)->index();
             $table->timestamps();
         });

@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('sku');
             $table->integer('price')->default(0);
             $table->integer('special')->default(0);
-            $table->smallInteger('quantity')->default(0);
-            $table->smallInteger('sort_order')->default(0);
+            $table->integer('quantity')->default(0);
+            $table->integer('sort_order')->default(0);
             $table->boolean('status')->default(false);
         });
     }

@@ -51,6 +51,7 @@ class Product extends Model
     protected $fillable = [
         'brand_id',
         'group_id',
+        'slug',
         'name',
         'sku',
         'images',
@@ -63,6 +64,7 @@ class Product extends Model
     ];
 
     protected $casts = [
+        'slug' => 'string',
         'name' => 'string',
         'sku' => 'string',
         'images' => 'array',
@@ -73,6 +75,16 @@ class Product extends Model
         'viewed' => 'integer',
         'status' => 'boolean',
     ];
+
+    public function brand(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Brand::class);
+    }
+
+    public function group(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Group::class);
+    }
 
     public function page(): \Illuminate\Database\Eloquent\Relations\MorphOne
     {

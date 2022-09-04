@@ -15,7 +15,7 @@
           @if( $placeholder || $label)
           placeholder="{{ $label ?: $placeholder }}"
           @endif
-          wire:model="{{ $name }}"
+    {{ $attributes }}
 ></textarea>
 @error( $name )
 <div class="invalid-feedback">

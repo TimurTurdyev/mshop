@@ -15,10 +15,8 @@ return new class extends Migration {
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
             $table->morphs('pageable');
-            $table->string('slug')->unique();
             $table->string('meta_title')->default('');
             $table->string('meta_description')->default('');
-            $table->string('meta_keyword')->default('');
             $table->text('text_html')->default('');
         });
     }

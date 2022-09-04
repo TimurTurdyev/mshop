@@ -10,6 +10,8 @@ class BrandList extends Component
 {
     use WithPagination;
 
+    protected string $paginationTheme = 'bootstrap';
+
     public string $search = '';
 
     public function delete(Brand $brand)
@@ -22,7 +24,7 @@ class BrandList extends Component
     public function render()
     {
         return view('livewire.brand.brand-list', [
-            'brands' => Brand::with('page')->paginate()
+            'brands' => Brand::orderByDesc('id')->paginate(50)
         ])->layoutData([
             'title' => 'Список производителей'
         ]);

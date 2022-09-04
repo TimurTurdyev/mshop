@@ -25,7 +25,7 @@ class OptionList extends Component
     public function render()
     {
         return view('livewire.option.option-list', [
-            'options' => Option::orderByDesc('id')->paginate()
+            'options' => Option::orderByDesc('id')->orderByDesc('id')->paginate(50)
         ])->layoutData([
             'title' => $this->title
         ]);

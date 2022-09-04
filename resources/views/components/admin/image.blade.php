@@ -15,7 +15,8 @@
 <div class="input-group @error( $name ) is-invalid @enderror">
     <input type="text"
            class="form-control"
-           id="feature_image{{ $id }}" wire:model="{{ $name }}"
+           id="feature_image{{ $id }}"
+        {{ $attributes }}
     >
     <button type="button"
             class="btn btn-secondary popup_selector"

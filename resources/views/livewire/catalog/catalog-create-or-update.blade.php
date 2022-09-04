@@ -9,14 +9,31 @@
                 </div>
                 <div class="card-body">
                     <div class="mb-3">
-                        <x-admin.input id="catalogName" label="Название категории" name="catalog.name" placeholder="Название категории"></x-admin.input>
+                        <x-admin.input
+                            id="catalogName"
+                            label="Название категории"
+                            name="catalog.name"
+                            placeholder="Название категории"
+                            wire:model="catalog.name"
+                        ></x-admin.input>
                     </div>
 
                     <div class="mb-3">
-                        <x-admin.switcher id="catalogStatus" label="Статус" name="catalog.status"></x-admin.switcher>
+                        <x-admin.switcher
+                            id="catalogStatus"
+                            label="Статус"
+                            name="catalog.status"
+                            wire:model="catalog.status"
+                        ></x-admin.switcher>
                     </div>
 
-                    <x-admin.editor id="pageTextHtml" label="Описание" name="page.text_html" :value="$page['text_html']"></x-admin.editor>
+                    <x-admin.editor
+                        id="pageTextHtml"
+                        label="Описание"
+                        name="page.text_html"
+                        :value="$page['text_html']"
+                        wire:model.debounce.500ms="page.text_html"
+                    ></x-admin.editor>
                 </div>
             </div>
         </div>
@@ -26,24 +43,32 @@
                     <h5 class="card-title mb-0">Дополнительно</h5>
                 </div>
                 <div class="card-body">
+
                     <div class="mb-3">
-                        <x-admin.select id="catalogParentId" label="Родительская категория" name="catalog.parent_id" :items="$catalogs"></x-admin.select>
+                        <x-admin.input
+                            id="pageSlug"
+                            label="Сео урл"
+                            name="page.slug"
+                            wire:model="page.slug"
+                        ></x-admin.input>
                     </div>
 
                     <div class="mb-3">
-                        <x-admin.input id="pageSlug" label="Сео урл" name="page.slug"></x-admin.input>
+                        <x-admin.input
+                            id="pageMetaTitle"
+                            label="Мета заголовок"
+                            name="page.meta_title"
+                            wire:model="page.meta_title"
+                        ></x-admin.input>
                     </div>
 
                     <div class="mb-3">
-                        <x-admin.input id="pageMetaTitle" label="Мета заголовок" name="page.meta_title"></x-admin.input>
-                    </div>
-
-                    <div class="mb-3">
-                        <x-admin.textarea id="pageMetaDescription" label="Мета описание" name="page.meta_description"></x-admin.textarea>
-                    </div>
-
-                    <div class="mb-3">
-                        <x-admin.textarea id="pageMetaKeyword" label="Мета ключи" name="page.meta_keyword"></x-admin.textarea>
+                        <x-admin.textarea
+                            id="pageMetaDescription"
+                            label="Мета описание"
+                            name="page.meta_description"
+                            wire:model="page.meta_description"
+                        ></x-admin.textarea>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Сохранить</button>

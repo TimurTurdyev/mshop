@@ -11,8 +11,7 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
-        "livewire/livewire": "^2.10",
-        "staudenmeir/laravel-adjacency-list": "^1.11"
+        "livewire/livewire": "^2.10"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",

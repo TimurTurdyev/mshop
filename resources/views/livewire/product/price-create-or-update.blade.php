@@ -6,15 +6,20 @@
                     <div class="col-md-6">
                         <div>
                             @foreach( $price->properties as $property )
-                                <livewire:product.property-edit wire:key="property-{{ $property->id }}" :property="$property"></livewire:product.property-edit>
+                                <livewire:product.property-edit
+                                    wire:key="property-{{ $property->id }}"
+                                    :property="$property"
+                                ></livewire:product.property-edit>
                             @endforeach
                         </div>
                         <div class="mb-3 row">
                             <label class="col-form-label col-sm-3 text-sm-end">Опции</label>
                             <div class="col-sm-9 ms-sm-auto">
                                 <button type="button" class="btn btn-success" wire:click.prevent="addProperty">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                         fill="none"
+                                         stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                         stroke-linejoin="round"
                                          class="feather feather-plus align-middle">
                                         <line x1="12" y1="5" x2="12" y2="19"></line>
                                         <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -25,37 +30,37 @@
                         <div class="mb-3 row">
                             <label class="col-form-label col-sm-3 text-sm-end">Артикул</label>
                             <div class="col-sm-9">
-                                <x-admin.input name="price.sku"></x-admin.input>
+                                <x-admin.input name="price.sku" wire:model="price.sku"></x-admin.input>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label class="col-form-label col-sm-3 text-sm-end">Цена</label>
                             <div class="col-sm-9">
-                                <x-admin.input name="price.price"></x-admin.input>
+                                <x-admin.input name="price.price" wire:model="price.price"></x-admin.input>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label class="col-form-label col-sm-3 text-sm-end">Акционная цена</label>
                             <div class="col-sm-9">
-                                <x-admin.input name="price.special"></x-admin.input>
+                                <x-admin.input name="price.special" wire:model="price.special"></x-admin.input>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label class="col-form-label col-sm-3 text-sm-end">Кол-во</label>
                             <div class="col-sm-9">
-                                <x-admin.input name="price.quantity"></x-admin.input>
+                                <x-admin.input name="price.quantity" wire:model="price.quantity"></x-admin.input>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label class="col-form-label col-sm-3 text-sm-end">Сортировка</label>
                             <div class="col-sm-9">
-                                <x-admin.input name="price.sort_order"></x-admin.input>
+                                <x-admin.input name="price.sort_order" wire:model="price.sort_order"></x-admin.input>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label class="col-form-label col-sm-3 text-sm-end pt-sm-0">Статус</label>
                             <div class="col-sm-9">
-                                <x-admin.switcher name="price.status"></x-admin.switcher>
+                                <x-admin.switcher name="price.status" wire:model="price.status"></x-admin.switcher>
                             </div>
                         </div>
                         <div class="mb-3 row">
@@ -71,8 +76,12 @@
                         <div class="row">
                             @foreach( $images as $key => $image )
                                 <div class="col-md-4 mb-3">
-                                    <x-admin.image id="priceImages{{ $price->id }}_{{ $key }}" name="images.{{ $key }}"
-                                                   :value="$image"></x-admin.image>
+                                    <x-admin.image
+                                        id="priceImages{{ $price->id }}_{{ $key }}"
+                                        :value="$image"
+                                        name="images.{{ $key }}"
+                                        wire:model="images.{{ $key }}"
+                                    ></x-admin.image>
                                 </div>
                             @endforeach
                         </div>
