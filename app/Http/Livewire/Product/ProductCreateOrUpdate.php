@@ -16,10 +16,12 @@ class ProductCreateOrUpdate extends Component
     use PageLivewireTrait;
 
     public Product $product;
-    public array $catalogs;
+    public array $selected_catalogs = [];
     public bool $exists = false;
     public array $brands;
     public array $groups;
+
+    public $listeners = ['updateSelectedCatalogs'];
 
     protected function rules()
     {
@@ -44,11 +46,16 @@ class ProductCreateOrUpdate extends Component
         ];
     }
 
+    public function updateSelectedCatalogs($selected)
+    {
+        $this->selected_catalogs = $selected;
+    }
+
     public function mount(Product $product)
     {
-        $this->product = $this->product->load(['prices.properties']);
+        $this->product = $product->load(['prices.properties']);
         $this->exists = $this->product->exists;
-        $this->catalogs = Catalog::get(['id', 'name'])->toArray();
+        $this->selected_catalogs = $this->product->catalogs->map(fn($catalog) => $catalog->id)->toArray();
         $this->brands = Brand::get(['id', 'name'])->toArray();
         $this->groups = Group::get(['id', 'name'])->toArray();
         $this->mountPage($this->product);
@@ -65,6 +72,8 @@ class ProductCreateOrUpdate extends Component
             'viewed' => 0,
             'status' => 0,
         ]);
+
+        $this->product->catalogs()->sync($this->selected_catalogs);
 
         if ($this->exists == false) {
             return redirect()->route('admin.product.edit', $this->product);

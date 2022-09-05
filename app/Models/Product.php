@@ -76,6 +76,11 @@ class Product extends Model
         'status' => 'boolean',
     ];
 
+    public function catalogs(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Catalog::class, 'product_catalogs');
+    }
+
     public function brand(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Brand::class);

@@ -63,6 +63,10 @@
                     </div>
 
                     <div class="mb-3">
+                        <livewire:product.product-to-catalog :selected_catalogs="$selected_catalogs"></livewire:product.product-to-catalog>
+                    </div>
+
+                    <div class="mb-3">
                         <x-admin.input
                             id="pageSlug"
                             label="Сео урл"
