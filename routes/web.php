@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/contacts', \App\Http\Controllers\ContactController::class)->name('contacts');
+
+Route::get('/admin', function () {
+    return view('admin.dashboard');
+});
 
 Route::get('/admin/catalog', \App\Http\Livewire\Catalog\CatalogList::class)->name('admin.catalog');
 Route::get('/admin/catalog/create', \App\Http\Livewire\Catalog\CatalogCreateOrUpdate::class)->name('admin.catalog.create');
