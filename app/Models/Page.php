@@ -29,6 +29,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Page whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Page whereTextHtml($value)
  * @mixin \Eloquent
+ * @method static \Database\Factories\PageFactory factory(...$parameters)
  */
 class Page extends Model
 {

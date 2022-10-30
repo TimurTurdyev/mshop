@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|OptionValue whereOptionId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|OptionValue whereValue($value)
  * @mixin \Eloquent
+ * @method static \Database\Factories\OptionValueFactory factory(...$parameters)
  */
 class OptionValue extends Model
 {

@@ -19,6 +19,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Option whereGroup($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Option whereId($value)
  * @mixin \Eloquent
+ * @method static \Database\Factories\OptionFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Option whereGroupAdmin($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Option whereGroupSite($value)
  */
 class Option extends Model
 {

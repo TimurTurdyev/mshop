@@ -10,6 +10,8 @@ class ProductList extends Component
 {
     use WithPagination;
 
+    protected string $paginationTheme = 'bootstrap';
+
     public string $title = 'Список товаров';
 
     public string $search = '';

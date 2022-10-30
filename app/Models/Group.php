@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Group whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Group whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Database\Factories\GroupFactory factory(...$parameters)
  */
 class Group extends Model
 {

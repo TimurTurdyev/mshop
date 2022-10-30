@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Product;
 use App\Http\Livewire\PageLivewireTrait;
 use App\Models\Brand;
 use App\Models\Catalog;
+use App\Models\Collection;
 use App\Models\Group;
 use App\Models\Option;
 use App\Models\Product;
@@ -20,6 +21,8 @@ class ProductCreateOrUpdate extends Component
     public bool $exists = false;
     public array $brands;
     public array $groups;
+    public array $collections;
+    public array $images = [];
 
     public $listeners = ['updateSelectedCatalogs'];
 
@@ -28,6 +31,7 @@ class ProductCreateOrUpdate extends Component
         return [
             'product.brand_id' => 'nullable|integer',
             'product.group_id' => 'nullable|integer',
+            'product.collection_id' => 'nullable|integer',
             'product.slug' => [
                 'required',
                 'string',
@@ -46,6 +50,11 @@ class ProductCreateOrUpdate extends Component
         ];
     }
 
+    public function addImage()
+    {
+        $this->images[] = '';
+    }
+
     public function updateSelectedCatalogs($selected)
     {
         $this->selected_catalogs = $selected;
@@ -58,11 +67,17 @@ class ProductCreateOrUpdate extends Component
         $this->selected_catalogs = $this->product->catalogs->map(fn($catalog) => $catalog->id)->toArray();
         $this->brands = Brand::get(['id', 'name'])->toArray();
         $this->groups = Group::get(['id', 'name'])->toArray();
+        $this->collections = Collection::get(['id', 'name'])->toArray();
+
+        $this->images = $this->product->images ?: [];
+
         $this->mountPage($this->product);
     }
 
     public function save()
     {
+        $this->product->images = array_filter($this->images, fn($image) => !!$image);
+
         $this->saveModelAndPage($this->product, [
             'sku' => '',
             'height' => 0,
@@ -75,7 +90,7 @@ class ProductCreateOrUpdate extends Component
 
         $this->product->catalogs()->sync($this->selected_catalogs);
 
-        if ($this->exists == false) {
+        if (!$this->exists) {
             return redirect()->route('admin.product.edit', $this->product);
         }
     }

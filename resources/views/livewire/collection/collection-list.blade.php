@@ -2,7 +2,7 @@
     <div class="d-md-flex justify-content-md-between">
         <h1 class="h3 mb-3">{{ $title }}</h1>
         <div>
-            <a href="{{ route('admin.product.create') }}" class="btn btn-primary">
+            <a href="{{ route('admin.collection.create') }}" class="btn btn-primary">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                      class="feather feather-plus align-middle">
@@ -27,7 +27,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    @if( !$products->count() )
+                    @if( !$collections->count() )
                         <p class="lead">Пусто...</p>
                     @else
                         <div class="table-responsive">
@@ -37,7 +37,6 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Название</th>
                                     <th scope="col">Сео урл</th>
-                                    <th scope="col">Производитель</th>
                                     <th scope="col">Группа</th>
                                     <th scope="col">Статус</th>
                                     <th scope="col">Обновлен</th>
@@ -45,17 +44,16 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach( $products as $item )
+                                @foreach( $collections as $item )
                                     <tr>
                                         <th scope="row">{{ $item->id }}</th>
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->slug }}</td>
                                         <td>{{ $item->brand?->name }}</td>
-                                        <td>{{ $item->group?->name }}</td>
                                         <td>{{ $item->status ? 'Вкл' : 'Выкл' }}</td>
                                         <td>{{ $item->updated_at }}</td>
                                         <td class="table-action">
-                                            <a href="{{ route('admin.product.edit', $item->id) }}">
+                                            <a href="{{ route('admin.collection.edit', $item->id) }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                      viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                      stroke-width="2"
@@ -82,9 +80,9 @@
                                 </tbody>
                             </table>
                         </div>
-                        @if( $products->hasPages() )
+                        @if( $collections->hasPages() )
                             <div class="mt-4">
-                                {{ $products->links() }}
+                                {{ $collections->links() }}
                             </div>
                         @endif
                     @endif

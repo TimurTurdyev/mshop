@@ -43,6 +43,14 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereWeight($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereWidth($value)
  * @mixin \Eloquent
+ * @property string $slug
+ * @property-read \App\Models\Brand|null $brand
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Catalog[] $catalogs
+ * @property-read int|null $catalogs_count
+ * @property-read \App\Models\Group|null $group
+ * @property-read int|null $prices_count
+ * @method static \Database\Factories\ProductFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereSlug($value)
  */
 class Product extends Model
 {
@@ -51,6 +59,7 @@ class Product extends Model
     protected $fillable = [
         'brand_id',
         'group_id',
+        'collection_id',
         'slug',
         'name',
         'sku',
@@ -89,6 +98,11 @@ class Product extends Model
     public function group(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Group::class);
+    }
+
+    public function collection(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Collection::class);
     }
 
     public function page(): \Illuminate\Database\Eloquent\Relations\MorphOne

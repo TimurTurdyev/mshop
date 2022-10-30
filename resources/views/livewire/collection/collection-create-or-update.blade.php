@@ -10,19 +10,19 @@
                 <div class="card-body">
                     <div class="mb-3">
                         <x-admin.input
-                            id="productName"
+                            id="collectionName"
                             label="Название товара"
-                            name="product.name"
-                            wire:model="product.name"
+                            name="collection.name"
+                            wire:model="collection.name"
                         ></x-admin.input>
                     </div>
 
                     <div class="mb-3">
                         <x-admin.switcher
-                            id="productStatus"
+                            id="collectionStatus"
                             label="Статус"
-                            name="product.status"
-                            wire:model="product.status"
+                            name="collection.status"
+                            wire:model="collection.status"
                         ></x-admin.switcher>
                     </div>
                     <div class="mb-3">
@@ -38,7 +38,7 @@
                         @foreach( $images as $key => $image )
                             <div class="col-md-4 mb-3">
                                 <x-admin.image
-                                    id="productImages{{ $key }}"
+                                    id="collectionImages{{ $key }}"
                                     :value="$image"
                                     name="images.{{ $key }}"
                                     wire:model="images.{{ $key }}"
@@ -56,47 +56,18 @@
                     <h5 class="card-title mb-0">Дополнительно</h5>
                 </div>
                 <div class="card-body">
-                    <div class="mb-3">
-                        <x-admin.select
-                            id="productBrandId"
-                            label="Производитель"
-                            name="product.brand_id"
-                            :items="$brands"
-                            wire:model="product.brand_id"
-                        ></x-admin.select>
-                    </div>
 
                     <div class="mb-3">
-                        <x-admin.select
-                            id="productGroupId"
-                            label="Группа товара"
-                            name="product.group_id"
-                            :items="$groups"
-                            wire:model="product.group_id"
-                        ></x-admin.select>
-                    </div>
-
-                    <div class="mb-3">
-                        <x-admin.select
-                            id="productCollectionId"
-                            label="Коллекция товара"
-                            name="product.collection_id"
-                            :items="$collections"
-                            wire:model="product.collection_id"
-                        ></x-admin.select>
-                    </div>
-
-                    <div class="mb-3">
-                        <livewire:product.product-to-catalog
-                            :selected_catalogs="$selected_catalogs"></livewire:product.product-to-catalog>
+                        <livewire:collection.collection-to-catalog
+                            :selected_catalogs="$selected_catalogs"></livewire:collection.collection-to-catalog>
                     </div>
 
                     <div class="mb-3">
                         <x-admin.input
                             id="pageSlug"
                             label="Сео урл"
-                            name="product.slug"
-                            wire:model="product.slug"
+                            name="collection.slug"
+                            wire:model="collection.slug"
                         ></x-admin.input>
                     </div>
 
@@ -123,9 +94,6 @@
             </div>
         </div>
     </form>
-    @if( $product->exists )
-        <livewire:product.price-list :product="$product"></livewire:product.price-list>
-    @endif
 </div>
 
 @push('styles')

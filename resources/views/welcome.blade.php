@@ -11,19 +11,22 @@
 <body>
 <header class="mb-5">
     <div class="bg-gray-100">
-        <div class="container mx-auto flex items-center justify-between text-gray-600 font-light py-2 text-sm">
+        <div class="container px-4 mx-auto flex items-center justify-between text-gray-600 font-light py-2 text-sm">
             <a href="" class="flex group hover:text-gray-800">
                 <svg class="text-gray-500 group-hover:text-gray-800 mr-2" viewBox="0 0 24 24" width="20" height="20"
                      stroke="currentColor"
                      stroke-width="1.5" fill="none"
-                     stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
+                     stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                     <circle cx="12" cy="10" r="3"></circle>
                 </svg>
                 Москва
             </a>
             <div>
-                <div class="flex space-x-6">
+                <div class="xl:hidden">
+                    <a href="#" class="text-xl font-normal text-rose-500 hover:text-rose-400">+7 (495) 777-22-33</a>
+                </div>
+                <div class="hidden xl:flex space-x-6">
                     <a href="#" class="hover:text-gray-800">О компании</a>
                     <a href="#" class="hover:text-gray-800">Доставка и сборка</a>
                     <a href="#" class="hover:text-gray-800">Оплата</a>
@@ -34,7 +37,7 @@
                         <a href="#" class="flex group hover:text-gray-800">
                             <svg class="text-gray-500 group-hover:text-gray-800 mr-2" viewBox="0 0 24 24" width="20"
                                  height="20" stroke="currentColor" stroke-width="1.5"
-                                 fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
+                                 fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path
                                     d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                             </svg>
@@ -43,7 +46,7 @@
                         <a href="">
                             <svg class="text-gray-500 hover:text-gray-800" viewBox="0 0 24 24" width="20" height="20"
                                  stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"
-                                 stroke-linejoin="round" class="css-i6dzq1">
+                                 stroke-linejoin="round">
                                 <circle cx="11" cy="11" r="8"></circle>
                                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                             </svg>
@@ -53,22 +56,62 @@
             </div>
         </div>
     </div>
-    <div class="container mx-auto flex items-center justify-between text-gray-600 font-light py-6 text-sm mb-2">
-        <div class="border-4 border-rose-600 w-16 h-16 relative">
-            <div class="absolute top-1/4 left-1/4 bg-white text-2xl font-bold text-black whitespace-nowrap">Правильный
-                офис
+    <div class="container px-4 mx-auto flex items-center justify-between text-gray-600 font-light py-6 text-sm mb-2">
+        <div class="flex items-center">
+            <button type="button" class="xl:hidden mr-6">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+            <div class="border-4 border-rose-600 w-8 h-8 xl:w-16 xl:h-16 relative">
+                <div
+                    class="absolute top-[10%] xl:top-1/4 left-1/4 bg-white text-sm xl:text-2xl font-bold text-black whitespace-nowrap">
+                    Правильный
+                    офис
+                </div>
             </div>
         </div>
 
-        <div class="flex items-center space-x-6 text-base">
+        <div class="xl:hidden flex space-x-4">
+            <a href="#">
+                <svg class="text-gray-500 group-hover:text-gray-800" viewBox="0 0 24 24" width="20"
+                     height="20" stroke="currentColor" stroke-width="1.5"
+                     fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+            </a>
+            <a href="">
+                <svg class="text-gray-500 hover:text-gray-800" viewBox="0 0 24 24" width="20" height="20"
+                     stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"
+                     stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </a>
+            <a href="">
+                <svg class="text-gray-500 hover:text-gray-800" viewBox="0 0 24 24" width="20" height="20"
+                     stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"
+                     stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+            </a>
+        </div>
+
+        <div class="hidden xl:flex items-center space-x-6 text-base">
             <a href="#" class="text-3xl font-normal text-rose-500 hover:text-rose-400">+7 (495) 777-22-33</a>
             <div>ММДЦ Москва Сити, <br>Пресненская набережная 8, с1</div>
         </div>
     </div>
-    <div class="container mx-auto flex item-center space-x-8 text-sm">
+    <div class="hidden container mx-auto xl:flex item-center space-x-8 text-sm">
         <a href="#" class="flex items-center space-x-1">
             <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="1.5" fill="none"
-                 stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
+                 stroke-linecap="round" stroke-linejoin="round">
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                 <circle cx="12" cy="7" r="4"></circle>
             </svg>
@@ -76,7 +119,7 @@
         </a>
         <a href="#" class="flex items-center space-x-1">
             <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="1.5" fill="none"
-                 stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
+                 stroke-linecap="round" stroke-linejoin="round">
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                 <circle cx="12" cy="7" r="4"></circle>
             </svg>
@@ -84,7 +127,7 @@
         </a>
         <a href="#" class="flex items-center space-x-1 max-w-[200px]">
             <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="1.5" fill="none"
-                 stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
+                 stroke-linecap="round" stroke-linejoin="round">
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                 <circle cx="12" cy="7" r="4"></circle>
             </svg>
@@ -92,7 +135,7 @@
         </a>
         <a href="#" class="flex items-center space-x-1">
             <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="1.5" fill="none"
-                 stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
+                 stroke-linecap="round" stroke-linejoin="round">
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                 <circle cx="12" cy="7" r="4"></circle>
             </svg>
@@ -100,7 +143,7 @@
         </a>
         <a href="#" class="flex items-center space-x-1">
             <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="1.5" fill="none"
-                 stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
+                 stroke-linecap="round" stroke-linejoin="round">
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                 <circle cx="12" cy="7" r="4"></circle>
             </svg>
@@ -108,7 +151,7 @@
         </a>
         <a href="#" class="flex items-center space-x-1 max-w-[200px]">
             <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="1.5" fill="none"
-                 stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
+                 stroke-linecap="round" stroke-linejoin="round">
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                 <circle cx="12" cy="7" r="4"></circle>
             </svg>
@@ -116,7 +159,7 @@
         </a>
         <a href="#" class="flex items-center space-x-1">
             <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="1.5" fill="none"
-                 stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
+                 stroke-linecap="round" stroke-linejoin="round">
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                 <circle cx="12" cy="7" r="4"></circle>
             </svg>
@@ -124,7 +167,7 @@
         </a>
     </div>
 </header>
-<section class="container mx-auto py-10">
+<section class="container px-4 mx-auto xl:pt-10 pb-10">
     <!-- Breadcrumb -->
     <nav class="py-3 text-gray-600 text-sm mb-3" aria-label="Breadcrumb">
         <ol class="inline-flex items-center space-x-1 md:space-x-3">
@@ -165,12 +208,12 @@
 
     <div class="text-2xl">Кабинеты руководителя Мажор от 139 485 ₽</div>
     <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-       @for($i = 0; $i < 10; $i++)
+        @for($i = 0; $i < 10; $i++)
             <div class="group relative">
                 <div
                     class="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-50">
                     <img
-                        src="https://s3-alpha-sig.figma.com/img/f26c/5e2d/20e75e6404a137ac3e6e395d05b384bd?Expires=1664755200&Signature=esDAdhz~4aRZf16Vj~u3TYKR0e002w4jNqoUWK7e07Zn8xaAa4EF5QeQjMgHUdeAYIvvJbU8Bd7hF8hLzM~Vkm0h4H1sWwuYPAMCxlcH6PuHCSfuOjP0V6GZgoLmEf-FIj0msTCqu~MJy2isu1eaTwsFEGsKo-KC9a60EUwbbHm2EdOHvoqBR168Q40zK55QRSol9ZHL5zgEeMPY1xL2Pdwu88Rjj3w4C3dlY5Ru9oaEEEb6WmTjKBFYa5zLxH5zkY9wQcotNsCVTqNwpeTz-9gx9PjsHz4bXlFCEQnrNXYPeLtgRkbljYm61igVA5sgxotFLfp9uG1GQhD4TJHyiA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+                        src="https://via.placeholder.com/150"
                         class="h-full w-full object-cover object-center lg:h-full lg:w-full">
                 </div>
                 <div class="mt-3">
@@ -180,43 +223,47 @@
                             Мажор бук светлый
                         </a>
                     </h3>
-                    <p class="text-xl text-red-600"><span class="text-sm mr-1 text-gray-600">от</span>{{ fake()->numberBetween(200_000, 700_00) }} р.</p>
+                    <p class="text-xl text-red-600"><span
+                            class="text-sm mr-1 text-gray-600">от</span>{{ fake()->numberBetween(200_000, 700_00) }} р.
+                    </p>
                 </div>
             </div>
-       @endfor
+        @endfor
     </div>
 </section>
 <footer class="bg-gray-100">
-    <div class="container mx-auto flex space-x-16 text-gray-600 font-light py-10 text-sm mb-2">
-        <div class="flex-column items-center space-y-12 min-w-[320px]">
-            <div class="border-4 border-rose-600 w-16 h-16 relative">
-                <div class="absolute top-1/4 left-1/4 bg-gray-100 text-2xl font-bold text-black whitespace-nowrap">
+    <div class="container px-4 mx-auto flex flex-col md:flex-row md:space-x-16 text-gray-600 font-light py-10 text-sm mb-2">
+        <div class="flex-column items-center space-y-4 xl:space-y-12 min-w-[320px] mb-10 md:mb-0">
+            <div class="border-4 border-rose-600 w-8 h-8 xl:w-16 xl:h-16 relative">
+                <div class="absolute top-[10%] xl:top-1/4 left-1/4 bg-gray-100 text-sm xl:text-2xl font-bold text-black whitespace-nowrap">
                     Правильный
                     офис
                 </div>
             </div>
             <div class="flex-column items-center space-y-4 text-base">
-                <a href="#" class="block text-3xl font-normal text-rose-500 hover:text-rose-400">+7 (495) 777-22-33</a>
+                <a href="#" class="block text-sm xl:text-3xl font-normal text-rose-500 hover:text-rose-400">+7 (495) 777-22-33</a>
                 <div>ММДЦ Москва Сити, <br>Пресненская набережная 8, с1</div>
             </div>
         </div>
 
-        @for($i = 0; $i < 5; $i++)
-            @php
-                $l = rand(3, 10);
-            @endphp
-            <ul class="flex-column items-center space-y-4 text-base">
-                @for($j = 0; $j < $l; $j++)
-                    <li><a href="">{{ fake()->words(2, true) }}</a></li>
-                @endfor
-            </ul>
-        @endfor
+        <div class="grow grid gap-x-8 gap-y-4 grid-cols-2 xl:grid-cols-4">
+            @for($i = 0; $i < 4; $i++)
+                @php
+                    $l = rand(3, 10);
+                @endphp
+                <ul class="flex-column items-center space-y-4 text-base">
+                    @for($j = 0; $j < $l; $j++)
+                        <li><a href="">{{ fake()->words(2, true) }}</a></li>
+                    @endfor
+                </ul>
+            @endfor
+        </div>
 
     </div>
 </footer>
-<div class="fixed z-10 right-0 top-1/3 bg-red-600 text-white rounded-l-lg p-3">
+<div class="hidden xl:block fixed z-10 right-0 top-1/3 bg-red-600 text-white rounded-l-lg p-3">
     <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
-         stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
+         stroke-linecap="round" stroke-linejoin="round">
         <circle cx="9" cy="21" r="1"></circle>
         <circle cx="20" cy="21" r="1"></circle>
         <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>

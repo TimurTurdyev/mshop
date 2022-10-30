@@ -46,10 +46,10 @@
 
                     <div class="mb-3">
                         <x-admin.input
-                            id="pageSlug"
+                            id="catalogSlug"
                             label="Сео урл"
-                            name="page.slug"
-                            wire:model="page.slug"
+                            name="catalog.slug"
+                            wire:model="catalog.slug"
                         ></x-admin.input>
                     </div>
 

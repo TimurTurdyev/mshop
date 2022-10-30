@@ -53,6 +53,12 @@
                     </a>
                 </li>
 
+                <li class="sidebar-item {{ (request()->is('admin/collection*')) ? 'active' : '' }}">
+                    <a class="sidebar-link" href="{{ route('admin.collection') }}">
+                        <i class="align-middle" data-feather="list"></i> <span class="align-middle">Список коллекций</span>
+                    </a>
+                </li>
+
                 <li class="sidebar-item {{ (request()->is('admin/product*')) ? 'active' : '' }}">
                     <a class="sidebar-link" href="{{ route('admin.product') }}">
                         <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Список товаров</span>

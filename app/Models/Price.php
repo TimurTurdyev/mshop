@@ -32,6 +32,10 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Price whereSpecial($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Price whereStatus($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\Product $product
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Property[] $properties
+ * @property-read int|null $properties_count
+ * @method static \Database\Factories\PriceFactory factory(...$parameters)
  */
 class Price extends Model
 {
