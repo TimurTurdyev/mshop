@@ -38,6 +38,9 @@ class Page extends Model
     public $timestamps = false;
 
     protected $fillable = [
+        'id',
+        'pageable_id',
+        'pageable_type',
         'meta_title',
         'meta_description',
         'text_html',

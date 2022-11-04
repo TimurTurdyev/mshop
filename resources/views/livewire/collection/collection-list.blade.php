@@ -37,7 +37,7 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Название</th>
                                     <th scope="col">Сео урл</th>
-                                    <th scope="col">Группа</th>
+                                    <th scope="col">Производитель</th>
                                     <th scope="col">Статус</th>
                                     <th scope="col">Обновлен</th>
                                     <th scope="col">Действие</th>

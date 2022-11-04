@@ -6,7 +6,7 @@
 ])
 
 @if( $label )
-    <x-admin.label :for="$id" :name="$label"></x-admin.label>
+    <x-admin.label for="{{ $id }}">{{ $label }}</x-admin.label>
 @endif
 <textarea class="form-control @error( $name ) is-invalid @enderror"
           @if( $id )

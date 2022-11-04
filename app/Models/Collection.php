@@ -36,6 +36,7 @@ class Collection extends Model
 
     protected $fillable = [
         'slug',
+        'brand_id',
         'name',
         'images',
         'status',
@@ -47,6 +48,11 @@ class Collection extends Model
         'images' => 'array',
         'status' => 'boolean',
     ];
+
+    public function brand(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Brand::class);
+    }
 
     public function catalogs(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {

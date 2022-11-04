@@ -27,12 +27,9 @@
                     <a href="#" class="text-xl font-normal text-rose-500 hover:text-rose-400">+7 (495) 777-22-33</a>
                 </div>
                 <div class="hidden xl:flex space-x-6">
-                    <a href="#" class="hover:text-gray-800">О компании</a>
-                    <a href="#" class="hover:text-gray-800">Доставка и сборка</a>
-                    <a href="#" class="hover:text-gray-800">Оплата</a>
-                    <a href="#" class="hover:text-gray-800">Наши работы</a>
-                    <a href="#" class="hover:text-gray-800">Контакты</a>
-                    <a href="#" class="hover:text-gray-800">Блог</a>
+                    @foreach( settingMenu('menu_top') as $item )
+                        <a href="{{ $item['link'] }}" class="hover:text-gray-800">{{ $item['title'] }}</a>
+                    @endforeach
                     <div class="pl-20 flex space-x-10">
                         <a href="#" class="flex group hover:text-gray-800">
                             <svg class="text-gray-500 group-hover:text-gray-800 mr-2" viewBox="0 0 24 24" width="20"
@@ -104,67 +101,22 @@
         </div>
 
         <div class="hidden xl:flex items-center space-x-6 text-base">
-            <a href="#" class="text-3xl font-normal text-rose-500 hover:text-rose-400">+7 (495) 777-22-33</a>
-            <div>ММДЦ Москва Сити, <br>Пресненская набережная 8, с1</div>
+            <a href="#" class="text-3xl font-normal text-rose-500 hover:text-rose-400">{{ setting('phone') }}</a>
+            <div>{!! str(setting('address'))->replace('\n', '<br>') !!}</div>
         </div>
     </div>
     <div class="hidden container mx-auto xl:flex item-center space-x-8 text-sm">
-        <a href="#" class="flex items-center space-x-1">
-            <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="1.5" fill="none"
-                 stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-            </svg>
-            <span>Руководителям</span>
-        </a>
-        <a href="#" class="flex items-center space-x-1">
-            <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="1.5" fill="none"
-                 stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-            </svg>
-            <span>Персоналу</span>
-        </a>
-        <a href="#" class="flex items-center space-x-1 max-w-[200px]">
-            <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="1.5" fill="none"
-                 stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-            </svg>
-            <span class="flex-1">Переговорные <br>и конференц залы</span>
-        </a>
-        <a href="#" class="flex items-center space-x-1">
-            <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="1.5" fill="none"
-                 stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-            </svg>
-            <span>Мягкая зона</span>
-        </a>
-        <a href="#" class="flex items-center space-x-1">
-            <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="1.5" fill="none"
-                 stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-            </svg>
-            <span>Приемные</span>
-        </a>
-        <a href="#" class="flex items-center space-x-1 max-w-[200px]">
-            <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="1.5" fill="none"
-                 stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-            </svg>
-            <span class="flex-1">Зонирование <br>и шумоподавление</span>
-        </a>
-        <a href="#" class="flex items-center space-x-1">
-            <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="1.5" fill="none"
-                 stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-            </svg>
-            <span>Сервис</span>
-        </a>
+        @foreach( settingMenu('menu_main') as $item )
+            <a href="{{ $item['link'] }}" class="flex items-center space-x-1">
+                <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="1.5" fill="none"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span>{!! str($item['title'])->replace('\n', '<br>') !!}</span>
+            </a>
+        @endforeach
+
     </div>
 </header>
 <section class="container px-4 mx-auto xl:pt-10 pb-10">
@@ -232,31 +184,33 @@
     </div>
 </section>
 <footer class="bg-gray-100">
-    <div class="container px-4 mx-auto flex flex-col md:flex-row md:space-x-16 text-gray-600 font-light py-10 text-sm mb-2">
+    <div
+        class="container px-4 mx-auto flex flex-col md:flex-row md:space-x-16 text-gray-600 font-light py-10 text-sm mb-2">
         <div class="flex-column items-center space-y-4 xl:space-y-12 min-w-[320px] mb-10 md:mb-0">
             <div class="border-4 border-rose-600 w-8 h-8 xl:w-16 xl:h-16 relative">
-                <div class="absolute top-[10%] xl:top-1/4 left-1/4 bg-gray-100 text-sm xl:text-2xl font-bold text-black whitespace-nowrap">
+                <div
+                    class="absolute top-[10%] xl:top-1/4 left-1/4 bg-gray-100 text-sm xl:text-2xl font-bold text-black whitespace-nowrap">
                     Правильный
                     офис
                 </div>
             </div>
             <div class="flex-column items-center space-y-4 text-base">
-                <a href="#" class="block text-sm xl:text-3xl font-normal text-rose-500 hover:text-rose-400">+7 (495) 777-22-33</a>
-                <div>ММДЦ Москва Сити, <br>Пресненская набережная 8, с1</div>
+                <a href="{{ str(setting('phone'))->replace([' ', '(', ')', '-'], '') }}"
+                   class="block text-sm xl:text-3xl font-normal text-rose-500 hover:text-rose-400">
+                    {{ setting('phone') }}
+                </a>
+                <div>{!! str(setting('address'))->replace('\n', '<br>') !!}</div>
             </div>
         </div>
 
         <div class="grow grid gap-x-8 gap-y-4 grid-cols-2 xl:grid-cols-4">
-            @for($i = 0; $i < 4; $i++)
-                @php
-                    $l = rand(3, 10);
-                @endphp
+            @foreach( settingMenu('menu_footer') as $item )
                 <ul class="flex-column items-center space-y-4 text-base">
-                    @for($j = 0; $j < $l; $j++)
-                        <li><a href="">{{ fake()->words(2, true) }}</a></li>
-                    @endfor
+                    @foreach( $item as $value )
+                    <li><a href="{{ $value['link'] }}">{{ $value['title'] }}</a></li>
+                    @endforeach
                 </ul>
-            @endfor
+            @endforeach
         </div>
 
     </div>

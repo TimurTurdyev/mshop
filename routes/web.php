@@ -43,3 +43,5 @@ Route::get('/admin/collection/{collection}', \App\Http\Livewire\Collection\Colle
 Route::get('/admin/product', \App\Http\Livewire\Product\ProductList::class)->name('admin.product');
 Route::get('/admin/product/create', \App\Http\Livewire\Product\ProductCreateOrUpdate::class)->name('admin.product.create');
 Route::get('/admin/product/{product}', \App\Http\Livewire\Product\ProductCreateOrUpdate::class)->name('admin.product.edit');
+
+Route::get('/admin/setting/site', \App\Http\Livewire\Setting\SettingStore::class)->name('admin.setting.site');

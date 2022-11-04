@@ -15,6 +15,7 @@ class CollectionCreateOrUpdate extends Component
 
     public Collection $collection;
     public array $selected_catalogs = [];
+    public array $brands = [];
     public bool $exists = false;
     public array $images = [];
 
@@ -23,6 +24,7 @@ class CollectionCreateOrUpdate extends Component
     protected function rules()
     {
         return [
+            'collection.brand_id' => 'nullable|integer',
             'collection.slug' => [
                 'required',
                 'string',
@@ -47,9 +49,12 @@ class CollectionCreateOrUpdate extends Component
 
     public function mount(Collection $collection)
     {
-        $this->collection = $collection;
+        $this->collection = $collection->load(['collectionProperties.properties']);
         $this->exists = $this->collection->exists;
         $this->selected_catalogs = $this->collection->catalogs->map(fn($catalog) => $catalog->id)->toArray();
+
+        $this->brands = Brand::get(['id', 'name'])->toArray();
+
 
         $this->images = $this->collection->images ?: [];
 

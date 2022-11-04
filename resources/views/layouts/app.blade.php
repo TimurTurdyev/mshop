@@ -65,6 +65,16 @@
                     </a>
                 </li>
 
+                <li class="sidebar-header">
+                    Настройки
+                </li>
+
+                <li class="sidebar-item {{ (request()->is('admin/setting/site')) ? 'active' : '' }}">
+                    <a class="sidebar-link" href="{{ route('admin.setting.site') }}">
+                        <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Настройки сайта</span>
+                    </a>
+                </li>
+
             </ul>
         </div>
     </nav>

@@ -48,7 +48,7 @@
                                     <tr>
                                         <th scope="row">{{ $item->id }}</th>
                                         <td>{{ $item->name }}</td>
-                                        <td>{{ $item->page->slug }}</td>
+                                        <td>{{ $item->slug }}</td>
                                         <td>{{ $item->status ? 'Вкл' : 'Выкл' }}</td>
                                         <td>{{ $item->created_at }}</td>
                                         <td>{{ $item->updated_at }}</td>

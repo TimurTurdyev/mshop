@@ -58,6 +58,16 @@
                 <div class="card-body">
 
                     <div class="mb-3">
+                        <x-admin.select
+                            id="collectionBrandId"
+                            label="Производитель"
+                            name="collection.brand_id"
+                            :items="$brands"
+                            wire:model="collection.brand_id"
+                        ></x-admin.select>
+                    </div>
+
+                    <div class="mb-3">
                         <livewire:collection.collection-to-catalog
                             :selected_catalogs="$selected_catalogs"></livewire:collection.collection-to-catalog>
                     </div>
