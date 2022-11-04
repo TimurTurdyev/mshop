@@ -9,6 +9,7 @@ class PriceCreateOrUpdate extends Component
 {
     public Price $price;
     public array $properties = [];
+    public array $options = [];
     public array $images = [];
 
     protected $listeners = [

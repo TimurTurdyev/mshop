@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div>
-                            @foreach( $price->properties as $property )
+                            @foreach( $collectionProperty->properties as $property )
                                 <livewire:product.property-edit
                                     wire:key="property-{{ $property->id }}"
                                     :options="$options"
@@ -29,45 +29,33 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label class="col-form-label col-sm-3 text-sm-end">Артикул</label>
+                            <label class="col-form-label col-sm-3 text-sm-end">Название</label>
                             <div class="col-sm-9">
-                                <x-admin.input name="price.sku" wire:model="price.sku"></x-admin.input>
+                                <x-admin.input name="collectionProperty.name" wire:model="collectionProperty.name"></x-admin.input>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label class="col-form-label col-sm-3 text-sm-end">Цена</label>
                             <div class="col-sm-9">
-                                <x-admin.input name="price.price" wire:model="price.price"></x-admin.input>
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label class="col-form-label col-sm-3 text-sm-end">Акционная цена</label>
-                            <div class="col-sm-9">
-                                <x-admin.input name="price.special" wire:model="price.special"></x-admin.input>
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label class="col-form-label col-sm-3 text-sm-end">Кол-во</label>
-                            <div class="col-sm-9">
-                                <x-admin.input name="price.quantity" wire:model="price.quantity"></x-admin.input>
+                                <x-admin.input name="collectionProperty.price" wire:model="collectionProperty.price"></x-admin.input>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label class="col-form-label col-sm-3 text-sm-end">Сортировка</label>
                             <div class="col-sm-9">
-                                <x-admin.input name="price.sort_order" wire:model="price.sort_order"></x-admin.input>
+                                <x-admin.input name="collectionProperty.sort_order" wire:model="collectionProperty.sort_order"></x-admin.input>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label class="col-form-label col-sm-3 text-sm-end pt-sm-0">Статус</label>
                             <div class="col-sm-9">
-                                <x-admin.switcher name="price.status" wire:model="price.status"></x-admin.switcher>
+                                <x-admin.switcher name="collectionProperty.status" wire:model="collectionProperty.status"></x-admin.switcher>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <div class="col-sm-9 ms-sm-auto">
                                 <button type="button" class="btn btn-danger"
-                                        wire:click.prevent="delete({{ $price->id }})">Удалить
+                                        wire:click.prevent="delete({{ $collectionProperty->id }})">Удалить
                                 </button>
                                 <button type="submit" class="btn btn-primary">Сохранить</button>
                             </div>
@@ -78,7 +66,7 @@
                             @foreach( $images as $key => $image )
                                 <div class="col-md-4 mb-3">
                                     <x-admin.image
-                                        id="priceImages{{ $price->id }}_{{ $key }}"
+                                        id="collectionPropertyImages{{ $collectionProperty->id }}_{{ $key }}"
                                         :value="$image"
                                         name="images.{{ $key }}"
                                         wire:model="images.{{ $key }}"

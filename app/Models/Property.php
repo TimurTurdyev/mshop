@@ -31,18 +31,22 @@ class Property extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'price_id',
         'option_id',
         'option_value_id',
     ];
 
-    public function option(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function optionGroup(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Option::class);
     }
 
-    public function value(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function optionValue(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(OptionValue::class);
+    }
+
+    public function property(): \Illuminate\Database\Eloquent\Relations\MorphTo
+    {
+        return $this->morphTo();
     }
 }

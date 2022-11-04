@@ -13,11 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('properties', function (Blueprint $table) {
+        Schema::create('collection_properties', function (Blueprint $table) {
             $table->id();
-            $table->morphs('property');
-            $table->foreignId('option_id')->nullable()->constrained('options')->onDelete('SET NULL');
+            $table->foreignIdFor(\App\Models\Collection::class);
             $table->foreignId('option_value_id')->nullable()->constrained('option_values')->onDelete('SET NULL');
+            $table->json('images')->nullable();
+            $table->string('name')->default('');
+            $table->integer('price')->default(0);
+            $table->integer('sort_order')->default(0);
+            $table->boolean('status')->default(false);
         });
     }
 
@@ -28,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('properties');
+        Schema::dropIfExists('collection_prices');
     }
 };

@@ -74,8 +74,8 @@ class Price extends Model
         return $this->belongsTo(Product::class);
     }
 
-    public function properties(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function properties(): \Illuminate\Database\Eloquent\Relations\MorphMany
     {
-        return $this->hasMany(Property::class);
+        return $this->morphMany(Property::class, 'property');
     }
 }

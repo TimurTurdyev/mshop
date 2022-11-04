@@ -20,12 +20,6 @@ class PropertyEdit extends Component
         if ($this->property->option_id) {
             $this->setOptionValues($this->property->option_id);
         }
-
-        static $options = [];
-        if (!$options) {
-            $options = Option::get(['id', 'group_admin'])->toArray();
-        }
-        $this->options = $options;
     }
 
     protected function rules()
@@ -35,15 +29,16 @@ class PropertyEdit extends Component
                 'required',
                 'integer',
                 Rule::unique('properties', 'option_id')
-                    ->where('price_id', $this->property->price_id)
+                    ->where('property_id', $this->property->property_id)
+                    ->where('property_type', $this->property->property_type)
                     ->ignore($this->property->id),
             ],
             'property.option_value_id' => [
                 'required',
                 'integer',
                 Rule::unique('properties', 'option_value_id')
-                    ->where('price_id', $this->property->price_id)
-                    ->where('option_id', $this->property->option_id)
+                    ->where('property_id', $this->property->property_id)
+                    ->where('property_type', $this->property->property_type)
                     ->ignore($this->property->id),
             ],
         ];

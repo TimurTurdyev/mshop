@@ -17,6 +17,10 @@ class CollectionList extends Component
 
     public string $search = '';
 
+    protected $listeners = [
+        'collectionPropertyUpdate' => '$refresh',
+    ];
+
     public function delete(Collection $collection)
     {
         $collection->page()->delete();

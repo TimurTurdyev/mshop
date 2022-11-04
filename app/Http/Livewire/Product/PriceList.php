@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Product;
 
+use App\Models\Option;
 use App\Models\OptionValue;
 use App\Models\Price;
 use App\Models\Product;
@@ -13,9 +14,16 @@ class PriceList extends Component
 
     public string $title = 'Цены товара';
 
+    public array $options = [];
+
     protected $listeners = [
         'priceUpdate' => '$refresh',
     ];
+
+    public function mount()
+    {
+        $this->options = Option::get(['id', 'group_admin'])->toArray();
+    }
 
     public function add() {
         $this->product->prices()->create([

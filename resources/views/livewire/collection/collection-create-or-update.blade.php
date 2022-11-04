@@ -94,6 +94,9 @@
             </div>
         </div>
     </form>
+    @if( $collection->exists )
+        <livewire:collection.collection-property-list :collection="$collection"></livewire:collection.collection-property-list>
+    @endif
 </div>
 
 @push('styles')
