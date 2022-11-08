@@ -26,6 +26,6 @@
     </form>
 
     @if( $option->exists )
-        <livewire:option.option-value-list :option="$option"></livewire:option.option-value-list>
+        <livewire:option.option-value-to-options :option="$option"></livewire:option.option-value-to-options>
     @endif
 </div>

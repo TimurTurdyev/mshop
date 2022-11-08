@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('collection_properties', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(\App\Models\Collection::class);
-            $table->foreignId('option_value_id')->nullable()->constrained('option_values')->onDelete('SET NULL');
             $table->json('images')->nullable();
             $table->string('name')->default('');
             $table->integer('price')->default(0);

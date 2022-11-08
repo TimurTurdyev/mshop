@@ -14,7 +14,7 @@
         {{ $attributes }}
     >
     @if( $label )
-        <x-admin.label :for="$id" :name="$label"></x-admin.label>
+        <x-admin.label for="{{ $id }}" class="form-check-label">{{ $label }}</x-admin.label>
     @endif
     @error( $name )
     <div class="invalid-feedback">

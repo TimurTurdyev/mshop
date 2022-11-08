@@ -17,7 +17,6 @@ class CollectionPropertyCreateOrUpdate extends Component
     ];
 
     protected array $rules = [
-        'collectionProperty.option_value_id' => 'nullable|integer',
         'collectionProperty.images' => 'nullable|array',
         'collectionProperty.name' => 'nullable|string',
         'collectionProperty.price' => 'nullable|integer',

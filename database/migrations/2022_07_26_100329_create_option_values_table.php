@@ -15,9 +15,14 @@ return new class extends Migration
     {
         Schema::create('option_values', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('option_id')->constrained('options')->onDelete('CASCADE');
+            $table->string('value_admin');
             $table->string('value');
             $table->string('image');
+        });
+
+        Schema::create('option_value_to_options', function (Blueprint $table) {
+            $table->foreignId('option_id')->constrained('options')->onDelete('CASCADE');
+            $table->foreignId('option_value_id')->constrained('option_values')->onDelete('CASCADE');
         });
     }
 
@@ -28,6 +33,7 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('option_value_to_options');
         Schema::dropIfExists('option_values');
     }
 };

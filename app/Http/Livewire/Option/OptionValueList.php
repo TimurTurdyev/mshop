@@ -17,8 +17,6 @@ class OptionValueList extends Component
 
     public string $title = 'Значение опций товара';
 
-    public Option $option;
-
     protected $listeners = [
         'optionValueAdded' => '$refresh',
     ];
@@ -31,7 +29,7 @@ class OptionValueList extends Component
     public function render()
     {
         return view('livewire.option.option-value-list', [
-            'optionValues' => $this->option->optionValues()->orderByDesc('id')->paginate(50)
+            'optionValues' => OptionValue::query()->orderByDesc('id')->paginate(50)
         ]);
     }
 }

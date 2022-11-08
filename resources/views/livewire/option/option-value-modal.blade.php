@@ -1,6 +1,15 @@
 <div>
     <div class="mb-3">
         <x-admin.input
+            id="optionValueAdminName"
+            label="Значение опции в админке"
+            name="optionValue.value_admin"
+            wire:model="optionValue.value_admin"
+        ></x-admin.input>
+    </div>
+
+    <div class="mb-3">
+        <x-admin.input
             id="optionValueName"
             label="Значение опции"
             name="optionValue.value"

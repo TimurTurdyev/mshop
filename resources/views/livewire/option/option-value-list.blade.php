@@ -25,6 +25,7 @@
                                 <thead>
                                 <tr>
                                     <th scope="col">#</th>
+                                    <th scope="col">Значение для админа</th>
                                     <th scope="col">Значение</th>
                                     <th scope="col">Картинка</th>
                                     <th scope="col">Действие</th>
@@ -34,8 +35,16 @@
                                 @foreach( $optionValues as $item )
                                     <tr>
                                         <th scope="row">{{ $item->id }}</th>
+                                        <td>{{ $item->value_admin }}</td>
                                         <td>{{ $item->value }}</td>
-                                        <td><img style="max-width: 80px;" class="img-fluid" src="{{ asset($item->image) }}" alt="{{ $item->value }}"></td>
+                                        <td>
+                                            @if( $item->image )
+                                                <img style="max-width: 80px;" class="img-fluid"
+                                                     src="{{ asset($item->image) }}" alt="{{ $item->value }}">
+                                            @else
+                                                -
+                                            @endif
+                                        </td>
                                         <td class="table-action">
                                             <a wire:click.prevent="$emit('editOptionValue', {{ $item->id }})"
                                                data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -84,7 +93,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <livewire:option.option-value-modal :option_id="$option->id"></livewire:option.option-value-modal>
+                    <livewire:option.option-value-modal></livewire:option.option-value-modal>
                 </div>
             </div>
         </div>

@@ -8,7 +8,6 @@ use Livewire\Component;
 
 class OptionValueModal extends Component
 {
-    public int $option_id = 0;
     public OptionValue $optionValue;
 
     public $listeners = [
@@ -26,16 +25,17 @@ class OptionValueModal extends Component
     }
 
     protected array $rules = [
-        'optionValue.value' => 'required|string|min:6',
-        'optionValue.image' => 'required|string|max:255',
+        'optionValue.value_admin' => 'nullable|string|max:255',
+        'optionValue.value' => 'required|string|min:6|max:255',
+        'optionValue.image' => 'nullable|string|max:255',
     ];
 
     public function save()
     {
         $this->validate();
 
-        if (!$this->optionValue->exists) {
-            $this->optionValue->option_id = $this->option_id;
+        if (!$this->optionValue->value_admin) {
+            $this->optionValue->value_admin = '';
         }
 
         if (!$this->optionValue->image) {

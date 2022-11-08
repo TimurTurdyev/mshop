@@ -53,6 +53,12 @@
                     </a>
                 </li>
 
+                <li class="sidebar-item {{ (request()->is('admin/option-value*')) ? 'active' : '' }}">
+                    <a class="sidebar-link" href="{{ route('admin.option_value') }}">
+                        <i class="align-middle" data-feather="shuffle"></i> <span class="align-middle">Значение опций</span>
+                    </a>
+                </li>
+
                 <li class="sidebar-item {{ (request()->is('admin/collection*')) ? 'active' : '' }}">
                     <a class="sidebar-link" href="{{ route('admin.collection') }}">
                         <i class="align-middle" data-feather="list"></i> <span class="align-middle">Список коллекций</span>

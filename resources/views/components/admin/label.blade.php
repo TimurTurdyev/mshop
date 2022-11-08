@@ -1,1 +1,1 @@
-<label class="{{ $attributes->merge(['class' => 'form-label']) }}" {{ $attributes }}>{{ $slot }}</label>
+<label {{ $attributes->merge(['class' => 'form-label']) }}">{{ $slot }}</label>

@@ -29,12 +29,19 @@ class OptionValue extends Model
     public $timestamps = false;
 
     protected $fillable = [
+        'value_admin',
         'value',
         'image'
     ];
 
     protected $casts = [
+        'value_admin' => 'string',
         'value' => 'string',
         'image' => 'string',
     ];
+
+    public function options(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Option::class, 'option_value_to_options');
+    }
 }

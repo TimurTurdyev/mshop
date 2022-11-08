@@ -38,6 +38,7 @@
                                     <th scope="col">Название</th>
                                     <th scope="col">Сео урл</th>
                                     <th scope="col">Производитель</th>
+                                    <th scope="col">Товаров</th>
                                     <th scope="col">Статус</th>
                                     <th scope="col">Обновлен</th>
                                     <th scope="col">Действие</th>
@@ -50,6 +51,7 @@
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->slug }}</td>
                                         <td>{{ $item->brand?->name }}</td>
+                                        <td>{{ $item->products_count }}</td>
                                         <td>{{ $item->status ? 'Вкл' : 'Выкл' }}</td>
                                         <td>{{ $item->updated_at }}</td>
                                         <td class="table-action">

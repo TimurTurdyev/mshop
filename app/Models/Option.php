@@ -39,8 +39,8 @@ class Option extends Model
         'group_site' => 'string',
     ];
 
-    public function optionValues(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function optionValues(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->hasMany(OptionValue::class);
+        return $this->belongsToMany(OptionValue::class, 'option_value_to_options');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Collection;
 
 use App\Models\Collection;
 use App\Models\Option;
+use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
 class CollectionPropertyList extends Component
@@ -13,10 +14,9 @@ class CollectionPropertyList extends Component
 
     public string $title = 'Цены товара';
 
-    protected $listeners
-        = [
-            'collectionPropertyUpdate' => '$refresh',
-        ];
+    protected $listeners = [
+        'collectionPropertyUpdate' => '$refresh',
+    ];
 
     public function mount()
     {
@@ -34,7 +34,7 @@ class CollectionPropertyList extends Component
         $this->emitSelf('collectionPropertyUpdate');
     }
 
-    public function render(): \Illuminate\Contracts\View\View
+    public function render(): View
     {
         return view('livewire.collection.collection-property-list', [
             'collectionProperties' => $this->collection->collectionProperties,

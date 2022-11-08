@@ -32,7 +32,7 @@ class CollectionList extends Component
     {
         return view('livewire.collection.collection-list', [
             'title' => $this->title,
-            'collections' => Collection::query()->with(['brand'])->orderByDesc('id')->paginate()
+            'collections' => Collection::query()->with(['brand'])->withCount(['products'])->orderByDesc('id')->paginate()
         ])->layoutData([
             'title' => $this->title
         ]);

@@ -30,6 +30,11 @@ return new class extends Migration
             $table->boolean('status')->default(false)->index();
             $table->timestamps();
         });
+
+        Schema::create('product_catalogs', function (Blueprint $table) {
+            $table->foreignId('product_id')->constrained('products')->onDelete('CASCADE');
+            $table->foreignId('catalog_id')->constrained('catalogs')->onDelete('CASCADE');
+        });
     }
 
     /**
@@ -39,6 +44,7 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('product_catalogs');
         Schema::dropIfExists('products');
     }
 };
