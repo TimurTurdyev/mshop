@@ -37,12 +37,12 @@ class Property extends Model
 
     public function optionGroup(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Option::class);
+        return $this->belongsTo(Option::class, 'option_id', 'id');
     }
 
     public function optionValue(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(OptionValue::class);
+        return $this->belongsTo(OptionValue::class, 'option_value_id', 'id');
     }
 
     public function property(): \Illuminate\Database\Eloquent\Relations\MorphTo

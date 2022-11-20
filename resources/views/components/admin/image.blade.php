@@ -6,7 +6,7 @@
 ])
 
 @if( $label )
-    <x-admin.label :for="$id" :name="$label"></x-admin.label>
+    <x-admin.label for="{{ $id }}">{{ $label }}</x-admin.label>
 @endif
 @if( $value )
     <img src="{{ asset($value) }}" class="img-fluid mb-3">

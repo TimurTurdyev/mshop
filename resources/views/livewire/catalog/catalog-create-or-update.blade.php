@@ -44,6 +44,15 @@
                 </div>
                 <div class="card-body">
 
+                    <x-admin.select
+                        id="catalogEntityShow"
+                        label="Выводить в категории"
+                        name="catalog.entity_show"
+                        :items="$catalogEntityShow"
+                        wire:model="catalog.entity_show"
+                        start_empty="no"
+                    ></x-admin.select>
+
                     <div class="mb-3">
                         <x-admin.input
                             id="catalogSlug"

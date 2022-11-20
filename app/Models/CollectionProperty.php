@@ -32,4 +32,9 @@ class CollectionProperty extends Model
     {
         return $this->morphMany(Property::class, 'property');
     }
+
+    public function imageFirst()
+    {
+        return $this->images[0] ?? '';
+    }
 }

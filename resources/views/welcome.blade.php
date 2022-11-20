@@ -120,68 +120,7 @@
     </div>
 </header>
 <section class="container px-4 mx-auto xl:pt-10 pb-10">
-    <!-- Breadcrumb -->
-    <nav class="py-3 text-gray-600 text-sm mb-3" aria-label="Breadcrumb">
-        <ol class="inline-flex items-center space-x-1 md:space-x-3">
-            <li class="inline-flex items-center space-x-1 md:space-x-3">
-                <a href="#">
-                    Главная
-                </a>
-            </li>
-            <li class="inline-flex items-center space-x-1 md:space-x-3">
-                <span>/</span>
-                <a href="#">Кабинеты руководителя</a>
-            </li>
-            <li class="inline-flex items-center space-x-1 md:space-x-3" aria-current="page">
-                <span>/</span>
-                <span class="text-gray-400">Кресло</span>
-            </li>
-        </ol>
-    </nav>
-    <h1 class="text-3xl mb-10">Кабинеты руководителя</h1>
 
-    <div class="flex justify-between px-5 py-3 text-gray-600 rounded-lg bg-gray-50 mb-10">
-        <div class="flex items-center space-x-10">
-            <div>test</div>
-            <div>test</div>
-            <div>test</div>
-        </div>
-        <div class="flex items-center space-x-3">
-            <svg class="-rotate-90" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
-                 fill="none"
-                 stroke-linecap="round" stroke-linejoin="round">
-                <line x1="12" y1="20" x2="12" y2="10"></line>
-                <line x1="18" y1="20" x2="18" y2="4"></line>
-                <line x1="6" y1="20" x2="6" y2="16"></line>
-            </svg>
-            <span>Сортировка</span>
-        </div>
-    </div>
-
-    <div class="text-2xl">Кабинеты руководителя Мажор от 139 485 ₽</div>
-    <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-        @for($i = 0; $i < 10; $i++)
-            <div class="group relative">
-                <div
-                    class="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-50">
-                    <img
-                        src="https://via.placeholder.com/150"
-                        class="h-full w-full object-cover object-center lg:h-full lg:w-full">
-                </div>
-                <div class="mt-3">
-                    <p class="text-xs text-gray-400">Кабинет руководителя</p>
-                    <h3 class="text-sm text-gray-600 mt-2">
-                        <a href="#">
-                            Мажор бук светлый
-                        </a>
-                    </h3>
-                    <p class="text-xl text-red-600"><span
-                            class="text-sm mr-1 text-gray-600">от</span>{{ fake()->numberBetween(200_000, 700_00) }} р.
-                    </p>
-                </div>
-            </div>
-        @endfor
-    </div>
 </section>
 <footer class="bg-gray-100">
     <div

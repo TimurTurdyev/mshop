@@ -18,13 +18,14 @@
                     </div>
 
                     <div class="mb-3">
-                        <x-admin.switcher
-                            id="collectionStatus"
-                            label="Статус"
-                            name="collection.status"
-                            wire:model="collection.status"
-                        ></x-admin.switcher>
+                        <x-admin.input
+                            id="pageHeading"
+                            label="Заголовок"
+                            name="page.heading"
+                            wire:model="page.heading"
+                        ></x-admin.input>
                     </div>
+
                     <div class="mb-3">
                         <x-admin.editor
                             id="pageTextHtml"
@@ -68,8 +69,11 @@
                     </div>
 
                     <div class="mb-3">
-                        <livewire:collection.collection-to-catalog
-                            :selected_catalogs="$selected_catalogs"></livewire:collection.collection-to-catalog>
+                        <livewire:share.entity-to-catalog
+                            :selected_catalogs="$selected_catalogs"
+                            entity_show="collection"
+                        >
+                        </livewire:share.entity-to-catalog>
                     </div>
 
                     <div class="mb-3">
@@ -99,13 +103,33 @@
                         ></x-admin.textarea>
                     </div>
 
+                    <div class="mb-3">
+                        <x-admin.image
+                            id="pageMetaImage"
+                            label="Мета изображение"
+                            :value="$page['meta_image']"
+                            name="page.meta_image"
+                            wire:model="page.meta_image"
+                        ></x-admin.image>
+                    </div>
+
+                    <div class="mb-3">
+                        <x-admin.switcher
+                            id="collectionStatus"
+                            label="Статус"
+                            name="collection.status"
+                            wire:model="collection.status"
+                        ></x-admin.switcher>
+                    </div>
+
                     <button type="submit" class="btn btn-primary">Сохранить</button>
                 </div>
             </div>
         </div>
     </form>
     @if( $collection->exists )
-        <livewire:collection.collection-property-list :collection="$collection"></livewire:collection.collection-property-list>
+        <livewire:collection.collection-property-list
+            :collection="$collection"></livewire:collection.collection-property-list>
     @endif
 </div>
 

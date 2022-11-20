@@ -26,7 +26,7 @@ class OptionValueModal extends Component
 
     protected array $rules = [
         'optionValue.value_admin' => 'nullable|string|max:255',
-        'optionValue.value' => 'required|string|min:6|max:255',
+        'optionValue.value' => 'required|string|min:2|max:255',
         'optionValue.image' => 'nullable|string|max:255',
     ];
 
@@ -45,7 +45,7 @@ class OptionValueModal extends Component
         $this->optionValue->save();
         $this->optionValue = new OptionValue();
         $this->dispatchBrowserEvent('optionValueModalClose');
-        $this->emitUp('optionValueAdded');
+        $this->emitUp('refreshOptionValues');
     }
 
     public function render(): \Illuminate\Contracts\View\View

@@ -1,11 +1,11 @@
-<x-layouts.site>
+<x-layouts.store>
     <!-- Contact details-->
     <section class="bg-secondary py-5">
         <div class="container pt-5 pb-lg-2 pb-xl-4 py-xxl-5">
             <!-- Breadcrumb-->
             <nav aria-label="breadcrumb">
                 <ol class="pt-lg-3 pb-lg-4 pb-2 breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('welcome') }}">Главная</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Главная</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Контакты</li>
                 </ol>
             </nav>
@@ -129,4 +129,4 @@
             </div>
         </div>
     </section>
-</x-layouts.site>
+</x-layouts.store>

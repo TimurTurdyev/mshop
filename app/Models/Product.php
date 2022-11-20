@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
 
 /**
  * App\Models\Product
@@ -114,5 +113,10 @@ class Product extends Model
     public function prices(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Price::class);
+    }
+
+    public function pricesStatusOn(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Price::class)->where('status', 1);
     }
 }

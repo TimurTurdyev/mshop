@@ -16,8 +16,11 @@ class OptionValueFactory extends Factory
      */
     public function definition()
     {
+        $color = $this->faker->colorName();
+
         return [
-            'value' => $this->faker->words(2, true),
+            'value_admin' => "Admin $color",
+            'value' => $color,
             'image' => $this->faker->imageUrl(360, 360),
         ];
     }

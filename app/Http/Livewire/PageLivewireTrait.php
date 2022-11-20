@@ -2,17 +2,18 @@
 
 namespace App\Http\Livewire;
 
-use Illuminate\Validation\Rule;
-
 trait PageLivewireTrait
 {
     public $page = [
         'meta_title' => '',
         'meta_description' => '',
+        'meta_image' => '',
+        'heading' => '',
         'text_html' => '',
     ];
 
-    public function mountPage($model) {
+    public function mountPage($model)
+    {
         if ($model->exists) {
             $this->page = [...$this->page, ...$model->page->toArray()];
         }
@@ -23,6 +24,8 @@ trait PageLivewireTrait
         return [
             'page.meta_title' => 'required|string|max:255',
             'page.meta_description' => 'required|string|max:255',
+            'page.meta_image' => 'string|string|min:0,max:255',
+            'page.heading' => 'string|string|min:0,max:255',
             'page.text_html' => 'string|min:0',
         ];
     }

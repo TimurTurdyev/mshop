@@ -15,7 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
+
+Route::get('/catalog', [\App\Http\Controllers\CatalogController::class, 'index'])->name('catalog');
+Route::get('/catalog/{catalog:slug}', [\App\Http\Controllers\CatalogController::class, 'show'])->name('catalog.show');
+Route::get('/collection/{collection:slug}', [\App\Http\Controllers\CollectionController::class, 'show'])->name('collection.show');
 Route::get('/contacts', \App\Http\Controllers\ContactController::class)->name('contacts');
 
 Route::get('/admin', function () {
@@ -35,7 +39,6 @@ Route::get('/admin/group', \App\Http\Livewire\Group\GroupList::class)->name('adm
 Route::get('/admin/option', \App\Http\Livewire\Option\OptionList::class)->name('admin.option');
 Route::get('/admin/option/create', \App\Http\Livewire\Option\OptionCreateOrUpdate::class)->name('admin.option.create');
 Route::get('/admin/option/{option}', \App\Http\Livewire\Option\OptionCreateOrUpdate::class)->name('admin.option.edit');
-Route::get('/admin/option-value/', \App\Http\Livewire\Option\OptionValueList::class)->name('admin.option_value');
 
 Route::get('/admin/collection', \App\Http\Livewire\Collection\CollectionList::class)->name('admin.collection');
 Route::get('/admin/collection/create', \App\Http\Livewire\Collection\CollectionCreateOrUpdate::class)->name('admin.collection.create');

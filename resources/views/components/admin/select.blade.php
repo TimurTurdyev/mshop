@@ -3,7 +3,8 @@
     'name' => '',
     'label' => '',
     'items' => [],
-    'key' => 'name'
+    'key' => 'name',
+    'start_empty' => 'yes'
 ])
 
 @if( $label )
@@ -12,11 +13,13 @@
 
 <select class="form-control @error( $name ) is-invalid @enderror"
         @if( $id )
-        id="{{ $id }}"
+            id="{{ $id }}"
     @endif
     {{ $attributes }}
 >
-    <option>-- Не выбран --</option>
+    @if( $start_empty == 'yes' )
+        <option>-- Не выбран --</option>
+    @endif
     @foreach( $items as $item )
         <option value="{{ $item['id'] }}">{{ $item[$key] }}</option>
     @endforeach

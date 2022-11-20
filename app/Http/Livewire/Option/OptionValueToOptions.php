@@ -12,7 +12,6 @@ class OptionValueToOptions extends Component
     use WithPagination;
 
     public Option $option;
-
     public array $option_value_idx = [];
 
     protected string $paginationTheme = 'bootstrap';
@@ -22,7 +21,8 @@ class OptionValueToOptions extends Component
     public string $title = 'Значение опций товара';
 
     protected $listeners = [
-        'optionValueAdded' => '$refresh',
+        'refreshOptionValues' => '$refresh',
+        'optionValueChange' => 'optionValueChange',
     ];
 
     public function mount()
@@ -32,8 +32,14 @@ class OptionValueToOptions extends Component
 
     public function updatedOptionValueIdx($idx)
     {
+        $this->optionValueChange($idx);
+    }
+
+    public function optionValueChange($idx)
+    {
         $this->option->optionValues()->sync($idx);
-        $this->emitSelf('optionValueAdded');
+        $this->option_value_idx = $idx;
+        $this->emit('refreshOptionValues');
     }
 
     public function delete(OptionValue $optionValue)
@@ -44,10 +50,7 @@ class OptionValueToOptions extends Component
     public function render()
     {
         return view('livewire.option.option-value-to-options', [
-            'optionValues' => OptionValue::query()->when($this->option_value_idx, function ($q, $idx) {
-                return $q->whereNotIn('id', $idx);
-            })->orderByDesc('id')->paginate(50),
-            'optionValueToOptions' => $this->option->optionValues
+            'optionValueToOptions' => $this->option->optionValues,
         ]);
     }
 }

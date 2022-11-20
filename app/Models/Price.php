@@ -64,6 +64,17 @@ class Price extends Model
         'status' => 'boolean',
     ];
 
+    public function priceToArray($fields = [])
+    {
+        $values = [];
+
+        foreach ($fields as $field) {
+            $values[$field] = $this->{$field} ?? '';
+        }
+
+        return $values;
+    }
+
     protected function getImagesAttribute($value)
     {
         return json_decode($value ?: '[]', 1);
@@ -77,5 +88,10 @@ class Price extends Model
     public function properties(): \Illuminate\Database\Eloquent\Relations\MorphMany
     {
         return $this->morphMany(Property::class, 'property');
+    }
+
+    public function imageFirst()
+    {
+        return $this->images[0] ?? '';
     }
 }

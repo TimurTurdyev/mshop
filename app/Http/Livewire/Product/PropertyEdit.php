@@ -3,8 +3,6 @@
 namespace App\Http\Livewire\Product;
 
 use App\Models\Option;
-use App\Models\OptionValue;
-use App\Models\Price;
 use App\Models\Property;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
@@ -29,16 +27,16 @@ class PropertyEdit extends Component
                 'required',
                 'integer',
                 Rule::unique('properties', 'option_id')
-                    ->where('property_id', $this->property->property_id)
                     ->where('property_type', $this->property->property_type)
+                    ->where('property_id', $this->property->property_id)
                     ->ignore($this->property->id),
             ],
             'property.option_value_id' => [
                 'required',
                 'integer',
                 Rule::unique('properties', 'option_value_id')
-                    ->where('property_id', $this->property->property_id)
                     ->where('property_type', $this->property->property_type)
+                    ->where('property_id', $this->property->property_id)
                     ->ignore($this->property->id),
             ],
         ];
@@ -74,8 +72,20 @@ class PropertyEdit extends Component
 
     private function setOptionValues($option_id)
     {
-        $this->optionValues = OptionValue::where('option_id', $option_id)
-            ->get(['id', 'value'])
-            ->toArray();
+        static $optionValues = [];
+
+        if (!isset($optionValues[$option_id])) {
+            $optionValues[$option_id] = Option::query()
+                ->with('optionValues')
+                ->findOrFail($option_id)
+                ->optionValues
+                ->map(fn($value) => [
+                    'id' => $value->id,
+                    'value' => $value->value_admin ?: $value->value
+                ])
+                ->toArray();
+        }
+
+        $this->optionValues = $optionValues[$option_id];
     }
 }

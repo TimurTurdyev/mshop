@@ -17,6 +17,8 @@ return new class extends Migration {
             $table->morphs('pageable');
             $table->string('meta_title')->default('');
             $table->string('meta_description')->default('');
+            $table->string('meta_image')->default('');
+            $table->string('heading')->default('');
             $table->text('text_html')->default('');
         });
     }

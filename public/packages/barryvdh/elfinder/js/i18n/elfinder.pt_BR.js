@@ -486,7 +486,7 @@
 			'theme'           : 'Tema', // from v2.1.43 added 19.10.2018
 			'default'         : 'Padrão', // from v2.1.43 added 19.10.2018
 			'description'     : 'Descrição', // from v2.1.43 added 19.10.2018
-			'website'         : 'Site da internet', // from v2.1.43 added 19.10.2018
+			'website'         : 'Store da internet', // from v2.1.43 added 19.10.2018
 			'author'          : 'Autor', // from v2.1.43 added 19.10.2018
 			'email'           : 'Email', // from v2.1.43 added 19.10.2018
 			'license'         : 'Licença', // from v2.1.43 added 19.10.2018

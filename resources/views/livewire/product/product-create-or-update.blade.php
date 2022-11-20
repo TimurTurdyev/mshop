@@ -87,8 +87,8 @@
                     </div>
 
                     <div class="mb-3">
-                        <livewire:product.product-to-catalog
-                            :selected_catalogs="$selected_catalogs"></livewire:product.product-to-catalog>
+                        <livewire:share.entity-to-catalog
+                            :selected_catalogs="$selected_catalogs"></livewire:share.entity-to-catalog>
                     </div>
 
                     <div class="mb-3">

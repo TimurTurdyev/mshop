@@ -43,6 +43,8 @@ class Page extends Model
         'pageable_type',
         'meta_title',
         'meta_description',
+        'meta_image',
+        'heading',
         'text_html',
     ];
 

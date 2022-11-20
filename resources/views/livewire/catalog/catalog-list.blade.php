@@ -37,6 +37,7 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Название</th>
                                     <th scope="col">Сео урл</th>
+                                    <th scope="col">Выводить</th>
                                     <th scope="col">Статус</th>
                                     <th scope="col">Дата создания</th>
                                     <th scope="col">Дата обновления</th>
@@ -49,6 +50,7 @@
                                         <th scope="row">{{ $item->id }}</th>
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->slug }}</td>
+                                        <td>{{ $item->entity_show }}</td>
                                         <td>{{ $item->status ? 'Вкл' : 'Выкл' }}</td>
                                         <td>{{ $item->created_at }}</td>
                                         <td>{{ $item->updated_at }}</td>

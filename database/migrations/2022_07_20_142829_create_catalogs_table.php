@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('catalogs', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->string('slug')->unique();
             $table->boolean('status')->default(false)->index();
+            $table->string('name');
+            $table->enum('entity_show', ['collection', 'product'])->default('product');
             $table->timestamps();
         });
     }

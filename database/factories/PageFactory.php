@@ -19,6 +19,8 @@ class PageFactory extends Factory
         return [
             'meta_title' => $this->faker->words(5, true),
             'meta_description' => $this->faker->words(10, true),
+            'meta_image' => '',
+            'heading' => $this->faker->words(5, true),
             'text_html' => $this->faker->text,
         ];
     }

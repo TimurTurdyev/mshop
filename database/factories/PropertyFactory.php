@@ -19,10 +19,10 @@ class PropertyFactory extends Factory
     public function definition()
     {
         $option = Option::inRandomOrder()->first();
-        $optionValue = OptionValue::where('option_id', $option->id)->inRandomOrder()->first();
+        $optionValue = $option->optionValues()->inRandomOrder()->first();
         return [
             'option_id' => $option->id,
-            'option_value_id' => $optionValue->id,
+            'option_value_id' => $optionValue?->id,
         ];
     }
 }
