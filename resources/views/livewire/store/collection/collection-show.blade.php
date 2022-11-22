@@ -52,40 +52,55 @@
                 </div>
             </div>
             <hr class="my-6">
-            <h2 class="text-3xl mb-10">Описание</h2>
+            <h2 class="text-3xl mb-10" x-ref="information">Описание</h2>
             {{ $collection->page->text_html }}
             <hr class="my-6">
-            <h2 class="text-3xl mb-10">Отзывы</h2>
-            {{ $collection->page->text_html }}
-            <hr class="my-6">
+            <livewire:store.share.comment
+                :model="$collection"
+            >
+            </livewire:store.share.comment>
         </div>
         <div class="md:flex-[0_0_40%] px-4" wire:key="{{ now() }}">
-            @foreach( $options as $group => $items )
-                @if( isset($steps[$group]) )
-                    <div class="w-full mb-3">{{ $group }}: {{ $steps[$group] }}</div>
-                @else
-                    <div class="w-full mb-3">{{ $group }}</div>
-                @endif
-                <div class="flex flex-wrap space-x-2 mb-5">
-                    @foreach( $items as $price => $item )
-                        <button type="button"
-                                class="border p-1 border-gray-300 @if( $item['image'] ) rounded-full @endif"
-                                wire:click="optionChange('{{ $group }}', '{{ $price }}', {{ $loop->parent->index }})"
-                                @if( $item['isSelected'] ) disabled @endif
-                        >
-                            @if( $item['image'] )
-                                <img src="{{ $item['image'] }}" alt="{{ $price }}"
-                                     class="rounded-full object-cover w-[50px] h-[50px]">
-                            @else
-                                {{ $price }}
-                            @endif
-                        </button>
-                    @endforeach
+            <div class="sticky top-0">
+                @foreach( $options as $group => $items )
+                    @if( isset($steps[$group]) )
+                        <div class="w-full mb-3">{{ $group }}: {{ $steps[$group] }}</div>
+                    @else
+                        <div class="w-full mb-3">{{ $group }}</div>
+                    @endif
+                    <div class="flex flex-wrap space-x-2 mb-5">
+                        @foreach( $items as $price => $item )
+                            <button type="button"
+                                    class="border p-1 border-gray-300 @if( $item['image'] ) rounded-full @endif"
+                                    wire:click="optionChange('{{ $group }}', '{{ $price }}', {{ $loop->parent->index }})"
+                                    @if( $item['isSelected'] ) disabled @endif
+                            >
+                                @if( $item['image'] )
+                                    <img src="{{ $item['image'] }}" alt="{{ $price }}"
+                                         class="rounded-full object-cover w-[50px] h-[50px]">
+                                @else
+                                    {{ $price }}
+                                @endif
+                            </button>
+                        @endforeach
+                    </div>
+                @endforeach
+                <livewire:store.collection.composition-products
+                    :defaultPrice="$selectPriceValue">
+                </livewire:store.collection.composition-products>
+                <div class="hidden lg:flex flex-col space-y-3 py-5 mt-3">
+                    <a @click.prevent="$refs.information.scrollIntoView({behavior: 'smooth'})"
+                       class="block text-xl cursor-pointer">Описание</a>
+                    <a @click.prevent="$refs.attributes.scrollIntoView({behavior: 'smooth'})"
+                       class="block text-xl cursor-pointer">Характеристики</a>
+                    <a @click.prevent="$refs.reviews.scrollIntoView({behavior: 'smooth'})"
+                       class="block text-xl cursor-pointer">Отзывы</a>
+                    <a @click.prevent="$refs.products.scrollIntoView({behavior: 'smooth'})"
+                       class="block text-xl cursor-pointer">Элементы коллекции</a>
+                    <a @click.prevent="$refs.help.scrollIntoView({behavior: 'smooth'})"
+                       class="block text-xl cursor-pointer">Помощь эксперта</a>
                 </div>
-            @endforeach
-            <livewire:store.collection.composition-products
-                :defaultPrice="$selectPriceValue">
-            </livewire:store.collection.composition-products>
+            </div>
         </div>
     </div>
 </div>

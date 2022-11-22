@@ -18,7 +18,7 @@
 
     @if( $groups->count() )
         <hr class="my-6 py-3">
-        <h2 class="text-3xl mb-10">Элементы коллекции</h2>
+        <h2 class="text-3xl mb-10" x-ref="products">Элементы коллекции</h2>
 
         @foreach( $groups as $group )
             <livewire:store.collection.product-cards

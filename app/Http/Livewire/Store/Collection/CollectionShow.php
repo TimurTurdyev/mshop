@@ -3,8 +3,6 @@
 namespace App\Http\Livewire\Store\Collection;
 
 use App\Models\Collection;
-use App\Models\Price;
-use Illuminate\Database\Query\JoinClause;
 use Livewire\Component;
 
 class CollectionShow extends Component

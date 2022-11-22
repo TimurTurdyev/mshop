@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\Collection;
 
 use App\Models\CollectionProperty;
-use App\Models\Option;
 use Livewire\Component;
 
 class CollectionPropertyCreateOrUpdate extends Component

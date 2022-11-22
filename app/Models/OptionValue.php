@@ -21,6 +21,10 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|OptionValue whereValue($value)
  * @mixin \Eloquent
  * @method static \Database\Factories\OptionValueFactory factory(...$parameters)
+ * @property string $value_admin
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Option[] $options
+ * @property-read int|null $options_count
+ * @method static \Illuminate\Database\Eloquent\Builder|OptionValue whereValueAdmin($value)
  */
 class OptionValue extends Model
 {

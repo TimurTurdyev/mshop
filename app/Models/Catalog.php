@@ -33,6 +33,13 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Catalog whereStatus($value)
  * @method static Builder|Catalog whereUpdatedAt($value)
  * @mixin Eloquent
+ * @property CatalogEntityShowEnum $entity_show
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Collection[] $collections
+ * @property-read int|null $collections_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Product[] $products
+ * @property-read int|null $products_count
+ * @method static Builder|Catalog entityItems()
+ * @method static Builder|Catalog whereEntityShow($value)
  */
 class Catalog extends Model
 {

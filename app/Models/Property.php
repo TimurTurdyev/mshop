@@ -23,6 +23,13 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Property whereOptionValueId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Property wherePriceId($value)
  * @mixin \Eloquent
+ * @property string $property_type
+ * @property int $property_id
+ * @property-read \App\Models\Option|null $optionGroup
+ * @property-read \App\Models\OptionValue|null $optionValue
+ * @property-read Model|\Eloquent $property
+ * @method static \Illuminate\Database\Eloquent\Builder|Property wherePropertyId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Property wherePropertyType($value)
  */
 class Property extends Model
 {

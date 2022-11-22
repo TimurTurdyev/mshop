@@ -35,6 +35,7 @@
             В корзину
         </button>
     @else
+        <hr class="my-6">
         <p class="text-3xl mb-10 text-red-600">
             от {{ $defaultPrice }} р.
         </p>

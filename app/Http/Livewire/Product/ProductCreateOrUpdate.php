@@ -4,10 +4,8 @@ namespace App\Http\Livewire\Product;
 
 use App\Http\Livewire\PageLivewireTrait;
 use App\Models\Brand;
-use App\Models\Catalog;
 use App\Models\Collection;
 use App\Models\Group;
-use App\Models\Option;
 use App\Models\Product;
 use Illuminate\Validation\Rule;
 use Livewire\Component;

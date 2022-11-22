@@ -3,8 +3,6 @@
 namespace App\Http\Livewire\Product;
 
 use App\Models\Option;
-use App\Models\OptionValue;
-use App\Models\Price;
 use App\Models\Product;
 use Livewire\Component;
 

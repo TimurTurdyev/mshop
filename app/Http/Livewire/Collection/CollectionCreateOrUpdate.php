@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Collection;
 
 use App\Http\Livewire\PageLivewireTrait;
 use App\Models\Brand;
-use App\Models\Group;
 use App\Models\Collection;
 use Illuminate\Validation\Rule;
 use Livewire\Component;

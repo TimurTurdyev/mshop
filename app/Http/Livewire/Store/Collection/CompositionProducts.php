@@ -3,10 +3,6 @@
 namespace App\Http\Livewire\Store\Collection;
 
 use App\Models\Price;
-use App\Models\Property;
-use Cart;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Livewire\Component;
 
@@ -20,7 +16,7 @@ class CompositionProducts extends Component
     public string $compositionHash = '';
 
     public $queryString = [
-        'compositionHash' => ['except' => '', 'as' => 'cp']
+        'compositionHash' => ['except' => '', 'as' => 'kit']
     ];
 
     protected $listeners = [
@@ -29,9 +25,11 @@ class CompositionProducts extends Component
 
     public function addCart()
     {
-        Cart::add(array_values($this->compositions));
+        $prices = collect($this->compositions)
+            ->mapWithKeys(fn($price, $key) => [$key => $price['quantity']])
+            ->toArray();
 
-        $this->emit('updateCart');
+        $this->emit('addCartItems', $prices);
     }
 
     public function quantityDecrease($priceId = 0)
@@ -66,28 +64,18 @@ class CompositionProducts extends Component
                 ->explode('|')
                 ->mapWithKeys(function ($value) {
                     $value = str($value)->explode('.');
-                    abort_if($value->count() !== 2, 400, 'Bad parameters');
+
+                    if ($value->count() !== 2 || !(int) $value[1]) {
+                        return [0 => 0];
+                    }
+
                     return [(int) $value[0] => (int) $value[1]];
                 });
 
             $this->compositions = Price::query()
                 ->select(['products.name', 'price', 'prices.id', 'prices.images'])
-                ->join('products', function (JoinClause $join) {
-                    $join->whereRaw('products.id=prices.product_id');
-                    $join->where('products.status', '=', 1);
-                })
-                ->where('prices.status', '=', 1)
-                ->whereIn('prices.id', $idx->keys()->toArray())
-                ->with([
-                    'properties' => function (MorphMany $builder) {
-                        $builder
-                            ->join('options', 'option_id', '=', 'options.id')
-                            ->join('option_values', 'option_value_id', '=', 'option_values.id')
-                            ->select([
-                                'options.group_site as option_name', 'option_values.value as option_value',
-                                'properties.*'
-                            ]);
-                    }
+                ->priceWithProduct([
+                    'priceIdx' => $idx->keys()->toArray()
                 ])
                 ->get()
                 ->mapWithKeys(function (Price $item) use ($idx) {
@@ -99,21 +87,9 @@ class CompositionProducts extends Component
 
                     return [
                         $item->id => [
-                            'id' => $item->id,
                             'name' => $item->name,
                             'price' => $item->price,
                             'quantity' => $quantity,
-                            'attributes' => [
-                                'image' => $item->imageFirst(),
-                                'properties' => $item->properties->map(function (Property $property) {
-                                    return [
-                                        'option_id' => $property->option_id,
-                                        'option_value_id' => $property->option_value_id,
-                                        'option_name' => $property->option_name,
-                                        'option_value' => $property->option_value,
-                                    ];
-                                })->toArray(),
-                            ]
                         ],
                     ];
                 })->toArray();

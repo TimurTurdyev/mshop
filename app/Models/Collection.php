@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Commentable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -29,10 +30,21 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Collection whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Collection whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property int|null $brand_id
+ * @property-read \App\Models\Brand|null $brand
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CollectionProperty[] $collectionProperties
+ * @property-read int|null $collection_properties_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Product[] $products
+ * @property-read int|null $products_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Product[] $productsStatusOn
+ * @property-read int|null $products_status_on_count
+ * @method static \Database\Factories\CollectionFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Collection whereBrandId($value)
  */
 class Collection extends Model
 {
     use HasFactory;
+    use Commentable;
 
     protected $fillable = [
         'slug',

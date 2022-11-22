@@ -51,6 +51,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read int|null $prices_count
  * @method static \Database\Factories\ProductFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereSlug($value)
+ * @property int|null $collection_id
+ * @property-read \App\Models\Collection|null $collection
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Price[] $pricesStatusOn
+ * @property-read int|null $prices_status_on_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereCollectionId($value)
  */
 class Product extends Model
 {

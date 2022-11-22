@@ -120,7 +120,7 @@
 
     </div>
 </header>
-<section class="container px-4 mx-auto xl:pt-10 pb-10">
+<section class="container px-4 mx-auto xl:pt-10 pb-10" x-data>
     {{ $slot }}
 </section>
 <footer class="bg-gray-100">
@@ -156,13 +156,16 @@
     </div>
 </footer>
 
-<button type="button" x-data @click="$dispatch('change-cart-show')" class="hidden xl:block fixed z-10 right-0 top-1/3 bg-red-600 text-white rounded-l-lg p-3">
+<button type="button" x-data="{ cartCount: 0 }" @click="$dispatch('change-cart-show')"
+        @set-cart-count.window="cartCount = $event.detail"
+        class="hidden xl:inline-flex xl:items-center fixed z-10 right-0 top-1/3 bg-red-600 text-white rounded-l-lg p-3">
     <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
          stroke-linecap="round" stroke-linejoin="round">
         <circle cx="9" cy="21" r="1"></circle>
         <circle cx="20" cy="21" r="1"></circle>
         <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
     </svg>
+    <span class="bg-white text-gray-600 text-xs ml-2 mr-1 px-1.5 py-0.5 rounded" x-show="cartCount" x-text="cartCount"></span>
 </button>
 <livewire:store.cart.order></livewire:store.cart.order>
 

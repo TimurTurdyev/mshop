@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire\Option;
 
-use App\Models\Option;
 use App\Models\OptionValue;
 use Livewire\Component;
 

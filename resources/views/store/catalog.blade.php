@@ -35,5 +35,4 @@
 
     <x-store.catalog :entityItems="$entityItems" :show="$catalog->entity_show->name"></x-store.catalog>
 
-
 </x-layouts.store>
