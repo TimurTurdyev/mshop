@@ -57,6 +57,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Price[] $pricesStatusOn
  * @property-read int|null $prices_status_on_count
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereCollectionId($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] $comments
+ * @property-read int|null $comments_count
  */
 class Product extends Model
 {

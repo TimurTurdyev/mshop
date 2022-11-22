@@ -40,6 +40,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read int|null $products_status_on_count
  * @method static \Database\Factories\CollectionFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Collection whereBrandId($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] $comments
+ * @property-read int|null $comments_count
+ * @property-read int|null $prices_count
  */
 class Collection extends Model
 {
