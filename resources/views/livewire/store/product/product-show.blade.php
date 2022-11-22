@@ -6,6 +6,14 @@
                     Главная
                 </a>
             </li>
+            @if( $model->collection )
+                <li class="inline-flex items-center space-x-1 md:space-x-3">
+                    <span>/</span>
+                    <a href="{{ route('collection.show', $model->collection) }}">
+                        {{ $model->collection->name }}
+                    </a>
+                </li>
+            @endif
             <li class="inline-flex items-center space-x-1 md:space-x-3" aria-current="page">
                 <span>/</span>
                 <span class="text-gray-400">{{ $name }}</span>
@@ -60,7 +68,7 @@
             >
             </livewire:store.share.comment>
         </div>
-        <div class="md:flex-[0_0_40%] px-4" wire:key="{{ now() }}">
+        <div class="md:flex-[0_0_40%] px-4">
             <div class="sticky top-0">
                 @foreach( $options as $group => $items )
                     @if( isset($steps[$group]) )
@@ -86,9 +94,34 @@
                     </div>
                 @endforeach
 
-                <livewire:store.collection.composition-products
-                    :defaultPrice="$selectPriceValue">
-                </livewire:store.collection.composition-products>
+                <p class="text-3xl mb-4 text-red-600">
+                    {{ $selectPriceValue }} р.
+                </p>
+
+                <div x-data="{ quantity: 1 }" class="grid grid-cols-2 gap-6">
+                    <div class="flex rounded-md justify-center">
+                        <button @click="quantity--" type="button"
+                                class="relative inline-flex items-center space-x-2 px-4 py-2 border border-r-0 border-gray-300 text-sm font-medium rounded-l-md text-gray-700 bg-gray-50 hover:bg-gray-100 focus:outline-none">
+                            -
+                        </button>
+                        <div class="relative flex items-stretch focus-within:z-10">
+                            <input type="text" x-model="quantity" name="quantity" id="quantity"
+                                   class="text-center block w-full rounded-none sm:text-sm border border-l-0 border-r-0 border-gray-300 focus:outline-none"
+                                   value="0">
+                        </div>
+                        <button @click="quantity++" type="button"
+                                class="relative inline-flex items-center space-x-2 px-4 py-2 border border-l-0 border-gray-300 text-sm font-medium rounded-r-md text-gray-700 bg-gray-50 hover:bg-gray-100 focus:outline-none">
+                            +
+                        </button>
+                    </div>
+
+                    <button type="button"
+                            wire:click="addCart(quantity.value)"
+                            class="w-full rounded-md border border-transparent bg-red-600 px-4 py-3 font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none">
+                        В корзину
+                    </button>
+                </div>
+
                 <div class="hidden lg:flex flex-col space-y-3 py-5 mt-3">
                     <a @click.prevent="$refs.information.scrollIntoView({behavior: 'smooth'})"
                        class="block text-xl cursor-pointer">Описание</a>
@@ -96,8 +129,6 @@
                        class="block text-xl cursor-pointer">Характеристики</a>
                     <a @click.prevent="$refs.reviews.scrollIntoView({behavior: 'smooth'})"
                        class="block text-xl cursor-pointer">Отзывы</a>
-                    <a @click.prevent="$refs.products.scrollIntoView({behavior: 'smooth'})"
-                       class="block text-xl cursor-pointer">Элементы коллекции</a>
                     <a @click.prevent="$refs.help.scrollIntoView({behavior: 'smooth'})"
                        class="block text-xl cursor-pointer">Помощь эксперта</a>
                 </div>

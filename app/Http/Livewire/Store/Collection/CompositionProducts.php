@@ -64,8 +64,7 @@ class CompositionProducts extends Component
                 ->explode('|')
                 ->mapWithKeys(function ($value) {
                     $value = str($value)->explode('.');
-
-                    if ($value->count() !== 2 || !(int) $value[1]) {
+                    if ($value->count() !== 2 || (int) $value[1] < 1) {
                         return [0 => 0];
                     }
 
@@ -103,7 +102,7 @@ class CompositionProducts extends Component
         $this->compositions[$price['id']] = [
             'name' => $price['name'],
             'price' => $price['price'],
-            'quantity' => $quantity
+            'quantity' => max((int) $quantity, 1)
         ];
 
         $this->init();
@@ -118,6 +117,9 @@ class CompositionProducts extends Component
         }
 
         $this->compositionHash = join('|', $hash);
+        if ($this->compositionHash === '' && request()->has('kit')) {
+            request()->query->remove('kit');
+        }
     }
 
     public function render()

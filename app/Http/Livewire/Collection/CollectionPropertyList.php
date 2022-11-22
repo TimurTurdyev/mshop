@@ -25,7 +25,7 @@ class CollectionPropertyList extends Component
 
     public function add()
     {
-        $this->collection->collectionProperties()->create([
+        $this->collection->prices()->create([
             'name' => '',
             'price' => 0,
             'sort_order' => 0,
@@ -37,7 +37,7 @@ class CollectionPropertyList extends Component
     public function render(): View
     {
         return view('livewire.collection.collection-property-list', [
-            'collectionProperties' => $this->collection->collectionProperties,
+            'prices' => $this->collection->prices,
         ]);
     }
 }

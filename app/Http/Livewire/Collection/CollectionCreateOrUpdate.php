@@ -48,7 +48,7 @@ class CollectionCreateOrUpdate extends Component
 
     public function mount(Collection $collection)
     {
-        $this->collection = $collection->load(['collectionProperties.properties']);
+        $this->collection = $collection->load(['prices.properties']);
         $this->exists = $this->collection->exists;
         $this->selected_catalogs = $this->collection->catalogs->map(fn($catalog) => $catalog->id)->toArray();
 

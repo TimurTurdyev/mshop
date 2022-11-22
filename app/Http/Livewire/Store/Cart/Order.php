@@ -52,6 +52,11 @@ class Order extends Component
 
     public function addCartItem($priceId, $quantity)
     {
+        abort_if(!$priceId || $quantity < 1, 400, 'Oops. Bad parameters');
+
+        $this->addCartItems([
+            $priceId => $quantity
+        ]);
     }
 
     public function addCartItems($idx = [])

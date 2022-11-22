@@ -12,7 +12,7 @@
     <div class="pb-5">
         <livewire:store.collection.collection-show
             :selectPriceId="$selectPriceId"
-            :collection="$collection">
+            :model="$collection">
         </livewire:store.collection.collection-show>
     </div>
 

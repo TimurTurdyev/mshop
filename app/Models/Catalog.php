@@ -81,7 +81,7 @@ class Catalog extends Model
                 ->collections()
                 ->where('status', 1)
                 ->with([
-                    'collectionProperties' => function (\Illuminate\Database\Eloquent\Relations\HasMany $query) {
+                    'prices' => function (\Illuminate\Database\Eloquent\Relations\HasMany $query) {
                         $query->where('status', 1);
                         $query->orderBy('sort_order');
                     }

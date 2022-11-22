@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::get('/catalog', [\App\Http\Controllers\CatalogController::class, 'index'])->name('catalog');
 Route::get('/catalog/{catalog:slug}', [\App\Http\Controllers\CatalogController::class, 'show'])->name('catalog.show');
 Route::get('/collection/{collection:slug}', [\App\Http\Controllers\CollectionController::class, 'show'])->name('collection.show');
+Route::get('/product/{product:slug}', [\App\Http\Controllers\ProductController::class, 'show'])->name('product.show');
 Route::get('/contacts', \App\Http\Controllers\ContactController::class)->name('contacts');
 
 Route::get('/admin', function () {

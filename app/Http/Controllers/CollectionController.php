@@ -17,7 +17,7 @@ class CollectionController extends Controller
 
         $selectPriceId = (int) $request->get('price', 0);
 
-        $groupIdx = Collection::findOrFail($collection->id)
+        $groupIdx = $collection
             ->products()
             ->where('status', 1)
             ->groupBy('group_id')

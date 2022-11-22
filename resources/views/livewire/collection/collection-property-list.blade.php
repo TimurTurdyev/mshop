@@ -15,14 +15,14 @@
 
     <div class="row">
         <div class="col-12">
-            @if( !$collectionProperties->count() )
+            @if( !$prices->count() )
                 <div class="card">
                     <div class="card-body">
                         <p class="lead">Пусто...</p>
                     </div>
                 </div>
             @else
-                @foreach( $collectionProperties as $item )
+                @foreach( $prices as $item )
                     <livewire:collection.collection-property-create-or-update wire:key="{{ $loop->index }}" :options="$options" :collectionProperty="$item"></livewire:collection.collection-property-create-or-update>
                 @endforeach
             @endif

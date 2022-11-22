@@ -32,7 +32,7 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  * @property int|null $brand_id
  * @property-read \App\Models\Brand|null $brand
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CollectionProperty[] $collectionProperties
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CollectionProperty[] $prices
  * @property-read int|null $collection_properties_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Product[] $products
  * @property-read int|null $products_count
@@ -86,7 +86,7 @@ class Collection extends Model
         return $this->hasMany(Product::class);
     }
 
-    public function collectionProperties(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function prices(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(CollectionProperty::class);
     }
