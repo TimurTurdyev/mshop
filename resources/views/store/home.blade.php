@@ -8,4 +8,7 @@
         ></x-store.meta>
     </x-slot:meta>
 
+    <x-slot:callSpecialist>
+        <x-store.call-specialist-block></x-store.call-specialist-block>
+    </x-slot:callSpecialist>
 </x-layouts.store>

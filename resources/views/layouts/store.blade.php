@@ -123,13 +123,22 @@
 <section class="container px-4 mx-auto xl:pt-10 pb-10" x-data>
     {{ $slot }}
 </section>
-<footer class="bg-gray-100">
+
+@php( $footer_bg = 'bg-gray-100' )
+
+@isset( $callSpecialist )
+    @php( $footer_bg = 'bg-white' )
+
+    {{ $callSpecialist }}
+@endif
+
+<footer class="{{ $footer_bg }}">
     <div
         class="container px-4 mx-auto flex flex-col md:flex-row md:space-x-16 text-gray-600 font-light py-10 text-sm mb-2">
         <div class="flex-column items-center space-y-4 xl:space-y-12 min-w-[320px] mb-10 md:mb-0">
             <div class="border-4 border-rose-600 w-8 h-8 xl:w-16 xl:h-16 relative">
                 <div
-                    class="absolute top-[10%] xl:top-1/4 left-1/4 bg-gray-100 text-sm xl:text-2xl font-bold text-black whitespace-nowrap">
+                    class="absolute top-[10%] xl:top-1/4 left-1/4 {{ $footer_bg }} text-sm xl:text-2xl font-bold text-black whitespace-nowrap">
                     Правильный
                     офис
                 </div>
@@ -165,7 +174,8 @@
         <circle cx="20" cy="21" r="1"></circle>
         <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
     </svg>
-    <span class="bg-white text-gray-600 text-xs ml-2 mr-1 px-1.5 py-0.5 rounded" x-show="cartCount" x-text="cartCount"></span>
+    <span class="bg-white text-gray-600 text-xs ml-2 mr-1 px-1.5 py-0.5 rounded" x-show="cartCount"
+          x-text="cartCount"></span>
 </button>
 <livewire:store.cart.order></livewire:store.cart.order>
 

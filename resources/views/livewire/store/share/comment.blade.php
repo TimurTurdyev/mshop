@@ -37,9 +37,9 @@
                 @endif
             </div>
             <div class="mb-3">
-        <textarea
-            class="border @error('text') border-red-500 @else border-gray-300 @endif text-gray-900 text-sm rounded-lg block w-full p-2.5"
-            placeholder="Комментарий" wire:model.lazy="text"></textarea>
+                <textarea
+                    class="border @error('text') border-red-500 @else border-gray-300 @endif text-gray-900 text-sm rounded-lg block w-full p-2.5"
+                    placeholder="Комментарий" wire:model.lazy="text"></textarea>
                 @error('text')
                 <p class="mt-2 text-xs text-red-600 dark:text-red-400">{{ $message }}</p>
                 @endif
@@ -61,7 +61,8 @@
     @foreach( $comments as $comment )
         <div class="text-sm text-gray-600 grid grid-cols-5 mb-6">
             <div>
-                <p><span class="font-medium">{{ $comment->name }}</span><br><span class="text-xs">{{ $comment->created_at }}</span></p>
+                <p><span class="font-medium">{{ $comment->name }}</span><br><span
+                        class="text-xs">{{ $comment->created_at }}</span></p>
             </div>
             <div class="col-span-4"><p>{{ $comment->text }}</p></div>
         </div>
