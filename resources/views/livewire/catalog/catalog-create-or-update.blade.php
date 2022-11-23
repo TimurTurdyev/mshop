@@ -19,12 +19,12 @@
                     </div>
 
                     <div class="mb-3">
-                        <x-admin.switcher
-                            id="catalogStatus"
-                            label="Статус"
-                            name="catalog.status"
-                            wire:model="catalog.status"
-                        ></x-admin.switcher>
+                        <x-admin.input
+                            id="pageHeading"
+                            label="Заголовок"
+                            name="page.heading"
+                            wire:model="page.heading"
+                        ></x-admin.input>
                     </div>
 
                     <x-admin.editor
@@ -78,6 +78,25 @@
                             name="page.meta_description"
                             wire:model="page.meta_description"
                         ></x-admin.textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <x-admin.image
+                            id="pageMetaImage"
+                            label="Мета изображение"
+                            :value="$page['meta_image']"
+                            name="page.meta_image"
+                            wire:model="page.meta_image"
+                        ></x-admin.image>
+                    </div>
+
+                    <div class="mb-3">
+                        <x-admin.switcher
+                            id="catalogStatus"
+                            label="Статус"
+                            name="catalog.status"
+                            wire:model="catalog.status"
+                        ></x-admin.switcher>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Сохранить</button>
