@@ -17,7 +17,7 @@ class CatalogController extends Controller
 
         $entityItems = $catalog->entityItems()->get();
 
-        return view('store.catalog', [
+        return view('store.catalog-show', [
             'catalog' => $catalog,
             'entityItems' => $entityItems
         ]);

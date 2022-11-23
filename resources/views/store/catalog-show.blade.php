@@ -1,10 +1,10 @@
 <x-layouts.store>
     <x-slot:meta>
         <x-store.meta
-            title="Каталог"
-            description="Каталог"
-            url="{{ route('catalog') }}"
-            image=""
+            title="{{ $catalog->page->meta_title }}"
+            description="{{ $catalog->page->meta_description }}"
+            url="{{ route('catalog.show', $catalog->slug) }}"
+            image="{{ $catalog->page->meta_image }}"
         ></x-store.meta>
     </x-slot:meta>
 
@@ -18,11 +18,11 @@
             </li>
             <li class="inline-flex items-center space-x-1 md:space-x-3" aria-current="page">
                 <span>/</span>
-                <span class="text-gray-400">Каталог</span>
+                <span class="text-gray-400">{{ $catalog->name }}</span>
             </li>
         </ol>
     </nav>
-    <h1 class="text-3xl mb-10">Каталог</h1>
+    <h1 class="text-3xl mb-10">{{ $catalog->name }}</h1>
 
     <div class="flex justify-between px-5 py-3 text-gray-600 rounded-lg bg-gray-50 mb-10">
         <div class="flex items-center space-x-10">
@@ -41,5 +41,7 @@
             <span>Сортировка</span>
         </div>
     </div>
+
+    <x-store.catalog :entityItems="$entityItems" :show="$catalog->entity_show->name"></x-store.catalog>
 
 </x-layouts.store>
