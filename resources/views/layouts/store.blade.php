@@ -28,7 +28,7 @@
                     <a href="#" class="text-xl font-normal text-rose-500 hover:text-rose-400">+7 (495) 777-22-33</a>
                 </div>
                 <div class="hidden xl:flex space-x-6">
-                    @foreach( settingMenu('menu_top') as $item )
+                    @foreach( $generalSettings->menu_top as $item )
                         <a href="{{ $item['link'] }}" class="hover:text-gray-800">{{ $item['title'] }}</a>
                     @endforeach
                     <div class="pl-20 flex space-x-10">
@@ -64,13 +64,14 @@
                     <line x1="3" y1="18" x2="21" y2="18"></line>
                 </svg>
             </button>
-            <div class="border-4 border-rose-600 w-8 h-8 xl:w-16 xl:h-16 relative">
+            <a @if( !request()->is('/') ) href="{{ route('home') }}"
+               @endif class="border-4 border-rose-600 w-8 h-8 xl:w-16 xl:h-16 relative">
                 <div
                     class="absolute top-[10%] xl:top-1/4 left-1/4 bg-white text-sm xl:text-2xl font-bold text-black whitespace-nowrap">
                     Правильный
                     офис
                 </div>
-            </div>
+            </a>
         </div>
 
         <div class="xl:hidden flex space-x-4">
@@ -102,12 +103,12 @@
         </div>
 
         <div class="hidden xl:flex items-center space-x-6 text-base">
-            <a href="#" class="text-3xl font-normal text-rose-500 hover:text-rose-400">{{ setting('phone') }}</a>
-            <div>{!! str(setting('address'))->replace('\n', '<br>') !!}</div>
+            <a href="#" class="text-3xl font-normal text-rose-500 hover:text-rose-400">{{ $generalSettings->phone }}</a>
+            <div>{!! str($generalSettings->address)->replace('\n', '<br>') !!}</div>
         </div>
     </div>
     <div class="hidden container mx-auto xl:flex item-center space-x-8 text-sm">
-        @foreach( settingMenu('menu_main') as $item )
+        @foreach( $generalSettings->menu_main as $item )
             <a href="{{ $item['link'] }}" class="flex items-center space-x-1">
                 <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="1.5" fill="none"
                      stroke-linecap="round" stroke-linejoin="round">
@@ -117,12 +118,20 @@
                 <span>{!! str($item['title'])->replace('\n', '<br>') !!}</span>
             </a>
         @endforeach
-
     </div>
 </header>
+
+@isset( $positionTop )
+    {{ $positionTop }}
+@endif
+
 <section class="container px-4 mx-auto xl:pt-10 pb-10" x-data>
     {{ $slot }}
 </section>
+
+@isset( $positionBottom )
+    {{ $positionBottom }}
+@endif
 
 @php( $footer_bg = 'bg-gray-100' )
 
@@ -144,16 +153,16 @@
                 </div>
             </div>
             <div class="flex-column items-center space-y-4 text-base">
-                <a href="{{ str(setting('phone'))->replace([' ', '(', ')', '-'], '') }}"
+                <a href="{{ str($generalSettings->phone)->replace([' ', '(', ')', '-'], '') }}"
                    class="block text-sm xl:text-3xl font-normal text-rose-500 hover:text-rose-400">
-                    {{ setting('phone') }}
+                    {{ $generalSettings->phone }}
                 </a>
-                <div>{!! str(setting('address'))->replace('\n', '<br>') !!}</div>
+                <div>{!! str($generalSettings->address)->replace('\n', '<br>') !!}</div>
             </div>
         </div>
 
         <div class="grow grid gap-x-8 gap-y-4 grid-cols-2 xl:grid-cols-4">
-            @foreach( settingMenu('menu_footer') as $item )
+            @foreach( $generalSettings->menu_footer as $item )
                 <ul class="flex-column items-center space-y-4 text-base">
                     @foreach( $item as $value )
                         <li><a href="{{ $value['link'] }}">{{ $value['title'] }}</a></li>

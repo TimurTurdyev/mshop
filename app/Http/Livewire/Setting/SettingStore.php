@@ -2,8 +2,8 @@
 
 namespace App\Http\Livewire\Setting;
 
+use App\Main\Setting\GeneralSettings;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
 use Livewire\Component;
 
 class SettingStore extends Component
@@ -17,47 +17,18 @@ class SettingStore extends Component
         'menu_footer' => 'Меню низ',
     ];
 
-    public array $store = [
-        'phone' => '',
-        'address' => '',
-        'title' => '',
-        'meta_description' => '',
-        'menu_top' => [],
-        'menu_main' => [],
-        'menu_footer' => [
-            'column1' => [],
-            'column2' => [],
-            'column3' => [],
-            'column4' => []
-        ]
-    ];
+    public array $store = [];
 
     public $listeners = ['changeTabActive'];
 
-    public function mount()
+    public function mount(GeneralSettings $setting)
     {
-        foreach ($this->store as $key => &$value) {
-            $value = setting($key);
-
-            if (Str::isJson($value)) {
-                $value = json_decode($value, 1);
-            }
-        }
+        $this->store = $setting->toArray();
     }
 
-    public function save()
+    public function save(GeneralSettings $generalSettings)
     {
-        foreach ($this->store as $key => $value) {
-            $prop_value = $value;
-
-            if (is_array($prop_value)) {
-                $prop_value = json_encode($prop_value, JSON_PRETTY_PRINT);
-            }
-
-            setting([$key => $prop_value]);
-        }
-
-        setting()->save();
+        $generalSettings->fill($this->store)->save();
     }
 
     public function addMenuItem($key)
