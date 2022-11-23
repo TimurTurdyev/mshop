@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Store;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 trait PricesToEntitiesTrait
 {
@@ -60,16 +61,37 @@ trait PricesToEntitiesTrait
         $prices = $this->model
             ->prices()
             ->where('status', 1)
-            ->with('properties.optionGroup')
-            ->with('properties.optionValue')
+            ->with([
+                'properties' => function (MorphMany $query) {
+                    $query
+                        ->select([
+                            'properties.*',
+                            'options.group_site as option_name',
+                            'option_values.value as option_value',
+                            'option_values.image as option_value_image',
+                        ])
+                        ->join(
+                            'options',
+                            'properties.option_id',
+                            '=',
+                            'options.id'
+                        )
+                        ->join(
+                            'option_values',
+                            'properties.option_value_id',
+                            '=',
+                            'option_values.id'
+                        );
+                },
+            ])
             ->get();
 
         foreach ($prices as $item) {
 
             if ($this->selectPriceId === $item->id) {
                 foreach ($item->properties as $property) {
-                    $groupKey = $property->optionGroup->group_site;
-                    $valueKey = $property->optionValue->value;
+                    $groupKey = $property->option_name;
+                    $valueKey = $property->option_value;
                     $this->steps[$groupKey] = $valueKey;
                 }
                 $this->currentStep = count($this->steps);
@@ -80,7 +102,7 @@ trait PricesToEntitiesTrait
                 'price' => $item->price,
                 'images' => $item->images,
                 'hash_properties' => $item->properties->map(function ($value) {
-                    return $value->optionGroup?->group_site.$value->optionValue?->value;
+                    return $value->option_name.$value->option_value;
                 })->implode(''),
                 'properties' => $item->properties->mapWithKeys(function ($value, $key) {
                     return [$value->option_id => $value->option_value_id];
@@ -98,16 +120,16 @@ trait PricesToEntitiesTrait
             $prevGroupKey = '';
             $prevValueKey = '';
             foreach ($item->properties as $index => $property) {
-                if (!isset($property->optionValue->value)) {
+                if (!isset($property->option_value)) {
                     continue;
                 }
 
-                $groupKey = $property->optionGroup->group_site;
-                $valueKey = $property->optionValue->value;
+                $groupKey = $property->option_name;
+                $valueKey = $property->option_value;
 
                 if (!isset($this->options[$groupKey][$valueKey])) {
                     $this->options[$groupKey][$valueKey] = [
-                        'image' => $property->optionValue->image,
+                        'image' => $property->option_value_image,
                         'parents' => [],
                         'isSelected' => false,
                     ];
@@ -203,6 +225,17 @@ trait PricesToEntitiesTrait
 
     private function makeDefault()
     {
+        if (
+            $this->selectPriceId &&
+            $this->prices &&
+            !empty($this->prices[$this->selectPriceId])
+        ) {
+            $price = $this->prices[$this->selectPriceId];
+
+            $this->images = $price['images'];
+            $this->selectPriceValue = $price['price'];
+            $this->name = $price['name'];
+        }
         if (!$this->selectPriceId) {
             $hash = collect($this->steps)->implode(function ($value, $key) {
                 return $key.$value;

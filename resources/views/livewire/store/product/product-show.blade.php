@@ -76,6 +76,7 @@
                     @else
                         <div class="w-full mb-3">{{ $group }}</div>
                     @endif
+
                     <div class="flex flex-wrap space-x-2 mb-5">
                         @foreach( $items as $price => $item )
                             <button type="button"

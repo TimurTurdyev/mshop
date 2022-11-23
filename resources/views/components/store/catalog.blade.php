@@ -45,7 +45,7 @@
                     @if( $price->properties->count() )
                         <h3 class="text-sm text-gray-600 mt-2 mb-2">
                             @foreach( $price->properties as $property )
-                                {{ $property->optionGroup->group_site }}: {{ $property->optionValue->value }}
+                                {{ $property->optionGroup?->group_site }}: {{ $property->optionValue?->value }}
                             @endforeach
                         </h3>
                     @endif

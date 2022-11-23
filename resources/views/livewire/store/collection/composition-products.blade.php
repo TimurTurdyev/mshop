@@ -39,5 +39,8 @@
         <p class="text-3xl mb-10 text-red-600">
             от {{ $defaultPrice }} р.
         </p>
+        <p class="mt-0.5 text-sm text-gray-500 mb-6">
+            Выберите элементы коллекции
+        </p>
     @endif
 </div>

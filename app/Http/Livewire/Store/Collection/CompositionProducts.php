@@ -110,6 +110,7 @@ class CompositionProducts extends Component
 
     private function init()
     {
+        $this->total = 0;
         $hash = [];
         foreach ($this->compositions as $key => $composition) {
             $hash[] = $key.'.'.$composition['quantity'];
