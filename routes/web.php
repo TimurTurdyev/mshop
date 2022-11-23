@@ -1,5 +1,22 @@
 <?php
 
+use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\CollectionController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
+use App\Http\Livewire\Brand\BrandCreateOrUpdate;
+use App\Http\Livewire\Brand\BrandList;
+use App\Http\Livewire\Catalog\CatalogCreateOrUpdate;
+use App\Http\Livewire\Catalog\CatalogList;
+use App\Http\Livewire\Collection\CollectionCreateOrUpdate;
+use App\Http\Livewire\Collection\CollectionList;
+use App\Http\Livewire\Group\GroupList;
+use App\Http\Livewire\Option\OptionCreateOrUpdate;
+use App\Http\Livewire\Option\OptionList;
+use App\Http\Livewire\Product\ProductCreateOrUpdate;
+use App\Http\Livewire\Product\ProductList;
+use App\Http\Livewire\Setting\SettingStore;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,40 +30,41 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', HomeController::class)->name('home');
 
-Route::get('/catalog', [\App\Http\Controllers\CatalogController::class, 'index'])->name('catalog');
-Route::get('/catalog/{catalog:slug}', [\App\Http\Controllers\CatalogController::class, 'show'])->name('catalog.show');
-Route::get('/collection/{collection:slug}', [\App\Http\Controllers\CollectionController::class, 'show'])->name('collection.show');
-Route::get('/product/{product:slug}', [\App\Http\Controllers\ProductController::class, 'show'])->name('product.show');
-Route::get('/contacts', \App\Http\Controllers\ContactController::class)->name('contacts');
+Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog');
+Route::get('/catalog/{catalog:slug}', [CatalogController::class, 'show'])->name('catalog.show');
+Route::get('/collection/{collection:slug}', [CollectionController::class, 'show'])->name('collection.show');
+Route::get('/product/{product:slug}', [ProductController::class, 'show'])->name('product.show');
+Route::get('/contacts', ContactController::class)->name('contacts');
 
-Route::get('/admin', function () {
-    return view('admin.dashboard');
+Route::prefix('/admin')->group(function () {
+    Route::get('/', function () {
+        return view('admin.dashboard');
+    });
+
+    Route::get('/catalog', CatalogList::class)->name('admin.catalog');
+    Route::get('/catalog/create', CatalogCreateOrUpdate::class)->name('admin.catalog.create');
+    Route::get('/catalog/{catalog}', CatalogCreateOrUpdate::class)->name('admin.catalog.edit');
+
+    Route::get('/brand', BrandList::class)->name('admin.brand');
+    Route::get('/brand/create', BrandCreateOrUpdate::class)->name('admin.brand.create');
+    Route::get('/brand/{brand}', BrandCreateOrUpdate::class)->name('admin.brand.edit');
+
+    Route::get('/group', GroupList::class)->name('admin.group');
+
+    Route::get('/option', OptionList::class)->name('admin.option');
+    Route::get('/option/create', OptionCreateOrUpdate::class)->name('admin.option.create');
+    Route::get('/option/{option}', OptionCreateOrUpdate::class)->name('admin.option.edit');
+
+    Route::get('/collection', CollectionList::class)->name('admin.collection');
+    Route::get('/collection/create', CollectionCreateOrUpdate::class)->name('admin.collection.create');
+    Route::get('/collection/{collection}', CollectionCreateOrUpdate::class)->name('admin.collection.edit');
+
+    Route::get('/product', ProductList::class)->name('admin.product');
+    Route::get('/product/create', ProductCreateOrUpdate::class)->name('admin.product.create');
+    Route::get('/product/{product}', ProductCreateOrUpdate::class)->name('admin.product.edit');
+
+    Route::get('/setting/site', SettingStore::class)->name('admin.setting.site');
+
 });
-
-Route::get('/admin/catalog', \App\Http\Livewire\Catalog\CatalogList::class)->name('admin.catalog');
-Route::get('/admin/catalog/create', \App\Http\Livewire\Catalog\CatalogCreateOrUpdate::class)->name('admin.catalog.create');
-Route::get('/admin/catalog/{catalog}', \App\Http\Livewire\Catalog\CatalogCreateOrUpdate::class)->name('admin.catalog.edit');
-
-Route::get('/admin/brand', \App\Http\Livewire\Brand\BrandList::class)->name('admin.brand');
-Route::get('/admin/brand/create', \App\Http\Livewire\Brand\BrandCreateOrUpdate::class)->name('admin.brand.create');
-Route::get('/admin/brand/{brand}', \App\Http\Livewire\Brand\BrandCreateOrUpdate::class)->name('admin.brand.edit');
-
-Route::get('/admin/group', \App\Http\Livewire\Group\GroupList::class)->name('admin.group');
-
-Route::get('/admin/option', \App\Http\Livewire\Option\OptionList::class)->name('admin.option');
-Route::get('/admin/option/create', \App\Http\Livewire\Option\OptionCreateOrUpdate::class)->name('admin.option.create');
-Route::get('/admin/option/{option}', \App\Http\Livewire\Option\OptionCreateOrUpdate::class)->name('admin.option.edit');
-
-Route::get('/admin/collection', \App\Http\Livewire\Collection\CollectionList::class)->name('admin.collection');
-Route::get('/admin/collection/create', \App\Http\Livewire\Collection\CollectionCreateOrUpdate::class)->name('admin.collection.create');
-Route::get('/admin/collection/{collection}', \App\Http\Livewire\Collection\CollectionCreateOrUpdate::class)->name('admin.collection.edit');
-
-Route::get('/admin/product', \App\Http\Livewire\Product\ProductList::class)->name('admin.product');
-Route::get('/admin/product/create', \App\Http\Livewire\Product\ProductCreateOrUpdate::class)->name('admin.product.create');
-Route::get('/admin/product/{product}', \App\Http\Livewire\Product\ProductCreateOrUpdate::class)->name('admin.product.edit');
-
-Route::get('/admin/setting/site', \App\Http\Livewire\Setting\SettingStore::class)->name('admin.setting.site');

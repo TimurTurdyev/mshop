@@ -1,4 +1,13 @@
 <x-layouts.store>
+    <x-slot:meta>
+        <x-store.meta
+            title="{{ $catalog->page->meta_title }}"
+            description="{{ $catalog->page->meta_description }}"
+            url="{{ route('catalog.show', $catalog->slug) }}"
+            image="{{ $catalog->page->meta_image }}"
+        ></x-store.meta>
+    </x-slot:meta>
+
     <!-- Breadcrumb -->
     <nav class="py-3 text-gray-600 text-sm mb-3" aria-label="Breadcrumb">
         <ol class="inline-flex items-center space-x-1 md:space-x-3">
