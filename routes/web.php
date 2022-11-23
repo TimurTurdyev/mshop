@@ -16,6 +16,7 @@ use App\Http\Livewire\Option\OptionCreateOrUpdate;
 use App\Http\Livewire\Option\OptionList;
 use App\Http\Livewire\Product\ProductCreateOrUpdate;
 use App\Http\Livewire\Product\ProductList;
+use App\Http\Livewire\Setting\HomePage;
 use App\Http\Livewire\Setting\SettingStore;
 use Illuminate\Support\Facades\Route;
 
@@ -66,5 +67,5 @@ Route::prefix('/admin')->group(function () {
     Route::get('/product/{product}', ProductCreateOrUpdate::class)->name('admin.product.edit');
 
     Route::get('/setting/site', SettingStore::class)->name('admin.setting.site');
-
+    Route::get('/setting/home', HomePage::class)->name('admin.setting.home');
 });

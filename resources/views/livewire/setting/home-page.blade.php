@@ -1,7 +1,7 @@
 <div>
-    <x-slot:title>Настройки сайта</x-slot:title>
+    <x-slot:title>Настройки главной страницы сайта</x-slot:title>
     <div class="d-md-flex justify-content-md-between">
-        <h1 class="h3 mb-3">Настройки сайта</h1>
+        <h1 class="h3 mb-3">Настройки главной страницы сайта</h1>
         <div>
             <button type="button" class="btn btn-primary" wire:click.prevent="save">
                 Сохранить
@@ -10,7 +10,6 @@
     </div>
     <div class="row">
         <div class="col-md-3 col-xl-2">
-
             <div class="card">
                 <div class="list-group list-group-flush" role="tablist">
                     @foreach( $tabs as $tab => $title )
@@ -42,7 +41,7 @@
                                 <h5 class="card-title mb-0">{{ $title }}</h5>
                             </div>
                             <div class="card-body">
-                                @include( 'livewire.setting.partials.general.' . $tab )
+                                @include( 'livewire.setting.partials.home.' . $tab )
                             </div>
                         </div>
                     </div>
@@ -54,7 +53,7 @@
 
 @push('scripts')
     <script>
-        document.addEventListener('livewire:load', function() {
+        document.addEventListener('livewire:load', function () {
             const triggerTabList = document.querySelectorAll('a[data-bs-toggle="list"]');
             triggerTabList.forEach(triggerEl => {
                 triggerEl.addEventListener('shown.bs.tab', event => {

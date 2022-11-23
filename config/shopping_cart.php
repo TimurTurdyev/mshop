@@ -23,7 +23,7 @@ return [
      *
      * the configuration for persisting cart
      */
-    'storage' => \App\Helpers\CartCacheStorage::class,
+    'storage' => \App\Main\Helpers\CartCacheStorage::class,
 
     /*
      * ---------------------------------------------------------------

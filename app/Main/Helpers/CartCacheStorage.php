@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Helpers;
+namespace App\Main\Helpers;
 
 use Cache;
 use Carbon\Carbon;

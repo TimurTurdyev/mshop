@@ -2,6 +2,7 @@
     <thead>
     <tr>
         <th style="width: 2%">#</th>
+        <th style="width:30%;">Иконка</th>
         <th style="width:50%;">Ссылка</th>
         <th style="width:40%">Название</th>
         <th>Действие</th>
@@ -11,6 +12,12 @@
     @foreach( $store['menu_main'] as $menu )
         <tr>
             <td>{{ $loop->index }}</td>
+            <td>
+                <x-admin.textarea
+                    name="store.menu_main.{{ $loop->index }}.icon"
+                    wire:model="store.menu_main.{{ $loop->index }}.icon"
+                ></x-admin.textarea>
+            </td>
             <td>
                 <x-admin.input
                     name="store.menu_main.{{ $loop->index }}.link"

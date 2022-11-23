@@ -36,6 +36,7 @@ class SettingStore extends Component
         if (Arr::has($this->store, $key)) {
             $item = Arr::get($this->store, $key);
             $item[] = [
+                'icon' => '',
                 'link' => '',
                 'title' => ''
             ];

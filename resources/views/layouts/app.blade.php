@@ -74,6 +74,11 @@
                         <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Настройки сайта</span>
                     </a>
                 </li>
+                <li class="sidebar-item {{ (request()->is('admin/setting/home')) ? 'active' : '' }}">
+                    <a class="sidebar-link" href="{{ route('admin.setting.home') }}">
+                        <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Главная страница</span>
+                    </a>
+                </li>
 
             </ul>
         </div>
