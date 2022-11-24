@@ -76,7 +76,7 @@
             </p>
             <div class="max-w-sm relative z-10">
                 <button type="button"
-                        @click="$dispatch('change-design-project-form-show')"
+                        @click="$dispatch('design-project')"
                         class="rounded-md border inline-block border-transparent bg-red-600 px-6 py-4 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none">
                     Подробнее
                 </button>

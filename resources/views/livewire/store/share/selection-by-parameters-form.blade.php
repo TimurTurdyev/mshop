@@ -30,20 +30,20 @@
             </button>
         @endforeach
     </div>
-    {{ $index }}
-    {{ implode(', ', $choices) }}
 
     <div class="bg-gray-50 flex flex-col md:flex-row">
-        @if( $index < 4 )
-            <div class="md:flex-1">
-                <img src="{{ asset($content['image']) }}"
-                     class="h-full w-full object-cover object-center"
-                >
-            </div>
-            <div class="md:flex-1 px-8 py-20 min-h-[24rem] md:order-first">
-                <h3 class="text-xl mb-6">{{ $content['title'] }}</h3>
+        <div class="md:flex-1">
+            <img src="{{ asset($content['image']) }}"
+                 class="h-full w-full object-cover object-center"
+            >
+        </div>
+        <div class="md:flex-1 px-8 py-20 min-h-[24rem] md:order-first">
+            <h3 class="text-xl mb-6">{{ $content['title'] }}</h3>
 
-                @if( $index < 3 )
+            @switch($index)
+                @case(0)
+                @case(1)
+                @case(2)
                     <ul>
                         @foreach( $variants as $variant )
                             <li class="mb-4">
@@ -54,9 +54,11 @@
                             </li>
                         @endforeach
                     </ul>
-                @else
+                    @break
+                @case(3)
                     <p class="font-light mb-4">
-                        Вы можете провести предварительные замеры или прислать нам план Вашего помещения. Этого будет
+                        Вы можете провести предварительные замеры или прислать нам план Вашего помещения. Этого
+                        будет
                         достаточно для первичного расчета мебели для кабинета, плана расстановки и 3D визуализации
                     </p>
                     <input
@@ -64,14 +66,21 @@
                         placeholder="Введите площадь комнаты м.кв" type="text" wire:model.lazy="choice">
                     <p class="text-xs text-gray-400 mb-6">Оставьте поля пустыми, если Вы не знаете площадь Вашего
                         помещения</p>
-                @endif
+                    @break
+                @case(4)
+                    <livewire:store.share.call-form
+                    showEmail="true"
+                    emitName="office_selection"
+                    buttonTitle="Получить расчет стоимости"
+                    ></livewire:store.share.call-form>
+                    @break
+            @endswitch
 
-                @error('choice')
-                <p class="mt-2 text-xs text-red-600 dark:text-red-400">{{ $message }}</p>
-                @enderror
-
+            @if( $index < 4 )
                 <div class="max-w-sm relative z-10 flex justify-between">
-
+                    @error('choice')
+                    <p class="mt-2 text-xs text-red-600 dark:text-red-400">{{ $message }}</p>
+                    @enderror
                     @if( $index > 0 )
                         <button type="button"
                                 wire:click="tab({{ $index - 1 }})"
@@ -85,7 +94,24 @@
                         Далее
                     </button>
                 </div>
-            </div>
-        @endif
+            @endif
+        </div>
     </div>
+    @if( $showSucces )
+        <x-store.slide-popup>
+            <x-slot:title>Спаcибо за обращение!</x-slot:title>
+            <x-slot:event_toggle_open>office-selection</x-slot:event_toggle_open>
+
+            <p class="mt-0.5 text-gray-500 mb-8" x-init="$dispatch('office-selection')">
+                Подборка кабинетов уже в разработке. <br>
+                Через 5 минут будет у Вас на почте. <br><br>
+                <span class="font-bold">Если у Вас есть срочный вопрос, звоните по номеру:</span><br><br>
+                <span class="text-xl text-red-600">+7 (495) ...-..-..</span></p>
+            <button type="button"
+                    x-on:click="$dispatch('office-selection')"
+                    class="mt-6 rounded-md border border-transparent px-6 py-3 text-base font-medium text-red-600 shadow-sm border-red-600">
+                Вернуться на сайт
+            </button>
+        </x-store.slide-popup>
+    @endif
 </div>

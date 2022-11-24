@@ -14,7 +14,10 @@
                     помещения
                 </p>
                 <div class="max-w-sm">
-                    <livewire:store.share.call-specialist></livewire:store.share.call-specialist>
+                    <livewire:store.share.call-form
+                        emitName="call_specialist"
+                        buttonTitle="Вызвать специалиста"
+                    ></livewire:store.share.call-form>
                 </div>
             </div>
         </div>

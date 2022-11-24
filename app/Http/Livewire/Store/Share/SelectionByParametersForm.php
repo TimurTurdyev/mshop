@@ -6,8 +6,13 @@ use Livewire\Component;
 
 class SelectionByParametersForm extends Component
 {
+    public $listeners = [
+        'office_selection' => 'formSend'
+    ];
+
     public $choices = [];
     public $choice = '';
+    public $showSucces = false;
 
     public $steps = [
         'Стиль кабинета',
@@ -64,6 +69,10 @@ class SelectionByParametersForm extends Component
             [
                 'title' => 'Параметры помещения',
                 'image' => '/dist/images/select-parameters-step-4.jpg'
+            ],
+            [
+                'title' => 'Отличный выбор!',
+                'image' => '/dist/images/select-parameters-step-final.jpg'
             ]
         ];
 
@@ -97,10 +106,14 @@ class SelectionByParametersForm extends Component
 
         $this->choices[] = $this->choice;
         $this->choice = '';
+    }
 
-        if ($index == 3) {
-            $this->choices = [];
-            // Todo: send choices to mail
-        }
+    public function formSend($data)
+    {
+        // Todo: send choices to email
+
+        // Reset choices
+        $this->choices = [];
+        $this->showSucces = true;
     }
 }
