@@ -17,10 +17,10 @@
     </div>
     <div class="col-md-4">
         <x-admin.image
-            id="meta_icon"
+            id="meta_image"
             label="Изображение"
-            value="{{ $setting['meta_icon'] }}"
-            wire:model="settings.meta_icon"
+            value="{{ $setting['meta_image'] }}"
+            wire:model="settings.meta_image"
         ></x-admin.image>
     </div>
 </div>

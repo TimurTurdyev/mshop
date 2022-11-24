@@ -1,4 +1,4 @@
-<x-layouts.app>
+<x-layouts.admin>
     <x-slot:title>test</x-slot:title>
     <h1 class="h3 mb-3">Blank Page</h1>
 
@@ -13,4 +13,4 @@
             </div>
         </div>
     </div>
-</x-layouts.app>
+</x-layouts.admin>

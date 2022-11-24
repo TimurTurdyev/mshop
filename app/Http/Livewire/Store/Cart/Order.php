@@ -108,7 +108,6 @@ class Order extends Component
 
         if ($prices) {
             Cart::add($prices);
-            //$this->emitSelf('updateCart');
         }
     }
 

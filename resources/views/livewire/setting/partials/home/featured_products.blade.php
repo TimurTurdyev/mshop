@@ -5,7 +5,7 @@
                 <x-admin.input
                     id="featured_product_group{{ $loop->index }}"
                     label="Заголовок"
-                    wire:model="settings.featured_products.{{ $loop->index }}.group"
+                    wire:model="setting.featured_products.{{ $loop->index }}.group"
                 ></x-admin.input>
             </div>
             <table class="table table-striped">
@@ -22,8 +22,7 @@
                         <td>{{ $loop->index }}</td>
                         <td>
                             <x-admin.input
-                                name="setting.featured_products.{{ $loop->parent->index }}.products.{{ $loop->index }}"
-                                wire:model="store.menu_main.{{ $loop->index }}.icon"
+                                wire:model="setting.featured_products.{{ $loop->parent->index }}.products.{{ $loop->index }}"
                             ></x-admin.input>
                         </td>
                         <td class="table-action">
