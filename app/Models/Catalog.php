@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Support\Carbon;
 
@@ -72,30 +73,35 @@ class Catalog extends Model
         return $this->belongsToMany(Product::class, 'product_catalogs');
     }
 
-    public function scopeEntityItems(\Illuminate\Database\Eloquent\Builder $query)
+    public function scopeEntityItems(Builder $query, array $filters = [])
     {
-        /** @var self $model */
-        $model = $query->getModel();
-        if ($model->entity_show->name === 'collection') {
-            return $model
+        if ($this->entity_show->name === 'collection') {
+            return $this
                 ->collections()
                 ->where('status', 1)
                 ->with([
-                    'prices' => function (\Illuminate\Database\Eloquent\Relations\HasMany $query) {
+                    'prices' => function (HasMany $query) {
                         $query->where('status', 1);
                         $query->orderBy('sort_order');
                     }
                 ]);
         }
 
-        return $model
+        $filters['options'][] = '1-2';
+
+        return $this
             ->products()
             ->where('status', 1)
-            ->with([
-                'prices' => function (\Illuminate\Database\Eloquent\Relations\HasMany $query) {
+            ->withExists([
+                'prices' => static function (Builder $query) use ($filters) {
                     $query->where('status', 1);
                     $query->orderBy('sort_order');
-                },
+                    $query->when($filters['options'], function (Builder $q, $options) {
+
+                    });
+                }
+            ])
+            ->with([
                 'prices.properties.optionGroup',
                 'prices.properties.optionValue'
             ]);

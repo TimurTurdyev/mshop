@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Catalog;
+use App\Models\Price;
+use App\Models\Product;
+use Illuminate\Http\Request;
 
 class CatalogController extends Controller
 {
@@ -11,15 +14,12 @@ class CatalogController extends Controller
         return view('store.catalog');
     }
 
-    public function show(Catalog $catalog)
+    public function show(Catalog $catalog, Request $request)
     {
         abort_if(!$catalog->status, 404);
 
-        $entityItems = $catalog->entityItems()->get();
-
         return view('store.catalog-show', [
             'catalog' => $catalog,
-            'entityItems' => $entityItems
         ]);
     }
 }

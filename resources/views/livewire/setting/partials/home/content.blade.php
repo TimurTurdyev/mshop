@@ -11,7 +11,7 @@
             <x-admin.editor
                 id="text"
                 label="Описание"
-                value="{{ $setting['text'] }}"
+                :value="$setting['text']"
                 wire:model.debounce.500ms="setting.text"
             ></x-admin.editor>
         </div>

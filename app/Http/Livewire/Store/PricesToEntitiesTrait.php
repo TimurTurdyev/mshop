@@ -19,7 +19,7 @@ trait PricesToEntitiesTrait
     public int $currentStep = 0;
     public array $steps = [];
 
-    public function getQueryString()
+    public function queryString()
     {
         return [
             'selectPriceId' => ['except' => 0, 'as' => 'price'],
@@ -236,6 +236,7 @@ trait PricesToEntitiesTrait
             $this->selectPriceValue = $price['price'];
             $this->name = $price['name'];
         }
+
         if (!$this->selectPriceId) {
             $hash = collect($this->steps)->implode(function ($value, $key) {
                 return $key.$value;
@@ -256,7 +257,7 @@ trait PricesToEntitiesTrait
             }
 
             if (!$hashExist) {
-                foreach ($this->prices as $price) {
+                foreach ($this->prices as $priceId => $price) {
                     $this->images = [...$this->images, ...$price['images']];
                     if ($this->selectPriceValue === 0) {
                         $this->selectPriceValue = $price['price'];

@@ -3,8 +3,11 @@
 namespace App\Models;
 
 use App\Models\Traits\Commentable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Query\JoinClause;
 
 /**
  * App\Models\Product
@@ -59,6 +62,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereCollectionId($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] $comments
  * @property-read int|null $comments_count
+ * @method static Builder|Product filters(array $filters = [])
  */
 class Product extends Model
 {
@@ -119,13 +123,49 @@ class Product extends Model
         return $this->morphOne(Page::class, 'pageable')->withDefault();
     }
 
-    public function prices(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function prices(): HasMany
     {
         return $this->hasMany(Price::class);
     }
 
-    public function pricesStatusOn(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function pricesStatusOn(): HasMany
     {
         return $this->hasMany(Price::class)->where('status', 1);
+    }
+
+    public function scopeFilters(Builder $builder, array $filters = [])
+    {
+        return $this
+            ->where('products.status', 1)
+            ->when($filters['catalogs'] ?? [], static function (Builder $query, $catalogs) {
+                $query
+                    ->join('product_catalogs', 'products.id', '=', 'product_catalogs.product_id')
+                    ->whereIn('product_catalogs.catalog_id', $catalogs);
+            })
+            ->when($filters['brands'] ?? [], static function (Builder $query, $brands) {
+                $query->whereIn('products.brand_id', $brands);
+            })->join('prices', static function (JoinClause $query) use ($filters) {
+                $query->whereRaw('products.id=prices.product_id');
+                $query->where('prices.status', 1);
+                $query->orderBy('prices.sort_order');
+                $query->when($filters['options'] ?? [], static function (JoinClause $query, $options) {
+
+                    $query->join('properties', static function (JoinClause $q) {
+                        $q->where('property_type', '=',
+                            Price::getActualClassNameForMorph(Price::class));
+                        $q->whereRaw('properties.property_id=prices.id');
+                    });
+
+                    $query->where(static function (JoinClause $q) use ($options) {
+                        foreach ($options as $option_id => $value_idx) {
+                            $q->orWhere(static function (JoinClause $q) use ($option_id, $value_idx) {
+                                $value_idx = explode('|', $value_idx);
+                                $q->where('properties.option_id', '=', $option_id)
+                                    ->whereIn('properties.option_value_id', $value_idx);
+                            });
+                        }
+                    });
+                });
+            })->groupBy(['products.id']);
     }
 }

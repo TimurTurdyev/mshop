@@ -39,6 +39,7 @@ use Illuminate\Database\Query\JoinClause;
  * @property-read int|null $properties_count
  * @method static \Database\Factories\PriceFactory factory(...$parameters)
  * @method static Builder|Price priceWithProduct($filter = [])
+ * @method static Builder|Price filters($filter = [])
  */
 class Price extends Model
 {
@@ -108,5 +109,43 @@ class Price extends Model
                 $query->whereIn('prices.id', $idx);
             })
             ->where('prices.status', '=', 1);
+    }
+
+    public function scopeFilters(Builder $bulder, $filter = [])
+    {
+        return $this
+            ->select(['products.*', 'prices.*'])
+            ->join('products', function (JoinClause $query) use($filter) {
+                $query
+                    ->whereRaw('products.id=prices.product_id')
+                    ->where('products.status', 1)
+                    ->when($filter['catalogs'] ?? [], function ($query, $catalogs) {
+                        $query
+                            ->join('product_catalogs', 'products.id', '=', 'product_catalogs.product_id')
+                            ->whereIn('products.collection_id', $catalogs);
+                    })
+                    ->when($filter['collections'] ?? [], function ($query, $collections) {
+                        $query->whereIn('products.collection_id', $collections);
+                    })->when($filter['groups'] ?? [], function ($query, $groups) {
+                        $query->whereIn('products.group_id', $groups);
+                    });
+            })
+            ->when($filter['properties'] ?? [], function (Builder $query, $properties) {
+                $query->join('properties', function (JoinClause $q) {
+                    $q->where('property_type', '=',
+                        Price::getActualClassNameForMorph(Price::class));
+                    $q->whereRaw('properties.property_id=prices.id');
+                });
+
+                $query->where(function (Builder $q) use ($properties) {
+                    foreach ($properties as $option_id => $value_id) {
+                        $q->orWhere(function (Builder $q) use ($option_id, $value_id) {
+                            $q->where('properties.option_id', '=', $option_id)
+                                ->where('properties.option_value_id', '=', $value_id);
+                        });
+                    }
+                });
+            })
+            ->where('prices.status', 1);
     }
 }

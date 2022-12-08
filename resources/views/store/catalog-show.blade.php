@@ -24,24 +24,10 @@
     </nav>
     <h1 class="text-3xl mb-10">{{ $catalog->name }}</h1>
 
-    <div class="flex justify-between px-5 py-3 text-gray-600 rounded-lg bg-gray-50 mb-10">
-        <div class="flex items-center space-x-10">
-            <div>test</div>
-            <div>test</div>
-            <div>test</div>
-        </div>
-        <div class="flex items-center space-x-3">
-            <svg class="-rotate-90" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
-                 fill="none"
-                 stroke-linecap="round" stroke-linejoin="round">
-                <line x1="12" y1="20" x2="12" y2="10"></line>
-                <line x1="18" y1="20" x2="18" y2="4"></line>
-                <line x1="6" y1="20" x2="6" y2="16"></line>
-            </svg>
-            <span>Сортировка</span>
-        </div>
-    </div>
+    <livewire:store.share.filter-product-form :filterCatalogs="[$catalog->id]">
+    </livewire:store.share.filter-product-form>
 
-    <x-store.catalog :entityItems="$entityItems" :show="$catalog->entity_show->name"></x-store.catalog>
+    <livewire:store.share.products-list :filterCatalogs="[$catalog->id]">
+    </livewire:store.share.products-list>
 
 </x-layouts.store>
