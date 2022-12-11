@@ -19,16 +19,20 @@ class FilterProductForm extends Component
     public $selectedBrands = [];
     public $selectedOptions = [];
 
+    public $hashOptions = [];
+    public $hashBrands = '';
+
     public function queryString()
     {
         return [
-            'selectedOptions' => ['except' => '', 'as' => 'options'],
-            'selectedBrands' => ['except' => '', 'as' => 'brands'],
+            'hashOptions' => ['except' => '', 'as' => 'options'],
+            'hashBrands' => ['except' => '', 'as' => 'brands'],
         ];
     }
 
     public function updatedSelectedBrands($values)
     {
+        $this->hashBrands = implode('|', $values);
         $this->emit('filterSelectedBrands', $values);
     }
 
@@ -44,6 +48,8 @@ class FilterProductForm extends Component
         foreach ($options as &$option) {
             $option = implode('|', $option);
         }
+
+        $this->hashOptions = $options;
 
         $this->emit('filterSelectedOptions', $options);
     }
@@ -131,13 +137,13 @@ class FilterProductForm extends Component
 
     private function prepareSelected()
     {
-        foreach (request('options', []) as $key => $values) {
+        foreach ($this->hashOptions as $key => $values) {
             foreach (explode('|', $values) as $value) {
                 $this->selectedOptions[] = $key.'-'.$value;
             }
         }
 
-        $brands = str(request('brands', ''))
+        $brands = str($this->hashBrands)
             ->explode('|')
             ->filter();
 
