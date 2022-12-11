@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\ContactController;
@@ -22,24 +23,19 @@ use App\Http\Livewire\Setting\HomePage;
 use App\Http\Livewire\Setting\SettingStore;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', HomeController::class)->name('home');
 
 Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog');
 Route::get('/catalog/{catalog:slug}', [CatalogController::class, 'show'])->name('catalog.show');
+
 Route::get('/collection/{collection:slug}', [CollectionController::class, 'show'])->name('collection.show');
+
 Route::get('/product/{product:slug}', [ProductController::class, 'show'])->name('product.show');
+
 Route::get('/contacts', ContactController::class)->name('contacts');
+
+Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+Route::get('/blog/{post:slug}', [BlogController::class, 'post'])->name('blog.post');
 
 Route::prefix('/admin')->group(function () {
     Route::get('/', function () {

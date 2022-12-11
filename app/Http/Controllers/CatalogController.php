@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Catalog;
-use App\Models\Price;
-use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CatalogController extends Controller
