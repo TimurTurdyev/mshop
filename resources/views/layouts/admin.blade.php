@@ -66,12 +66,18 @@
                 </li>
 
                 <li class="sidebar-header">
-                    Блог
+                    Блог/Проекты
                 </li>
 
                 <li class="sidebar-item {{ (request()->is('admin/post*')) ? 'active' : '' }}">
                     <a class="sidebar-link" href="{{ route('admin.post') }}">
                         <i class="align-middle" data-feather="list"></i> <span class="align-middle">Статьи</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item {{ (request()->is('admin/project*')) ? 'active' : '' }}">
+                    <a class="sidebar-link" href="{{ route('admin.project') }}">
+                        <i class="align-middle" data-feather="list"></i> <span class="align-middle">Проекты</span>
                     </a>
                 </li>
 

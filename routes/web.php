@@ -19,6 +19,8 @@ use App\Http\Livewire\Post\PostCreateOrUpdate;
 use App\Http\Livewire\Post\PostList;
 use App\Http\Livewire\Product\ProductCreateOrUpdate;
 use App\Http\Livewire\Product\ProductList;
+use App\Http\Livewire\Project\ProjectCreateOrUpdate;
+use App\Http\Livewire\Project\ProjectList;
 use App\Http\Livewire\Setting\HomePage;
 use App\Http\Livewire\Setting\SettingStore;
 use Illuminate\Support\Facades\Route;
@@ -71,4 +73,8 @@ Route::prefix('/admin')->group(function () {
     Route::get('/post', PostList::class)->name('admin.post');
     Route::get('/post/create', PostCreateOrUpdate::class)->name('admin.post.create');
     Route::get('/post/{post}', PostCreateOrUpdate::class)->name('admin.post.edit');
+
+    Route::get('/project', ProjectList::class)->name('admin.project');
+    Route::get('/project/create', ProjectCreateOrUpdate::class)->name('admin.project.create');
+    Route::get('/project/{project}', ProjectCreateOrUpdate::class)->name('admin.project.edit');
 });
