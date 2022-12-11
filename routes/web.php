@@ -6,6 +6,7 @@ use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Livewire\Brand\BrandCreateOrUpdate;
 use App\Http\Livewire\Brand\BrandList;
 use App\Http\Livewire\Catalog\CatalogCreateOrUpdate;
@@ -38,6 +39,9 @@ Route::get('/contacts', ContactController::class)->name('contacts');
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 Route::get('/blog/{post:slug}', [BlogController::class, 'post'])->name('blog.post');
+
+Route::get('/project', [ProjectController::class, 'index'])->name('project');
+Route::get('/project/{project:slug}', [ProjectController::class, 'post'])->name('project.post');
 
 Route::prefix('/admin')->group(function () {
     Route::get('/', function () {
