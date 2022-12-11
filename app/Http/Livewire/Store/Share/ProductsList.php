@@ -67,7 +67,15 @@ class ProductsList extends Component
         $steps = [];
         $currentStep = 0;
 
-        if ($this->selectedOptions) {
+        $flag = true;
+
+        foreach ($this->selectedOptions as $value) {
+            if (str_contains($value, '|')) {
+                $flag = false;
+            }
+        }
+
+        if ($this->selectedOptions && $flag) {
             $steps = Option::query()
                 ->join('option_value_to_options', 'options.id', '=', 'option_value_to_options.option_id')
                 ->join('option_values', 'option_value_to_options.option_value_id', '=', 'option_values.id')

@@ -25,13 +25,13 @@
     <h1 class="text-3xl mb-10">{{ $catalog->name }}</h1>
 
     <livewire:store.share.filter-product-form
-        :type="$catalog->entity_show"
+        :type="$catalog->entity_show->value"
         :filterCatalogs="[$catalog->id]"
     >
     </livewire:store.share.filter-product-form>
 
     <livewire:store.share.products-list
-        :type="$catalog->entity_show"
+        :type="$catalog->entity_show->value"
         :filterCatalogs="[$catalog->id]"
     >
     </livewire:store.share.products-list>
