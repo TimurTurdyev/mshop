@@ -32,15 +32,6 @@
                         <a href="{{ $item['link'] }}" class="hover:text-gray-800">{{ $item['title'] }}</a>
                     @endforeach
                     <div class="pl-20 flex space-x-10">
-                        <a href="#" class="flex group hover:text-gray-800">
-                            <svg class="text-gray-500 group-hover:text-gray-800 mr-2" viewBox="0 0 24 24" width="20"
-                                 height="20" stroke="currentColor" stroke-width="1.5"
-                                 fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path
-                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                            </svg>
-                            Избранное
-                        </a>
                         <a href="">
                             <svg class="text-gray-500 hover:text-gray-800" viewBox="0 0 24 24" width="20" height="20"
                                  stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"
@@ -75,14 +66,6 @@
         </div>
 
         <div class="xl:hidden flex space-x-4">
-            <a href="#">
-                <svg class="text-gray-500 group-hover:text-gray-800" viewBox="0 0 24 24" width="20"
-                     height="20" stroke="currentColor" stroke-width="1.5"
-                     fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path
-                        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                </svg>
-            </a>
             <a href="">
                 <svg class="text-gray-500 hover:text-gray-800" viewBox="0 0 24 24" width="20" height="20"
                      stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"

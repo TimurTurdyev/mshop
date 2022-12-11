@@ -48,7 +48,7 @@ trait PricesToEntitiesTrait
         $this->makeStepEnd();
         $this->makeDefault();
 
-        $this->emit('changeProperties', $this->selectProperties);
+        $this->emitSelf('changeProperties', $this->selectProperties);
     }
 
     public function init()

@@ -9,6 +9,15 @@ class CollectionShow extends Component
 {
     use PricesToEntitiesTrait;
 
+    public $listeners = [
+        'changeProperties' => 'filterSelectedOptions'
+    ];
+
+    public function filterSelectedOptions($filter)
+    {
+        $this->emit('filterSelectedOptions', $filter);
+    }
+
     public function render()
     {
         return view('livewire.store.collection.collection-show');

@@ -6,7 +6,6 @@
     /** @var  \App\Models\Collection|\App\Models\Product $item */
 @endphp
 @if( $show === 'collection' )
-
     @foreach( $entityItems as $item )
         <div class="text-2xl mb-3">{{ $item->name }} от {{ $item->prices->min('price') }} р.</div>
         <div class="py-7 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">

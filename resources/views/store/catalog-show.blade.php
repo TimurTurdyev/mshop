@@ -24,10 +24,16 @@
     </nav>
     <h1 class="text-3xl mb-10">{{ $catalog->name }}</h1>
 
-    <livewire:store.share.filter-product-form :filterCatalogs="[$catalog->id]">
+    <livewire:store.share.filter-product-form
+        :type="$catalog->entity_show"
+        :filterCatalogs="[$catalog->id]"
+    >
     </livewire:store.share.filter-product-form>
 
-    <livewire:store.share.products-list :filterCatalogs="[$catalog->id]">
+    <livewire:store.share.products-list
+        :type="$catalog->entity_show"
+        :filterCatalogs="[$catalog->id]"
+    >
     </livewire:store.share.products-list>
 
 </x-layouts.store>

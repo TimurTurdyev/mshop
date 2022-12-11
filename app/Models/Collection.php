@@ -3,8 +3,10 @@
 namespace App\Models;
 
 use App\Models\Traits\Commentable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\JoinClause;
 
 /**
  * App\Models\Collection
@@ -92,5 +94,41 @@ class Collection extends Model
     public function prices(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(CollectionProperty::class);
+    }
+
+    public function scopeFilters(Builder $builder, array $filters = [])
+    {
+        return $this
+            ->where('collections.status', 1)
+            ->when($filters['catalogs'] ?? [], static function (Builder $query, $catalogs) {
+                $query
+                    ->join('collection_catalogs', 'collections.id', '=', 'collection_catalogs.collection_id')
+                    ->whereIn('collection_catalogs.catalog_id', $catalogs);
+            })
+            ->when($filters['brands'] ?? [], static function (Builder $query, $brands) {
+                $query->whereIn('collections.brand_id', $brands);
+            })->join('collection_properties', static function (JoinClause $query) use ($filters) {
+                $query->whereRaw('collections.id=collection_properties.collection_id');
+                $query->where('collection_properties.status', 1);
+                $query->orderBy('collection_properties.sort_order');
+                $query->when($filters['options'] ?? [], static function (JoinClause $query, $options) {
+
+                    $query->join('properties', static function (JoinClause $q) {
+                        $q->where('property_type', '=',
+                            Price::getActualClassNameForMorph(Price::class));
+                        $q->whereRaw('properties.property_id=collection_properties.id');
+                    });
+
+                    $query->where(static function (JoinClause $q) use ($options) {
+                        foreach ($options as $option_id => $value_idx) {
+                            $q->orWhere(static function (JoinClause $q) use ($option_id, $value_idx) {
+                                $value_idx = explode('|', $value_idx);
+                                $q->where('properties.option_id', '=', $option_id)
+                                    ->whereIn('properties.option_value_id', $value_idx);
+                            });
+                        }
+                    });
+                });
+            })->groupBy(['collections.id']);
     }
 }

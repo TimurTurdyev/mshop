@@ -16,18 +16,19 @@
         </livewire:store.collection.collection-show>
     </div>
 
+
     @if( $groups->count() )
         <hr class="my-6 py-3">
-        <h2 class="text-3xl mb-10" x-ref="products">Элементы коллекции</h2>
+        <h2 class="text-3xl mb-10">Элементы коллекции</h2>
 
         @foreach( $groups as $group )
-            <livewire:store.collection.product-cards
-                :groupId="$group->id"
-                :groupName="$group->name"
-                :collectionId="$collection->id"
-                :selectPriceId="$selectPriceId"
+            <livewire:store.share.products-list
+                :heading="$group->name"
+                :filterGroups="[$group->id]"
+                :filterCollections="[$collection->id]"
+                :selectedOptions="$selectedOptions"
             >
-            </livewire:store.collection.product-cards>
+            </livewire:store.share.products-list>
         @endforeach
     @endif
 </x-layouts.store>

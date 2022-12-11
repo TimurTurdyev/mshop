@@ -144,6 +144,10 @@ class Product extends Model
             })
             ->when($filters['brands'] ?? [], static function (Builder $query, $brands) {
                 $query->whereIn('products.brand_id', $brands);
+            })->when($filters['groups'] ?? [], static function (Builder $query, $groups) {
+                $query->whereIn('products.group_id', $groups);
+            })->when($filters['collections'] ?? [], static function (Builder $query, $collections) {
+                $query->whereIn('products.collection_id', $collections);
             })->join('prices', static function (JoinClause $query) use ($filters) {
                 $query->whereRaw('products.id=prices.product_id');
                 $query->where('prices.status', 1);
