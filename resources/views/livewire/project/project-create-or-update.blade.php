@@ -20,6 +20,16 @@
 
                     <div class="mb-3">
                         <x-admin.input
+                            id="projectCompany"
+                            label="Компания"
+                            name="project.company"
+                            placeholder="Компания"
+                            wire:model="project.company"
+                        ></x-admin.input>
+                    </div>
+
+                    <div class="mb-3">
+                        <x-admin.input
                             id="pageHeading"
                             label="Заголовок"
                             name="page.heading"

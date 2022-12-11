@@ -26,6 +26,7 @@ class ProjectCreateOrUpdate extends Component
                 Rule::unique('projects', 'slug')->ignore($this->project->id),
             ],
             'project.name' => 'required|string|max:255',
+            'project.company' => 'required|string|max:255',
             'project.preview' => 'required|string|max:255',
             'project.image' => 'required|string|max:255',
             'project.status' => 'nullable|boolean',
