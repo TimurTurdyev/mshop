@@ -14,6 +14,8 @@ use App\Http\Livewire\Collection\CollectionList;
 use App\Http\Livewire\Group\GroupList;
 use App\Http\Livewire\Option\OptionCreateOrUpdate;
 use App\Http\Livewire\Option\OptionList;
+use App\Http\Livewire\Post\PostCreateOrUpdate;
+use App\Http\Livewire\Post\PostList;
 use App\Http\Livewire\Product\ProductCreateOrUpdate;
 use App\Http\Livewire\Product\ProductList;
 use App\Http\Livewire\Setting\HomePage;
@@ -68,4 +70,9 @@ Route::prefix('/admin')->group(function () {
 
     Route::get('/setting/site', SettingStore::class)->name('admin.setting.site');
     Route::get('/setting/home', HomePage::class)->name('admin.setting.home');
+
+    /* Texts */
+    Route::get('/post', PostList::class)->name('admin.post');
+    Route::get('/post/create', PostCreateOrUpdate::class)->name('admin.post.create');
+    Route::get('/post/{post}', PostCreateOrUpdate::class)->name('admin.post.edit');
 });
