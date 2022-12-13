@@ -5,6 +5,7 @@ use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InfoController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Livewire\Brand\BrandCreateOrUpdate;
@@ -42,6 +43,15 @@ Route::get('/blog/{post:slug}', [BlogController::class, 'post'])->name('blog.pos
 
 Route::get('/project', [ProjectController::class, 'index'])->name('project');
 Route::get('/project/{project:slug}', [ProjectController::class, 'post'])->name('project.post');
+
+Route::controller(InfoController::class)->group(function () {
+    Route::get('/about-us', 'about')->name('about');
+    Route::get('/delivery', 'delivery')->name('delivery');
+    Route::get('/payment', 'payment')->name('payment');
+    Route::get('/designers', 'designers')->name('designers');
+    Route::get('/design-project', 'designProject')->name('design.project');
+    Route::get('/for-government-customers', 'forGovernmentCustomers')->name('for.government.customers');
+});
 
 Route::prefix('/admin')->group(function () {
     Route::get('/', function () {
