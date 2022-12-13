@@ -13,6 +13,7 @@ class Order extends Component
     public $name = '';
     public $phone = '';
     public $email = '';
+    private $open = false;
 
     protected $rules = [
         'name' => 'required|string|min:1',
@@ -109,6 +110,7 @@ class Order extends Component
         if ($prices) {
             Cart::add($prices);
         }
+        $this->open = true;
     }
 
 
@@ -128,6 +130,7 @@ class Order extends Component
             'items' => $items,
             'cartTotalQuantity' => $cartTotalQuantity,
             'cartSubTotal' => $cartSubTotal,
+            'open' => $this->open,
         ]);
     }
 }

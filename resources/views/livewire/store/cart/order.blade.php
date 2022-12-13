@@ -18,6 +18,7 @@
                      class="pointer-events-auto w-screen max-w-md"
                      @click.outside="open = false"
                 >
+                    <div wire:key="open-{{ now() }}" @if( $open ) x-init="open=true" @endif></div>
                     <div class="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                         <div class="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
                             <div class="flex items-start justify-between">
