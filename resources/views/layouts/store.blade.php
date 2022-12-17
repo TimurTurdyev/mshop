@@ -169,7 +169,7 @@
     <div x-show="search" x-transition:enter="duration-200 ease-out" x-transition:enter-start="opacity-0 scale-95"
          x-transition:enter-end="opacity-100 scale-100" x-transition:leave="duration-100 ease-in"
          x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
-         class="z-50 absolute inset-x-0 top-0 origin-top-right transform p-2 transition" x-ref="searchBlock"
+         class="z-50 absolute left-1/2 top-0 -translate-x-1/2 p-2 transition w-80 md:w-1/2" x-ref="searchBlock"
          @click.away="search = false" style="display: none;">
         <div class="divide-y-2 divide-gray-50 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
             <div class="px-5 pt-5 pb-6">
@@ -191,7 +191,7 @@
                     </div>
                 </div>
                 <div class="mt-6">
-
+                    <livewire:store.search.query-input></livewire:store.search.query-input>
                 </div>
             </div>
         </div>

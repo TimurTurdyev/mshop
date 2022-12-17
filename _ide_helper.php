@@ -19241,6 +19241,39 @@
      
 }
 
+    namespace App\Http\Requests\Auth { 
+            /**
+     * 
+     *
+     */ 
+        class LoginRequest {
+         
+    }
+     
+}
+
+    namespace Illuminate\Foundation\Http { 
+            /**
+     * 
+     *
+     */ 
+        class FormRequest {
+         
+    }
+     
+}
+
+    namespace App\Http\Requests { 
+            /**
+     * 
+     *
+     */ 
+        class ProfileUpdateRequest {
+         
+    }
+     
+}
+
     namespace Illuminate\View { 
             /**
      * 
