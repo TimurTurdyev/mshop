@@ -12,7 +12,7 @@
                         <x-admin.input
                             id="catalogName"
                             label="Название категории"
-                            name="catalog.name"
+                            errorName="catalog.name"
                             placeholder="Название категории"
                             wire:model="catalog.name"
                         ></x-admin.input>
@@ -22,7 +22,7 @@
                         <x-admin.input
                             id="pageHeading"
                             label="Заголовок"
-                            name="page.heading"
+                            errorName="page.heading"
                             wire:model="page.heading"
                         ></x-admin.input>
                     </div>
@@ -30,7 +30,7 @@
                     <x-admin.editor
                         id="pageTextHtml"
                         label="Описание"
-                        name="page.text_html"
+                        errorName="page.text_html"
                         :value="$page['text_html']"
                         wire:model.debounce.500ms="page.text_html"
                     ></x-admin.editor>
@@ -47,7 +47,7 @@
                     <x-admin.select
                         id="catalogEntityShow"
                         label="Выводить в категории"
-                        name="catalog.entity_show"
+                        errorName="catalog.entity_show"
                         :items="$catalogEntityShow"
                         wire:model="catalog.entity_show"
                         start_empty="no"
@@ -57,7 +57,7 @@
                         <x-admin.input
                             id="catalogSlug"
                             label="Сео урл"
-                            name="catalog.slug"
+                            errorName="catalog.slug"
                             wire:model="catalog.slug"
                         ></x-admin.input>
                     </div>
@@ -66,7 +66,7 @@
                         <x-admin.input
                             id="pageMetaTitle"
                             label="Мета заголовок"
-                            name="page.meta_title"
+                            errorName="page.meta_title"
                             wire:model="page.meta_title"
                         ></x-admin.input>
                     </div>
@@ -75,7 +75,7 @@
                         <x-admin.textarea
                             id="pageMetaDescription"
                             label="Мета описание"
-                            name="page.meta_description"
+                            errorName="page.meta_description"
                             wire:model="page.meta_description"
                         ></x-admin.textarea>
                     </div>
@@ -85,7 +85,7 @@
                             id="pageMetaImage"
                             label="Мета изображение"
                             :value="$page['meta_image']"
-                            name="page.meta_image"
+                            errorName="page.meta_image"
                             wire:model="page.meta_image"
                         ></x-admin.image>
                     </div>
@@ -94,7 +94,7 @@
                         <x-admin.switcher
                             id="catalogStatus"
                             label="Статус"
-                            name="catalog.status"
+                            errorName="catalog.status"
                             wire:model="catalog.status"
                         ></x-admin.switcher>
                     </div>

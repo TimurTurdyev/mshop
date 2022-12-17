@@ -13,13 +13,13 @@
             <td>{{ $loop->index }}</td>
             <td>
                 <x-admin.input
-                    name="store.menu_top.{{ $loop->index }}.link"
+                    errorName="store.menu_top.{{ $loop->index }}.link"
                     wire:model="store.menu_top.{{ $loop->index }}.link"
                 ></x-admin.input>
             </td>
             <td>
                 <x-admin.input
-                    name="store.menu_top.{{ $loop->index }}.title"
+                    errorName="store.menu_top.{{ $loop->index }}.title"
                     wire:model="store.menu_top.{{ $loop->index }}.title"
                 ></x-admin.input>
             </td>

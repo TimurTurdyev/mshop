@@ -14,19 +14,19 @@
             <td>{{ $loop->index }}</td>
             <td>
                 <x-admin.textarea
-                    name="store.menu_main.{{ $loop->index }}.icon"
+                    errorName="store.menu_main.{{ $loop->index }}.icon"
                     wire:model="store.menu_main.{{ $loop->index }}.icon"
                 ></x-admin.textarea>
             </td>
             <td>
                 <x-admin.input
-                    name="store.menu_main.{{ $loop->index }}.link"
+                    errorName="store.menu_main.{{ $loop->index }}.link"
                     wire:model="store.menu_main.{{ $loop->index }}.link"
                 ></x-admin.input>
             </td>
             <td>
                 <x-admin.input
-                    name="store.menu_main.{{ $loop->index }}.title"
+                    errorName="store.menu_main.{{ $loop->index }}.title"
                     wire:model="store.menu_main.{{ $loop->index }}.title"
                 ></x-admin.input>
             </td>

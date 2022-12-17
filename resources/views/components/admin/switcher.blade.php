@@ -1,6 +1,6 @@
 @props([
     'id' => '',
-    'name' => '',
+    'errorName' => '',
     'label' => '',
 ])
 
@@ -16,7 +16,7 @@
     @if( $label )
         <x-admin.label for="{{ $id }}" class="form-check-label">{{ $label }}</x-admin.label>
     @endif
-    @error( $name )
+    @error( $errorName )
     <div class="invalid-feedback">
         {{ $message }}
     </div>

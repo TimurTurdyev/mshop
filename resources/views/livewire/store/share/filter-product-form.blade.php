@@ -32,7 +32,7 @@
                                    type="checkbox"
                                    wire:model="selectedOptions"
                                    value="{{ $item['option_id'] }}-{{ $item['option_value_id'] }}"
-                                   class="peer w-4 h-4 text-red-600 bg-gray-100 rounded border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                   class="peer w-4 h-4 text-red-600 bg-gray-100 rounded border-gray-300 focus:ring-red-500 focus:ring-2">
                             <label for="form-option{{ $item['option_id'] }}-{{ $item['option_value_id'] }}"
                                    class="flex items-center ml-2">
                                 @if( $item['image'] )
@@ -61,7 +61,7 @@
                                    type="checkbox"
                                    wire:model="selectedBrands"
                                    value="{{ $item['id'] }}"
-                                   class="peer w-4 h-4 text-red-600 bg-gray-100 rounded border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                   class="peer w-4 h-4 text-red-600 bg-gray-100 rounded border-gray-300 focus:ring-red-500 focus:ring-2">
                             <label for="form-brand{{ $item['id'] }}"
                                    class="flex items-center ml-2">
                                 {{ $item['name'] }}

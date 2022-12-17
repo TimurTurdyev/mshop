@@ -12,7 +12,7 @@
                         <x-admin.input
                             id="productName"
                             label="Название товара"
-                            name="product.name"
+                            errorName="product.name"
                             wire:model="product.name"
                         ></x-admin.input>
                     </div>
@@ -21,7 +21,7 @@
                         <x-admin.input
                             id="pageHeading"
                             label="Заголовок"
-                            name="page.heading"
+                            errorName="page.heading"
                             wire:model="page.heading"
                         ></x-admin.input>
                     </div>
@@ -31,7 +31,7 @@
                             id="pageTextHtml"
                             label="Описание"
                             :value="$page['text_html']"
-                            name="page.text_html"
+                            errorName="page.text_html"
                             wire:model="page.text_html"
                         ></x-admin.editor>
                     </div>
@@ -41,7 +41,7 @@
                                 <x-admin.image
                                     id="productImages{{ $key }}"
                                     :value="$image"
-                                    name="images.{{ $key }}"
+                                    errorName="images.{{ $key }}"
                                     wire:model="images.{{ $key }}"
                                 ></x-admin.image>
                             </div>
@@ -61,7 +61,7 @@
                         <x-admin.select
                             id="productBrandId"
                             label="Производитель"
-                            name="product.brand_id"
+                            errorName="product.brand_id"
                             :items="$brands"
                             wire:model="product.brand_id"
                         ></x-admin.select>
@@ -71,7 +71,7 @@
                         <x-admin.select
                             id="productGroupId"
                             label="Группа товара"
-                            name="product.group_id"
+                            errorName="product.group_id"
                             :items="$groups"
                             wire:model="product.group_id"
                         ></x-admin.select>
@@ -81,7 +81,7 @@
                         <x-admin.select
                             id="productCollectionId"
                             label="Коллекция товара"
-                            name="product.collection_id"
+                            errorName="product.collection_id"
                             :items="$collections"
                             wire:model="product.collection_id"
                         ></x-admin.select>
@@ -96,7 +96,7 @@
                         <x-admin.input
                             id="pageSlug"
                             label="Сео урл"
-                            name="product.slug"
+                            errorName="product.slug"
                             wire:model="product.slug"
                         ></x-admin.input>
                     </div>
@@ -105,7 +105,7 @@
                         <x-admin.input
                             id="pageMetaTitle"
                             label="Мета заголовок"
-                            name="page.meta_title"
+                            errorName="page.meta_title"
                             wire:model="page.meta_title"
                         ></x-admin.input>
                     </div>
@@ -114,7 +114,7 @@
                         <x-admin.textarea
                             id="pageMetaDescription"
                             label="Мета описание"
-                            name="page.meta_description"
+                            errorName="page.meta_description"
                             wire:model="page.meta_description"
                         ></x-admin.textarea>
                     </div>
@@ -124,7 +124,7 @@
                             id="pageMetaImage"
                             label="Мета изображение"
                             :value="$page['meta_image']"
-                            name="page.meta_image"
+                            errorName="page.meta_image"
                             wire:model="page.meta_image"
                         ></x-admin.image>
                     </div>
@@ -133,7 +133,7 @@
                         <x-admin.switcher
                             id="productStatus"
                             label="Статус"
-                            name="product.status"
+                            errorName="product.status"
                             wire:model="product.status"
                         ></x-admin.switcher>
                     </div>

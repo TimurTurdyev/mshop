@@ -1,6 +1,6 @@
 @props([
     'id' => '',
-    'name' => '',
+    'errorName' => '',
     'value' => '',
     'label' => '',
 ])
@@ -12,7 +12,7 @@
     <img src="{{ asset($value) }}" class="img-fluid mb-3">
 @endif
 
-<div class="input-group @error( $name ) is-invalid @enderror">
+<div class="input-group @error( $errorName ) is-invalid @enderror">
     <input type="text"
            class="form-control"
            id="feature_image{{ $id }}"
@@ -24,7 +24,7 @@
     >Изменить
     </button>
 </div>
-@error( $name )
+@error( $errorName )
 <div class="invalid-feedback">
     {{ $message }}
 </div>

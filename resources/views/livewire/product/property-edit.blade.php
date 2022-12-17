@@ -1,13 +1,13 @@
 <div class="mb-3 row">
     <div class="col-sm-3 text-sm-end">
-        <x-admin.select name="property.option_id"
+        <x-admin.select errorName="property.option_id"
                         key="group_admin"
                         :items="$options"
                         wire:model="property.option_id"
         ></x-admin.select>
     </div>
     <div class="col-sm-7">
-        <x-admin.select name="property.option_value_id"
+        <x-admin.select errorName="property.option_value_id"
                         key="value"
                         :items="$optionValues"
                         wire:model="property.option_value_id"

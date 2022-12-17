@@ -61,7 +61,7 @@
         </div>
     @endforeach
     @error('selectPriceId')
-    <p class="mt-2 text-xs text-red-600 dark:text-red-400">{{ $message }}</p>
+    <p class="mt-2 text-xs text-red-600">{{ $message }}</p>
     @enderror
     <p class="text-xl text-red-600 pb-3">
         {{ $selectPriceValue }} р.

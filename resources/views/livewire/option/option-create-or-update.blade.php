@@ -8,7 +8,7 @@
                     <x-admin.input
                         id="optionAdminName"
                         label="Название группы опций / Для админа"
-                        name="option.group_admin"
+                        errorName="option.group_admin"
                         wire:model="option.group_admin"
                     ></x-admin.input>
                 </div>
@@ -16,7 +16,7 @@
                     <x-admin.input
                         id="optionSiteName"
                         label="Название группы опций / На сайте"
-                        name="option.group_site"
+                        errorName="option.group_site"
                         wire:model="option.group_site"
                     ></x-admin.input>
                 </div>

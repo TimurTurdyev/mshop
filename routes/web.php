@@ -7,6 +7,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Livewire\Brand\BrandCreateOrUpdate;
 use App\Http\Livewire\Brand\BrandList;
@@ -53,10 +54,10 @@ Route::controller(InfoController::class)->group(function () {
     Route::get('/for-government-customers', 'forGovernmentCustomers')->name('for.government.customers');
 });
 
-Route::prefix('/admin')->group(function () {
+Route::prefix('/admin')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/', function () {
         return view('admin.dashboard');
-    });
+    })->name('dashboard');
 
     Route::get('/catalog', CatalogList::class)->name('admin.catalog');
     Route::get('/catalog/create', CatalogCreateOrUpdate::class)->name('admin.catalog.create');
@@ -92,3 +93,13 @@ Route::prefix('/admin')->group(function () {
     Route::get('/project/create', ProjectCreateOrUpdate::class)->name('admin.project.create');
     Route::get('/project/{project}', ProjectCreateOrUpdate::class)->name('admin.project.edit');
 });
+
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
+

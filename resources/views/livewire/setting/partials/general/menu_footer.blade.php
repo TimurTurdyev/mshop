@@ -15,13 +15,13 @@
                 <td>{{ $loop->index }}</td>
                 <td>
                     <x-admin.input
-                        name="store.menu_footer.{{ $column }}.{{ $loop->index }}.link"
+                        errorName="store.menu_footer.{{ $column }}.{{ $loop->index }}.link"
                         wire:model="store.menu_footer.{{ $column }}.{{ $loop->index }}.link"
                     ></x-admin.input>
                 </td>
                 <td>
                     <x-admin.input
-                        name="store.menu_footer.{{ $column }}.{{ $loop->index }}.title"
+                        errorName="store.menu_footer.{{ $column }}.{{ $loop->index }}.title"
                         wire:model="store.menu_footer.{{ $column }}.{{ $loop->index }}.title"
                     ></x-admin.input>
                 </td>

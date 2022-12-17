@@ -118,7 +118,7 @@
                                         class="border @error('name') border-red-500 @else border-gray-300 @endif text-gray-900 text-sm rounded-lg block w-full p-2.5"
                                         placeholder="Имя" type="text" wire:model.lazy="name">
                                     @error('name')
-                                    <p class="mt-2 text-xs text-red-600 dark:text-red-400">{{ $message }}</p>
+                                    <p class="mt-2 text-xs text-red-600">{{ $message }}</p>
                                     @endif
                                 </div>
                                 <div class="mb-3">
@@ -126,7 +126,7 @@
                                         class="border @error('phone') border-red-500 @else border-gray-300 @endif text-gray-900 text-sm rounded-lg block w-full p-2.5"
                                         placeholder="Телефон" type="text" wire:model.lazy="phone">
                                     @error('phone')
-                                    <p class="mt-2 text-xs text-red-600 dark:text-red-400">{{ $message }}</p>
+                                    <p class="mt-2 text-xs text-red-600">{{ $message }}</p>
                                     @endif
                                 </div>
                                 <div class="mb-3">
@@ -134,7 +134,7 @@
                                         class="border @error('email') border-red-500 @else border-gray-300 @endif text-gray-900 text-sm rounded-lg block w-full p-2.5"
                                         placeholder="Почта" type="email" wire:model.lazy="email">
                                     @error('email')
-                                    <p class="mt-2 text-xs text-red-600 dark:text-red-400">{{ $message }}</p>
+                                    <p class="mt-2 text-xs text-red-600">{{ $message }}</p>
                                     @endif
                                 </div>
                                 <div class="mt-6">
@@ -147,7 +147,7 @@
                             @endif
                             @if( session('success') )
                                 <div
-                                    class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
+                                    class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg"
                                     role="alert">
                                     {{ session('success') }}
                                 </div>

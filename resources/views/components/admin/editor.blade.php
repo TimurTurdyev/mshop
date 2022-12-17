@@ -1,6 +1,6 @@
 @props([
     'label' => '',
-    'name' => '',
+    'errorName' => '',
     'value' => '',
 ])
 
@@ -20,7 +20,7 @@
     >
         {!! $value !!}
     </div>
-    @error( $name )
+    @error( $errorName )
     <div class="is-invalid"></div>
     <div class="invalid-feedback">
         {{ $message }}

@@ -3,7 +3,7 @@
         <x-admin.input
             id="groupName"
             label="Название категории"
-            name="group.name"
+            errorerrorName="group.name"
             wire:model="group.name"
         ></x-admin.input>
     </div>
@@ -12,7 +12,7 @@
         <x-admin.switcher
             id="groupStatus"
             label="Статус"
-            name="group.status"
+            errorName="group.status"
             wire:model="group.status"
         ></x-admin.switcher>
     </div>

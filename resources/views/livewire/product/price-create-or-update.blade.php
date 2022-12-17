@@ -31,37 +31,37 @@
                         <div class="mb-3 row">
                             <label class="col-form-label col-sm-3 text-sm-end">Артикул</label>
                             <div class="col-sm-9">
-                                <x-admin.input name="price.sku" wire:model="price.sku"></x-admin.input>
+                                <x-admin.input errorName="price.sku" wire:model="price.sku"></x-admin.input>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label class="col-form-label col-sm-3 text-sm-end">Цена</label>
                             <div class="col-sm-9">
-                                <x-admin.input name="price.price" wire:model="price.price"></x-admin.input>
+                                <x-admin.input errorName="price.price" wire:model="price.price"></x-admin.input>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label class="col-form-label col-sm-3 text-sm-end">Акционная цена</label>
                             <div class="col-sm-9">
-                                <x-admin.input name="price.special" wire:model="price.special"></x-admin.input>
+                                <x-admin.input errorName="price.special" wire:model="price.special"></x-admin.input>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label class="col-form-label col-sm-3 text-sm-end">Кол-во</label>
                             <div class="col-sm-9">
-                                <x-admin.input name="price.quantity" wire:model="price.quantity"></x-admin.input>
+                                <x-admin.input errorName="price.quantity" wire:model="price.quantity"></x-admin.input>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label class="col-form-label col-sm-3 text-sm-end">Сортировка</label>
                             <div class="col-sm-9">
-                                <x-admin.input name="price.sort_order" wire:model="price.sort_order"></x-admin.input>
+                                <x-admin.input errorName="price.sort_order" wire:model="price.sort_order"></x-admin.input>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label class="col-form-label col-sm-3 text-sm-end pt-sm-0">Статус</label>
                             <div class="col-sm-9">
-                                <x-admin.switcher name="price.status" wire:model="price.status"></x-admin.switcher>
+                                <x-admin.switcher errorName="price.status" wire:model="price.status"></x-admin.switcher>
                             </div>
                         </div>
                         <div class="mb-3 row">
@@ -80,7 +80,7 @@
                                     <x-admin.image
                                         id="priceImages{{ $price->id }}_{{ $key }}"
                                         :value="$image"
-                                        name="images.{{ $key }}"
+                                        errorName="images.{{ $key }}"
                                         wire:model="images.{{ $key }}"
                                     ></x-admin.image>
                                 </div>

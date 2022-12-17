@@ -4,7 +4,7 @@
             class="border @error('name') border-red-500 @else border-gray-300 @endif text-gray-900 text-sm rounded-lg block w-full p-4"
             placeholder="Имя" type="text" wire:model.lazy="name">
         @error('name')
-        <p class="mt-2 text-xs text-red-600 dark:text-red-400">{{ $message }}</p>
+        <p class="mt-2 text-xs text-red-600">{{ $message }}</p>
         @endif
     </div>
     <div class="mb-3">
@@ -12,7 +12,7 @@
             class="border @error('phone') border-red-500 @else border-gray-300 @endif text-gray-900 text-sm rounded-lg block w-full p-4"
             placeholder="Телефон" type="text" wire:model.lazy="phone">
         @error('phone')
-        <p class="mt-2 text-xs text-red-600 dark:text-red-400">{{ $message }}</p>
+        <p class="mt-2 text-xs text-red-600">{{ $message }}</p>
         @endif
     </div>
     @if( $showEmail )
@@ -21,14 +21,14 @@
                 class="border @error('email') border-red-500 @else border-gray-300 @endif text-gray-900 text-sm rounded-lg block w-full p-4"
                 placeholder="Почта" type="text" wire:model.lazy="email">
             @error('email')
-            <p class="mt-2 text-xs text-red-600 dark:text-red-400">{{ $message }}</p>
+            <p class="mt-2 text-xs text-red-600">{{ $message }}</p>
             @endif
         </div>
     @endif
     @if( session('success') )
         <div
             x-init="show = false"
-            class="p-4 mb-6 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
+            class="p-4 mb-6 text-sm text-green-700 bg-green-100 rounded-lg"
             role="alert">
             {{ session('success') }}
         </div>

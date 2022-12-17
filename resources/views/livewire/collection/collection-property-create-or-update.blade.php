@@ -31,25 +31,25 @@
                         <div class="mb-3 row">
                             <label class="col-form-label col-sm-3 text-sm-end">Название</label>
                             <div class="col-sm-9">
-                                <x-admin.input name="collectionProperty.name" wire:model="collectionProperty.name"></x-admin.input>
+                                <x-admin.input errorName="collectionProperty.name" wire:model="collectionProperty.name"></x-admin.input>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label class="col-form-label col-sm-3 text-sm-end">Цена</label>
                             <div class="col-sm-9">
-                                <x-admin.input name="collectionProperty.price" wire:model="collectionProperty.price"></x-admin.input>
+                                <x-admin.input errorName="collectionProperty.price" wire:model="collectionProperty.price"></x-admin.input>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label class="col-form-label col-sm-3 text-sm-end">Сортировка</label>
                             <div class="col-sm-9">
-                                <x-admin.input name="collectionProperty.sort_order" wire:model="collectionProperty.sort_order"></x-admin.input>
+                                <x-admin.input errorName="collectionProperty.sort_order" wire:model="collectionProperty.sort_order"></x-admin.input>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label class="col-form-label col-sm-3 text-sm-end pt-sm-0">Статус</label>
                             <div class="col-sm-9">
-                                <x-admin.switcher name="collectionProperty.status" wire:model="collectionProperty.status"></x-admin.switcher>
+                                <x-admin.switcher errorName="collectionProperty.status" wire:model="collectionProperty.status"></x-admin.switcher>
                             </div>
                         </div>
                         <div class="mb-3 row">
@@ -68,7 +68,7 @@
                                     <x-admin.image
                                         id="collectionPropertyImages{{ $collectionProperty->id }}_{{ $key }}"
                                         :value="$image"
-                                        name="images.{{ $key }}"
+                                        errorName="images.{{ $key }}"
                                         wire:model="images.{{ $key }}"
                                     ></x-admin.image>
                                 </div>

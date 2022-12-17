@@ -1,6 +1,6 @@
 @props([
     'id' => '',
-    'name' => '',
+    'errorName' => '',
     'label' => '',
     'items' => [],
     'key' => 'name',
@@ -11,7 +11,7 @@
     <x-admin.label :for="$id">{{ $label }}</x-admin.label>
 @endif
 
-<select class="form-control @error( $name ) is-invalid @enderror"
+<select class="form-control @error( $errorName ) is-invalid @enderror"
         @if( $id )
             id="{{ $id }}"
     @endif
@@ -25,7 +25,7 @@
     @endforeach
 </select>
 
-@error( $name )
+@error( $errorName )
 <div class="invalid-feedback">
     {{ $message }}
 </div>

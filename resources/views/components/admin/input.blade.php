@@ -1,7 +1,7 @@
 @props([
     'type' => 'text',
     'id' => '',
-    'name' => '',
+    'errorName' => '',
     'label' => '',
     'placeholder' => '',
 ])
@@ -11,7 +11,7 @@
 @endif
 
 <input type="text"
-       class="form-control @error( $name ) is-invalid @enderror"
+       class="form-control @error( $errorName ) is-invalid @enderror"
        @if( $id )
        id="{{ $id }}"
        @endif
@@ -20,7 +20,7 @@
     @endif
     {{ $attributes }}
 >
-@error( $name )
+@error( $errorName )
 <div class="invalid-feedback">
     {{ $message }}
 </div>
