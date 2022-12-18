@@ -20,7 +20,7 @@ class GroupModal extends Component
     }
 
     protected array $rules = [
-        'group.name' => 'required|string|min:3',
+        'group.name' => 'required|string|max:255',
         'group.status' => 'nullable|boolean',
     ];
 

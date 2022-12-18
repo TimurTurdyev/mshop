@@ -19,7 +19,7 @@ class PriceCreateOrUpdate extends Component
     protected array $rules = [
         'price.product_id' => 'nullable|integer',
         'price.images' => 'nullable|array',
-        'price.sku' => 'required|string',
+        'price.sku' => 'required|string|max:255',
         'price.price' => 'required|integer',
         'price.special' => 'nullable|integer',
         'price.quantity' => 'nullable|integer',

@@ -26,7 +26,7 @@ class CatalogCreateOrUpdate extends Component
                 'max:255',
                 Rule::unique('catalogs', 'slug')->ignore($this->catalog->id),
             ],
-            'catalog.name' => 'required|string|min:6',
+            'catalog.name' => 'required|string|max:255',
             'catalog.status' => 'nullable|boolean',
             'catalog.entity_show' => ['required', new Enum(CatalogEntityShowEnum::class)],
         ];

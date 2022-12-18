@@ -24,8 +24,8 @@ trait PageLivewireTrait
         return [
             'page.meta_title' => 'required|string|max:255',
             'page.meta_description' => 'required|string|max:255',
-            'page.meta_image' => 'string|string|min:0,max:255',
-            'page.heading' => 'string|string|min:0,max:255',
+            'page.meta_image' => 'string|min:0,max:255',
+            'page.heading' => 'string|min:0,max:255',
             'page.text_html' => 'string|min:0',
         ];
     }

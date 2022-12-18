@@ -16,9 +16,9 @@ class Order extends Component
     private $open = false;
 
     protected $rules = [
-        'name' => 'required|string|min:1',
-        'phone' => 'required_without:email|string',
-        'email' => 'required_without:phone|string|email',
+        'name' => 'required|string|max:255',
+        'phone' => 'required_without:email|string|max:255',
+        'email' => 'required_without:phone|string|email|max:255',
     ];
 
     public $listeners = [

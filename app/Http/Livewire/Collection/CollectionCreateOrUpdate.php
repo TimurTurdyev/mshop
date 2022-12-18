@@ -30,7 +30,7 @@ class CollectionCreateOrUpdate extends Component
                 'max:255',
                 Rule::unique('collections', 'slug')->ignore($this->collection->id),
             ],
-            'collection.name' => 'required|string|min:6',
+            'collection.name' => 'required|string|max:255',
             'collection.images' => 'nullable|array',
             'collection.status' => 'nullable|boolean',
         ];

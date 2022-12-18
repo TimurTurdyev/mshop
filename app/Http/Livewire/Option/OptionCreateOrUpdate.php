@@ -15,8 +15,8 @@ class OptionCreateOrUpdate extends Component
     ];
 
     protected array $rules = [
-        'option.group_admin' => 'required|string|min:3|max:255',
-        'option.group_site' => 'required|string|min:3|max:255',
+        'option.group_admin' => 'required|string|max:255',
+        'option.group_site' => 'required|string|max:255',
     ];
 
     public function mount(Option $option)

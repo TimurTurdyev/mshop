@@ -25,7 +25,7 @@ class OptionValueModal extends Component
 
     protected array $rules = [
         'optionValue.value_admin' => 'nullable|string|max:255',
-        'optionValue.value' => 'required|string|min:2|max:255',
+        'optionValue.value' => 'required|string|max:255',
         'optionValue.image' => 'nullable|string|max:255',
     ];
 

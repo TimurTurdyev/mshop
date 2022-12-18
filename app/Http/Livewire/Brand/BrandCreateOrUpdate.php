@@ -23,7 +23,7 @@ class BrandCreateOrUpdate extends Component
                 'max:255',
                 Rule::unique('brands', 'slug')->ignore($this->brand->id),
             ],
-            'brand.name' => 'required|string|min:6',
+            'brand.name' => 'required|string|max:255',
             'brand.status' => 'nullable|boolean',
         ];
     }

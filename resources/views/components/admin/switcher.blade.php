@@ -6,7 +6,7 @@
 
 
 <div class="form-check form-switch">
-    <input class="form-check-input @error('catalog.status') is-invalid @enderror"
+    <input class="form-check-input @error($errorName) is-invalid @enderror"
            type="checkbox"
            @if( $id )
            id="{{ $id }}"
